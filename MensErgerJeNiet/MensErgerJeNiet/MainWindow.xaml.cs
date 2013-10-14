@@ -24,5 +24,10 @@ namespace MensErgerJeNiet
         {
             InitializeComponent();
         }
+
+        private void btn4Speler_Click(object sender, RoutedEventArgs e)
+        {
+            Board bord4spelers = new Board(4);
+        }
     }
 }
