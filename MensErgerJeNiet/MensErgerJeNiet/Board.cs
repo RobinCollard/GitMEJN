@@ -39,7 +39,7 @@ namespace MensErgerJeNiet
             string[] lines = Regex.Split(myString, "\r\n");
 
             BuildBaseFields(lines);
-            BuildBoardFields(lines);
+            //BuildBoardFields(lines);
             
         } // end BuildLevel
 
@@ -51,7 +51,7 @@ namespace MensErgerJeNiet
             {
                 for (int x = 0; x < lines[y].Length; x++)
                 {
-                    if (x != 0 && y != 0)
+                    if (OriginBaseField != null)
                     {
                         previousField = currentField;
                     }
