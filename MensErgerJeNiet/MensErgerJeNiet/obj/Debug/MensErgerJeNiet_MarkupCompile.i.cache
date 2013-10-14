@@ -4,15 +4,19 @@
 winexe
 C#
 .cs
-C:\Users\Thim\git\GitMEJN\MensErgerJeNiet\MensErgerJeNiet\obj\Debug\
+C:\Users\Robin\Documents\GitHub\GitMEJN\MensErgerJeNiet\MensErgerJeNiet\obj\Debug\
 MensErgerJeNiet
 none
 false
 DEBUG;TRACE
-C:\Users\Thim\git\GitMEJN\MensErgerJeNiet\MensErgerJeNiet\App.xaml
+C:\Users\Robin\Documents\GitHub\GitMEJN\MensErgerJeNiet\MensErgerJeNiet\App.xaml
 11151548125
 
+<<<<<<< HEAD
 18-1423331382
+=======
+9561914158
+>>>>>>> 3b676833cac1da577be49e97602d777a18f129ce
 12-1401562060
 MainWindow.xaml;
 
