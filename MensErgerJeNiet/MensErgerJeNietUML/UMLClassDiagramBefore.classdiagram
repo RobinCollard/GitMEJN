@@ -347,7 +347,7 @@
           <property Id="7ec1c4e4-97e4-461a-aa25-c1ab775ec066" name="eyes" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="f762e778-c736-4067-a86d-f3c6060a297d" />
             <type_NamedElement>
-              <referencedTypeMoniker Id="38e331cc-69be-4270-a0f8-36b379f1e6f2" LastKnownName="Integer" />
+              <referencedTypeMoniker Id="42a32dba-2005-400e-b314-b8ce6539e2d4" LastKnownName="String" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -440,13 +440,13 @@
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <referencedType Id="38e331cc-69be-4270-a0f8-36b379f1e6f2" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
-        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      <referencedType Id="f05c412c-1c05-4763-b0f1-14d3372d496f" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
+        <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <referencedType Id="f05c412c-1c05-4763-b0f1-14d3372d496f" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
-        <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
+      <referencedType Id="42a32dba-2005-400e-b314-b8ce6539e2d4" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>
