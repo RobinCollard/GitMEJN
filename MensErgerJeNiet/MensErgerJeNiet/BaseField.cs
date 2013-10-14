@@ -2,9 +2,11 @@
 {
     public class BaseField : Field
     {
-        public BaseField(Field next, Field previous) : base(next, previous)
-        {
+        public Color myColor { get; set; }
 
+        public BaseField(Field next, Field previous, Color color) : base(next, previous)
+        {
+            this.myColor = color;
         }
     }
 }

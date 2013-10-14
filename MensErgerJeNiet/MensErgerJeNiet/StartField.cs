@@ -12,7 +12,7 @@ namespace MensErgerJeNiet
         public StartField(Field next, Field previous, Color color)
             : base(next, previous)
         {
-            color = myColor;
+            this.myColor = color;
         }
     }
 }
