@@ -1,1 +1,2 @@
 C:\Users\Robin\Documents\GitHub\GitMEJN\MensErgerJeNiet\MensErgerJeNiet\bin\Debug\MensErgerJeNiet.exe.config
+C:\Users\Thim\git\GitMEJN\MensErgerJeNiet\MensErgerJeNiet\bin\Debug\MensErgerJeNiet.exe.config
