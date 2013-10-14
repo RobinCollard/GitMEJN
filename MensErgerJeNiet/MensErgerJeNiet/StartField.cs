@@ -7,10 +7,12 @@ namespace MensErgerJeNiet
 {
     public class StartField : Field
     {
-        public StartField(Field next, Field previous)
+        public Color myColor { get; set; }
+
+        public StartField(Field next, Field previous, Color color)
             : base(next, previous)
         {
-
+            color = myColor;
         }
     }
 }
