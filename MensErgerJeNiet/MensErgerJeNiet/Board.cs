@@ -12,8 +12,25 @@ namespace MensErgerJeNiet
         {
             if (amountOfPlayers == 4)
             {
-                string[] filePaths = Directory.GetFiles(System.IO.Directory.GetCurrentDirectory() + @"\..\..\..\MEJN-Levels", "*.mejn");
+                string pathString = "";
+                string[] fileStrings = Directory.GetFiles(System.IO.Directory.GetCurrentDirectory() + @"\..\..\..\MEJN-Levels", "*.mejn");
+                foreach (string s in fileStrings)
+                {
+                    if( s.Contains("std.mejn"))
+                    {
+                        pathString = s;
+                        buildLevel(pathString);
+                    }
+                }
             }   
+        }
+
+        public void buildLevel(string pathString)
+        {
+            System.IO.StreamReader myFile =
+            new System.IO.StreamReader(pathString);
+            string myString = myFile.ReadToEnd();
+            myFile.Close();
         }
     }
 }

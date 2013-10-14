@@ -29,7 +29,7 @@ namespace MensErgerJeNiet
         {
             Board myBoard = new Board();
             myBoard.StartNewGame(4);
-
+            this.Close();
         }
     }
 }
