@@ -6,10 +6,9 @@
         public Field Previous { get; set; }
         public Pawn myPawn { get; set; }
 
-        public Field(Field next, Field previous)
+        public Field()
         {
-            this.Next = next;
-            this.Previous = previous;
+
         }
     }
 }

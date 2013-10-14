@@ -4,7 +4,7 @@
     {
         public HomeField NextHome { get; set; }
 
-        public EndField(Field next, Field previous) : base (next, previous)
+        public EndField()
         {
 
         }

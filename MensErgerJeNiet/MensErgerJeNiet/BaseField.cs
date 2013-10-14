@@ -4,7 +4,7 @@
     {
         public Color myColor { get; set; }
 
-        public BaseField(Field next, Field previous, Color color) : base(next, previous)
+        public BaseField(Color color)
         {
             this.myColor = color;
         }
