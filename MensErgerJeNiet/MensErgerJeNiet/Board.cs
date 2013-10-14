@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text.RegularExpressions;
 namespace MensErgerJeNiet
 {
     public class Board
@@ -31,6 +32,9 @@ namespace MensErgerJeNiet
             new System.IO.StreamReader(pathString);
             string myString = myFile.ReadToEnd();
             myFile.Close();
+
+            string[] lines = Regex.Split(myString, "\r\n");
+            
         }
     }
 }
