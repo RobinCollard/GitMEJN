@@ -95,7 +95,7 @@ namespace MensErgerJeNiet
             {
                 for (int x = 0; x < lines[y].Length; x++)
                 {
-                    if (x != 0 && y != 0)
+                    if (Origin != null)
                     {
                         previousField = currentField;
                     }
