@@ -2,7 +2,12 @@
 {
     public class Board
     {
-        public Board(int aantalSpelers)
+        public Board()
+        {
+
+        }
+
+        public void StartNewGame(int amountOfPlayers)
         {
 
         }
