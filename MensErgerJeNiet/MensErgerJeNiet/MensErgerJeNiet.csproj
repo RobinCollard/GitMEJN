@@ -55,9 +55,11 @@
     </ApplicationDefinition>
     <Compile Include="BaseField.cs" />
     <Compile Include="Board.cs" />
+    <Compile Include="Color.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="EndField.cs" />
-    <Compile Include="StarField.cs" />
+    <Compile Include="HomeField.cs" />
+    <Compile Include="StartField.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

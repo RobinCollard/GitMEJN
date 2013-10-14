@@ -34,7 +34,6 @@ namespace MensErgerJeNiet
             myFile.Close();
 
             string[] lines = Regex.Split(myString, "\r\n");
-            
         }
     }
 }
