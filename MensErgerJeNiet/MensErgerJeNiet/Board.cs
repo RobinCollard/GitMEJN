@@ -81,7 +81,7 @@ namespace MensErgerJeNiet
                             break;
                     }
                     if (x == 0 && y == 0) { OriginBaseField = (BaseField) currentField; }
-                    if (x > 0) { currentField.Previous = previousField; previousField.Next = currentField;}
+                    if (x > 0) { currentField.Previous = previousField; previousField.Next = currentField; }
 
                 }
             }
@@ -89,6 +89,26 @@ namespace MensErgerJeNiet
 
         public void BuildBoardFields(string[] lines)
         {
+            Field currentField = null;
+            Field previousField = null;
+            for (int y = 0; y > 1; y++)
+            {
+                for (int x = 0; x < lines[y].Length; x++)
+                {
+                    if (x != 0 && y != 0)
+                    {
+                        previousField = currentField;
+                    }
+                    switch (lines[y][x])
+                    {
+                        
+                        default:
+                            break;
+                    }
+                    //if statements
+
+                }
+            }
 
         }
         

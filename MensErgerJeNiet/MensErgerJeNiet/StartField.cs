@@ -9,8 +9,7 @@ namespace MensErgerJeNiet
     {
         public Color myColor { get; set; }
 
-        public StartField(Field next, Field previous, Color color)
-            : base(next, previous)
+        public StartField(Color color)
         {
             this.myColor = color;
         }
