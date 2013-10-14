@@ -6,6 +6,7 @@ namespace MensErgerJeNiet
     {
         public BaseField OriginBaseField { get; set; }
         public Field Origin { get; set; }
+        public Color CurrentColor { get; set; }
 
         public Board()
         {
@@ -20,13 +21,13 @@ namespace MensErgerJeNiet
                 string[] fileStrings = Directory.GetFiles(System.IO.Directory.GetCurrentDirectory() + @"\..\..\..\MEJN-Levels", "*.mejn");
                 foreach (string s in fileStrings)
                 {
-                    if( s.Contains("std.mejn"))
+                    if (s.Contains("std.mejn"))
                     {
                         pathString = s;
                         buildLevel(pathString);
                     }
                 }
-            }   
+            }
         }
 
         public void buildLevel(string pathString)
@@ -40,7 +41,7 @@ namespace MensErgerJeNiet
 
             BuildBaseFields(lines);
             //BuildBoardFields(lines);
-            
+
         } // end BuildLevel
 
         public void BuildBaseFields(string[] lines)
@@ -80,7 +81,7 @@ namespace MensErgerJeNiet
                         default:
                             break;
                     }
-                    if (x == 0 && y == 0) { OriginBaseField = (BaseField) currentField; }
+                    if (x == 0 && y == 0) { OriginBaseField = (BaseField)currentField; }
                     if (x > 0) { currentField.Previous = previousField; previousField.Next = currentField; }
 
                 }
@@ -89,9 +90,11 @@ namespace MensErgerJeNiet
 
         public void BuildBoardFields(string[] lines)
         {
+            // Klopt nog niet
             Field currentField = null;
             Field previousField = null;
-            for (int y = 0; y > 1; y++)
+            Field Continue = null;
+            for (int y = 1; y < lines.Length; y++)
             {
                 for (int x = 0; x < lines[y].Length; x++)
                 {
@@ -99,19 +102,40 @@ namespace MensErgerJeNiet
                     {
                         previousField = currentField;
                     }
-                    switch (lines[y][x])
+                    switch (y)
                     {
-                        
-                        default:
-                            break;
+                        case 2: CurrentColor = Color.Yellow; break;
+                        case 3: CurrentColor = Color.Green; break;
+                        case 4: CurrentColor = Color.Red; break;
+                        case 5: CurrentColor = Color.Blue; break;
                     }
-                    //if statements
+                    if (x == 0)
+                    {
+                        currentField = new StartField(CurrentColor);
+                        if (y == 1) { Origin = currentField; }
 
+                    }
+                    if (x > 0 && x < 9)
+                    {
+                        currentField = new Field();
+                        currentField.Previous = previousField;
+                        previousField.Next = currentField;
+                    }
+                    if (x == 9)
+                    {
+                        currentField = new EndField();
+                        currentField.Previous = previousField;
+                        previousField.Next = currentField;
+                        Continue = currentField;
+                    }
+                    if (x > 9)
+                    {
+                        currentField = new HomeField(CurrentColor);
+                        currentField.Previous = previousField;
+                        previousField.NextHome = (HomeField)currentField;
+                    }
                 }
             }
-
         }
-        
     }
-
 }
