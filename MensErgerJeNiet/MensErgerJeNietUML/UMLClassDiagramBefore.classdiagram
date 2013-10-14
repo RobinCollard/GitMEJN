@@ -347,7 +347,7 @@
           <property Id="7ec1c4e4-97e4-461a-aa25-c1ab775ec066" name="eyes" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="f762e778-c736-4067-a86d-f3c6060a297d" />
             <type_NamedElement>
-              <referencedTypeMoniker Id="42a32dba-2005-400e-b314-b8ce6539e2d4" LastKnownName="String" />
+              <referencedTypeMoniker Id="b40b0832-d0b2-4454-883a-712514d4a12d" LastKnownName="Integer" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -445,8 +445,8 @@
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <referencedType Id="42a32dba-2005-400e-b314-b8ce6539e2d4" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
-        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      <referencedType Id="b40b0832-d0b2-4454-883a-712514d4a12d" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>
