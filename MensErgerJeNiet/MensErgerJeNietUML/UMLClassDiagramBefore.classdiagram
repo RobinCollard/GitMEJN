@@ -231,39 +231,6 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="5cb80a95-1c33-41cd-9c87-b9d9401220b7" name="Player" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="192264eb-ddb6-415f-8390-b83da5d7fb4e" />
-        <targetEnds>
-          <association Id="0eca7461-4845-4cbd-8583-4c04067f674a" isDerived="false" sourceEndRoleName="Player" targetEndRoleName="Pawn" isLeaf="false" isAbstract="false">
-            <classMoniker Id="5a907dd8-6475-413f-a265-ba2e2b4f2110" LastKnownName="Pawn" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="2e8fe62f-f127-44b1-b18b-0770b39778fd" name="Player" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="efbd6a2a-709c-4cde-89a1-a6a78c983826" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="1cec4a0d-61cd-4cf1-99ff-a7af491aa072" name="Pawn" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <lowerValueInternal>
-                    <literalString Id="2dddf5c7-0866-4c41-bda8-864aa5945190" name="Lower" value="4">
-                      <elementDefinition Id="00c34f6d-8066-49c1-b677-ae7bf400967e" />
-                    </literalString>
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString Id="27327dd7-d0e0-4377-8ec7-295fe2b45a70" name="Upper" value="4">
-                      <elementDefinition Id="bb064fe5-f29a-4cff-9f3f-c6b2bb00febe" />
-                    </literalString>
-                  </upperValueInternal>
-                  <elementDefinition Id="d1f417eb-2882-4328-831a-5bd9c0922eef" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="7abf4aa5-f2dd-4ee4-a10e-d12f04a3887c" />
-          </association>
-        </targetEnds>
-      </class>
-    </logicalClassDesignerModelHasTypes>
-    <logicalClassDesignerModelHasTypes>
       <class Id="5a907dd8-6475-413f-a265-ba2e2b4f2110" name="Pawn" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="105d4656-817b-4d9b-a2e0-76fc9881ca1b" />
         <targetEnds>

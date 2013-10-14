@@ -2,7 +2,7 @@
 {
     public class Dice
     {
-        public int eyes { get; set; }
+        public int Eyes { get; set; }
 
         public Dice()
         {
