@@ -113,7 +113,7 @@ namespace MensErgerJeNiet
                     {
                         currentField = new StartField(CurrentColor);
                         if (y == 1) { Origin = currentField; }
-                        if (y > 1) { previousField = continueOn; }
+                        if (y > 1) { previousField = continueOn; previousField.Next = currentField; currentField.Previous = previousField; }
 
                     }
                     if (x > 0 && x < 9)
@@ -158,6 +158,8 @@ namespace MensErgerJeNiet
                     }
                 }
             }
+            Origin.Previous = currentField;
+            currentField.Next = Origin;
         }
     }
 }
