@@ -127,7 +127,7 @@ namespace MensErgerJeNiet
                         currentField = new EndField();
                         currentField.Previous = previousField;
                         previousField.Next = currentField;
-                        Continue = currentField;
+                        continueOn = currentField;
                     }
                     if (x > 9)
                     {
