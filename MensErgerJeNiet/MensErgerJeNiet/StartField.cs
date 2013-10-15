@@ -7,11 +7,11 @@ namespace MensErgerJeNiet
 {
     public class StartField : Field
     {
-        public Color myColor { get; set; }
+        public Color MyColor { get; set; }
 
         public StartField(Color color)
         {
-            this.myColor = color;
+            this.MyColor = color;
         }
     }
 }
