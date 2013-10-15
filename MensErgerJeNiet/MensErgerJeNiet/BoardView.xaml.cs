@@ -23,9 +23,12 @@ namespace MensErgerJeNiet
             cRed, cGreen, cYellow, cBlue, dRed, dGreen, dYellow, dBlue,
             srcField, BaseRed, BaseGreen, BaseYellow, BaseBlue, noField,
             pawnRed, pawnGreen, pawnYellow, pawnBlue, startRed, startGreen, startYellow, startBlue;
-        public BoardView()
+        private Board myBoard;
+
+        public BoardView(Board myBoard)
         {
             InitializeComponent();
+            this.myBoard = myBoard;
         
             aRed = new BitmapImage(new Uri("pack://application:,,,/images/aBlue.png"));
             aGreen = new BitmapImage(new Uri("pack://application:,,,/images/aBlue.png"));

@@ -41,6 +41,8 @@ namespace MensErgerJeNiet
 
             BuildBaseFields(lines);
             BuildBoardFields(lines);
+            BoardView myView = new BoardView(this);
+            myView.Show();
 
         } // end BuildLevel
 
