@@ -24,6 +24,9 @@ namespace MensErgerJeNiet
             srcField, BaseRed, BaseGreen, BaseYellow, BaseBlue, noField,
             pawnRed, pawnGreen, pawnYellow, pawnBlue, startRed, startGreen, startYellow, startBlue;
         private Board myBoard;
+        private int nRows = 11;
+        private int nCols = 11;
+        private int cellSize = 50;
 
         public BoardView(Board myBoard)
         {
@@ -68,10 +71,6 @@ namespace MensErgerJeNiet
             noField = new BitmapImage(new Uri("pack://application:,,,/images/aBlue.png"));
             srcField = new BitmapImage(new Uri("pack://application:,,,/images/aBlue.png"));
 
-            int nRows = 11;
-            int nCols = 11;
-            int cellSize = 50;
-
             for (int i = 0; i < nCols; i++)
             {
                 ColumnDefinition col = new ColumnDefinition();
@@ -84,6 +83,28 @@ namespace MensErgerJeNiet
                 RowDefinition row = new RowDefinition();
                 row.Height = new GridLength(cellSize);
                 FieldsGrid.RowDefinitions.Add(row);
+            }
+        }
+
+        public void DrawBoard()
+        {
+
+        }
+
+        public void DrawBaseFields()
+        {
+            BaseField current = myBoard.OriginBaseField;
+            Color currentColor = Color.Yellow;
+
+            while(current.Next != null && current.MyColor == currentColor)
+            {
+                switch (currentColor)
+                {
+                    case Color.Yellow: currentColor = Color.Green; break;
+                    case Color.Green: currentColor = Color.Red; break;
+                    case Color.Red: currentColor = Color.Blue; break;
+                    case Color.Blue: break;
+                }
             }
         }
     }
