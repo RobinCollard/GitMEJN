@@ -59,16 +59,16 @@ namespace MensErgerJeNiet
                     switch (lines[y][x])
                     {
                         case 'Y': currentField = new BaseField(Color.Yellow);
-                            currentField.myPawn = new Pawn(currentField, Color.Yellow);
+                            currentField.MyPawn = new Pawn(currentField, Color.Yellow);
                             break;
                         case 'G': currentField = new BaseField(Color.Green);
-                            currentField.myPawn = new Pawn(currentField, Color.Green);
+                            currentField.MyPawn = new Pawn(currentField, Color.Green);
                             break;
                         case 'R': currentField = new BaseField(Color.Red);
-                            currentField.myPawn = new Pawn(currentField, Color.Red);
+                            currentField.MyPawn = new Pawn(currentField, Color.Red);
                             break;
                         case 'B': currentField = new BaseField(Color.Blue);
-                            currentField.myPawn = new Pawn(currentField, Color.Blue);
+                            currentField.MyPawn = new Pawn(currentField, Color.Blue);
                             break;
                         case '5': currentField = new BaseField(Color.Yellow);
                             break;
@@ -133,6 +133,27 @@ namespace MensErgerJeNiet
                         currentField = new HomeField(CurrentColor);
                         currentField.Previous = previousField;
                         previousField.NextHome = (HomeField)currentField;
+                    }
+                    if (lines[y][x] != 'o')
+                    {
+                        BaseField current = OriginBaseField;
+                        switch(lines[x][y])
+                        {
+                            case 'y': CurrentColor = Color.Yellow; break;
+                            case 'g': CurrentColor = Color.Green; break;
+                            case 'b': CurrentColor = Color.Blue; break;
+                            case 'r': CurrentColor = Color.Red; break;
+                            default: break;
+                        }
+                        while(current.Next != null)
+                        {
+                            if(current.MyColor == CurrentColor && current.MyPawn == null)
+                            {
+                                break;
+                            }
+                            current = (BaseField) current.Next;
+                        }
+                        currentField.MyPawn = new Pawn(current, CurrentColor);
                     }
                 }
             }
