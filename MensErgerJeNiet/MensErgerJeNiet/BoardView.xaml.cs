@@ -84,6 +84,8 @@ namespace MensErgerJeNiet
                 row.Height = new GridLength(cellSize);
                 FieldsGrid.RowDefinitions.Add(row);
             }
+
+            DrawBaseFiels();
         }
 
         public void DrawBoard()
@@ -91,20 +93,53 @@ namespace MensErgerJeNiet
 
         }
 
-        public void DrawBaseFields()
+        public void DrawBaseFiels()
         {
             BaseField current = myBoard.OriginBaseField;
+            Image currentImg = null;
             Color currentColor = Color.Yellow;
-
-            while(current.Next != null && current.MyColor == currentColor)
+            int startCol= 0, startRow = 0, index = 0;
+            while (current.Next != null)
             {
-                switch (currentColor)
+                if (current.MyColor != currentColor) { index++; }
+                switch (index)
                 {
-                    case Color.Yellow: currentColor = Color.Green; break;
-                    case Color.Green: currentColor = Color.Red; break;
-                    case Color.Red: currentColor = Color.Blue; break;
-                    case Color.Blue: break;
+                    case 0: currentColor = Color.Yellow; 
+                        if (current.MyPawn != null) { currentImg.Source = pawnYellow; } else { currentImg.Source = BaseYellow; }
+                            // Teken op het scherm 4x
+                        DrawBaseFieldsSquare(startCol, startRow, currentImg);
+                        break;
+                    case 1: currentColor = Color.Green; startCol = 10; 
+                        if (current.MyPawn != null) { currentImg.Source = pawnGreen; } else { currentImg.Source = BaseGreen; }
+                        DrawBaseFieldsSquare(startCol, startRow, currentImg);
+                        break;
+                    case 2: currentColor = Color.Red; startRow = 10;
+                        if (current.MyPawn != null) { currentImg.Source = pawnRed; } else { currentImg.Source = BaseRed; }
+                        DrawBaseFieldsSquare(startCol, startRow, currentImg);
+                        break;
+                    case 3: currentColor = Color.Blue; startCol = 0;
+                        if (current.MyPawn != null) { currentImg.Source = pawnBlue; } else { currentImg.Source = BaseBlue; }
+                        DrawBaseFieldsSquare(startCol, startRow, currentImg);
+                        break;
+                    default: break;
                 }
+            }
+        }
+
+        private void DrawBaseFieldsSquare(int startCol, int startRow, Image currentImg)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                switch (i)
+                {
+                    case 1: startRow += 1; break;
+                    case 2: startCol += 1; break;
+                    case 3: startRow -= 1; break;
+                    default: break;
+                }
+                currentImg.SetValue(Grid.RowProperty, startRow);
+                currentImg.SetValue(Grid.ColumnProperty, startCol);
+                FieldsGrid.Children.Add(currentImg);
             }
         }
     }

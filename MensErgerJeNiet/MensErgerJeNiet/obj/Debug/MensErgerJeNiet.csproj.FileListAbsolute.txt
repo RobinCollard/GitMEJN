@@ -26,3 +26,5 @@ C:\Users\Thim\git\GitMEJN\MensErgerJeNiet\MensErgerJeNiet\obj\Debug\MensErgerJeN
 C:\Users\Thim\git\GitMEJN\MensErgerJeNiet\MensErgerJeNiet\obj\Debug\MensErgerJeNiet.csproj.GenerateResource.Cache
 C:\Users\Thim\git\GitMEJN\MensErgerJeNiet\MensErgerJeNiet\obj\Debug\BoardView.baml
 C:\Users\Thim\git\GitMEJN\MensErgerJeNiet\MensErgerJeNiet\obj\Debug\BoardView.g.cs
+C:\Users\Robin\Documents\GitHub\GitMEJN\MensErgerJeNiet\MensErgerJeNiet\obj\Debug\BoardView.baml
+C:\Users\Robin\Documents\GitHub\GitMEJN\MensErgerJeNiet\MensErgerJeNiet\obj\Debug\BoardView.g.cs
