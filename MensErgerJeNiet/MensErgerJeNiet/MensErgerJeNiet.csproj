@@ -55,12 +55,18 @@
     </ApplicationDefinition>
     <Compile Include="BaseField.cs" />
     <Compile Include="Board.cs" />
-    <Compile Include="BoardView.cs" />
+    <Compile Include="BoardView.xaml.cs">
+      <DependentUpon>BoardView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Color.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="EndField.cs" />
     <Compile Include="HomeField.cs" />
     <Compile Include="StartField.cs" />
+    <Page Include="BoardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -102,6 +108,38 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\aBlue.png" />
+    <Resource Include="images\aGreen.png" />
+    <Resource Include="images\aRed.png" />
+    <Resource Include="images\aYellow.png" />
+    <Resource Include="images\bBlue.png" />
+    <Resource Include="images\bGreen.png" />
+    <Resource Include="images\bRed.png" />
+    <Resource Include="images\bYellow.png" />
+    <Resource Include="images\cBlue.png" />
+    <Resource Include="images\cGreen.png" />
+    <Resource Include="images\cRed.png" />
+    <Resource Include="images\cYellow.png" />
+    <Resource Include="images\dBlue.png" />
+    <Resource Include="images\dGreen.png" />
+    <Resource Include="images\dRed.png" />
+    <Resource Include="images\dYellow.png" />
+    <Resource Include="images\Field.png" />
+    <Resource Include="images\BaseBlue.png" />
+    <Resource Include="images\BaseGreen.png" />
+    <Resource Include="images\BaseRed.png" />
+    <Resource Include="images\BaseYellow.png" />
+    <Resource Include="images\noField.png" />
+    <Resource Include="images\pawnBlue.png" />
+    <Resource Include="images\pawnGreen.png" />
+    <Resource Include="images\pawnRed.png" />
+    <Resource Include="images\pawnYellow.png" />
+    <Resource Include="images\startBlue.png" />
+    <Resource Include="images\startGeel.png" />
+    <Resource Include="images\startGreen.png" />
+    <Resource Include="images\startRed.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
