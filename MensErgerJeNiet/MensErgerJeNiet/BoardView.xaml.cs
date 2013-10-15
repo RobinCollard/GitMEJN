@@ -26,6 +26,8 @@ namespace MensErgerJeNiet
         private Board myBoard;
         private int nRows = 11;
         private int nCols = 11;
+        private int startRow = 0;
+        private int startCol = 0;
         private int cellSize = 50;
 
         public BoardView(Board myBoard)
@@ -58,7 +60,7 @@ namespace MensErgerJeNiet
             BaseYellow = new BitmapImage(new Uri("pack://application:,,,/images/BaseYellow.png"));
             BaseBlue = new BitmapImage(new Uri("pack://application:,,,/images/BaseBlue.png"));
 
-            pawnRed = new BitmapImage(new Uri("pack://application:,,,/images/panRed.png"));
+            pawnRed = new BitmapImage(new Uri("pack://application:,,,/images/pawnRed.png"));
             pawnGreen = new BitmapImage(new Uri("pack://application:,,,/images/pawnGreen.png"));
             pawnYellow = new BitmapImage(new Uri("pack://application:,,,/images/pawnYellow.png"));
             pawnBlue = new BitmapImage(new Uri("pack://application:,,,/images/pawnBlue.png"));
@@ -96,51 +98,50 @@ namespace MensErgerJeNiet
         public void DrawBaseFiels()
         {
             BaseField current = myBoard.OriginBaseField;
-            Image currentImg = null;
+            Image currentImg = new Image();
             Color currentColor = Color.Yellow;
-            int startCol= 0, startRow = 0, index = 0;
+            int index = 0;
+            int indextotal = 0;
             while (current.Next != null)
             {
                 if (current.MyColor != currentColor) { index++; }
                 switch (index)
                 {
-                    case 0: currentColor = Color.Yellow; 
+                    case 0: currentColor = Color.Yellow; startRow = 0; startCol = 0;
                         if (current.MyPawn != null) { currentImg.Source = pawnYellow; } else { currentImg.Source = BaseYellow; }
-                            // Teken op het scherm 4x
-                        DrawBaseFieldsSquare(startCol, startRow, currentImg);
+                        DrawBaseFieldsSquare(currentImg, indextotal);
                         break;
-                    case 1: currentColor = Color.Green; startCol = 10; 
+                    case 1: currentColor = Color.Green; startRow = 0; startCol = 10; 
                         if (current.MyPawn != null) { currentImg.Source = pawnGreen; } else { currentImg.Source = BaseGreen; }
-                        DrawBaseFieldsSquare(startCol, startRow, currentImg);
+                        DrawBaseFieldsSquare(currentImg, indextotal);
                         break;
-                    case 2: currentColor = Color.Red; startRow = 10;
+                    case 2: currentColor = Color.Red; startRow = 10; startCol = 10;
                         if (current.MyPawn != null) { currentImg.Source = pawnRed; } else { currentImg.Source = BaseRed; }
-                        DrawBaseFieldsSquare(startCol, startRow, currentImg);
+                        DrawBaseFieldsSquare(currentImg, indextotal);
                         break;
-                    case 3: currentColor = Color.Blue; startCol = 0;
+                    case 3: currentColor = Color.Blue; startRow = 10; startCol = 0; 
                         if (current.MyPawn != null) { currentImg.Source = pawnBlue; } else { currentImg.Source = BaseBlue; }
-                        DrawBaseFieldsSquare(startCol, startRow, currentImg);
+                        DrawBaseFieldsSquare(currentImg, indextotal);
                         break;
                     default: break;
                 }
+                current = (BaseField) current.Next;
+                indextotal++;
             }
         }
 
-        private void DrawBaseFieldsSquare(int startCol, int startRow, Image currentImg)
+        private void DrawBaseFieldsSquare(Image currentImg, int indextotal)
         {
-            for (int i = 0; i < 4; i++)
+            switch (indextotal % 4)
             {
-                switch (i)
-                {
-                    case 1: startRow += 1; break;
-                    case 2: startCol += 1; break;
-                    case 3: startRow -= 1; break;
-                    default: break;
-                }
-                currentImg.SetValue(Grid.RowProperty, startRow);
-                currentImg.SetValue(Grid.ColumnProperty, startCol);
-                FieldsGrid.Children.Add(currentImg);
+                case 1: startRow += 1; break;
+                case 2: startCol += 1; startRow += 1; break;
+                case 3: startCol -= 1; break;
             }
+
+            currentImg.SetValue(Grid.RowProperty, startRow);
+            currentImg.SetValue(Grid.ColumnProperty, startCol);
+            FieldsGrid.Children.Add(currentImg);
         }
     }
 }
