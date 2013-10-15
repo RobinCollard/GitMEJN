@@ -98,12 +98,12 @@ namespace MensErgerJeNiet
         public void DrawBaseFiels()
         {
             BaseField current = myBoard.OriginBaseField;
-            Image currentImg = new Image();
             Color currentColor = Color.Yellow;
             int index = 0;
             int indextotal = 0;
             while (current.Next != null)
             {
+                Image currentImg = new Image();
                 if (current.MyColor != currentColor) { index++; }
                 switch (index)
                 {
@@ -134,14 +134,15 @@ namespace MensErgerJeNiet
         {
             switch (indextotal % 4)
             {
-                case 1: startRow += 1; break;
+                case 1: startCol += 1; break;
                 case 2: startCol += 1; startRow += 1; break;
-                case 3: startCol -= 1; break;
+                case 3: startRow += 1; break;
             }
-
             currentImg.SetValue(Grid.RowProperty, startRow);
             currentImg.SetValue(Grid.ColumnProperty, startCol);
+
             FieldsGrid.Children.Add(currentImg);
+            
         }
     }
 }
