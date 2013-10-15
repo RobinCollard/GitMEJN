@@ -55,6 +55,7 @@
     </ApplicationDefinition>
     <Compile Include="BaseField.cs" />
     <Compile Include="Board.cs" />
+    <Compile Include="BoardView.cs" />
     <Compile Include="Color.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="EndField.cs" />
