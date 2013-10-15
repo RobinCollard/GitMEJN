@@ -104,10 +104,10 @@ namespace MensErgerJeNiet
                     }
                     switch (y)
                     {
-                        case 2: CurrentColor = Color.Yellow; break;
-                        case 3: CurrentColor = Color.Green; break;
-                        case 4: CurrentColor = Color.Red; break;
-                        case 5: CurrentColor = Color.Blue; break;
+                        case 1: CurrentColor = Color.Yellow; break;
+                        case 2: CurrentColor = Color.Green; break;
+                        case 3: CurrentColor = Color.Red; break;
+                        case 4: CurrentColor = Color.Blue; break;
                     }
                     if (x == 0)
                     {
