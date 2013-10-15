@@ -40,7 +40,7 @@ namespace MensErgerJeNiet
             string[] lines = Regex.Split(myString, "\r\n");
 
             BuildBaseFields(lines);
-            //BuildBoardFields(lines);
+            BuildBoardFields(lines);
 
         } // end BuildLevel
 
