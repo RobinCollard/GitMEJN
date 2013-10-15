@@ -19,6 +19,7 @@ namespace MensErgerJeNiet
     /// </summary>
     public partial class BoardView : Window
     {
+        //System.diagnostics.output.writeline
         private ImageSource aRed, aGreen, aYellow, aBlue, bRed, bGreen, bYellow, bBlue,
             cRed, cGreen, cYellow, cBlue, dRed, dGreen, dYellow, dBlue,
             srcField, BaseRed, BaseGreen, BaseYellow, BaseBlue, noField,
