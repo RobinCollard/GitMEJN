@@ -101,7 +101,7 @@ namespace MensErgerJeNiet
             Color currentColor = Color.Yellow;
             int index = 0;
             int indextotal = 0;
-            while (indextotal < 16)
+            while (current !=null)
             {
                 Image currentImg = new Image();
                 if (current.MyColor != currentColor) { index++; }

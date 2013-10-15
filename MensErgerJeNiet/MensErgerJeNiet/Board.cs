@@ -50,7 +50,7 @@ namespace MensErgerJeNiet
         {
             Field currentField = null;
             Field previousField = null;
-            for (int y = 0; y < 2; y++)
+            for (int y = 0; y < 1; y++)
             {
                 for (int x = 0; x < lines[y].Length; x++)
                 {
@@ -92,7 +92,6 @@ namespace MensErgerJeNiet
 
         public void BuildBoardFields(string[] lines)
         {
-            // Klopt nog niet
             Field currentField = null;
             Field previousField = null;
             Field continueOn = null;
@@ -140,7 +139,7 @@ namespace MensErgerJeNiet
                     if (lines[y][x] != 'o')
                     {
                         BaseField current = OriginBaseField;
-                        switch(lines[x][y])
+                        switch(lines[y][x])
                         {
                             case 'y': CurrentColor = Color.Yellow; break;
                             case 'g': CurrentColor = Color.Green; break;
