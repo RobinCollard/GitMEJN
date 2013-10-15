@@ -91,9 +91,39 @@ namespace MensErgerJeNiet
             DrawBaseFiels();
         }
 
-        public void DrawBoard()
+        public void DrawBoard() //TODO!!! code gekopiëerd van andere methode,nu nog aanpassen
         {
-
+            StartField current = (StartField) myBoard.Origin;
+            Color currentColor = Color.Yellow;
+            int index = 0;
+            int indextotal = 0;
+            while (current != null)
+            {
+                Image currentImg = new Image();
+                if (current.MyColor != currentColor) { index++; }
+                switch (index)
+                {
+                    case 0: currentColor = Color.Yellow; startRow = 0; startCol = 0;
+                        if (current.MyPawn != null) { currentImg.Source = pawnYellow; } else { currentImg.Source = BaseYellow; }
+                        DrawBaseFieldsSquare(currentImg, indextotal);
+                        break;
+                    case 1: currentColor = Color.Green; startRow = 0; startCol = 9;
+                        if (current.MyPawn != null) { currentImg.Source = pawnGreen; } else { currentImg.Source = BaseGreen; }
+                        DrawBaseFieldsSquare(currentImg, indextotal);
+                        break;
+                    case 2: currentColor = Color.Red; startRow = 9; startCol = 9;
+                        if (current.MyPawn != null) { currentImg.Source = pawnRed; } else { currentImg.Source = BaseRed; }
+                        DrawBaseFieldsSquare(currentImg, indextotal);
+                        break;
+                    case 3: currentColor = Color.Blue; startRow = 9; startCol = 0;
+                        if (current.MyPawn != null) { currentImg.Source = pawnBlue; } else { currentImg.Source = BaseBlue; }
+                        DrawBaseFieldsSquare(currentImg, indextotal);
+                        break;
+                    default: break;
+                }
+                current = (StartField)current.Next;
+                indextotal++;
+            }
         }
 
         public void DrawBaseFiels()
