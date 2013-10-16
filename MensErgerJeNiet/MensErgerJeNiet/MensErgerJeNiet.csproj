@@ -61,7 +61,9 @@
     <Compile Include="Color.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="EndField.cs" />
+    <Compile Include="GameController.cs" />
     <Compile Include="HomeField.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="StartField.cs" />
     <Page Include="BoardView.xaml">
       <SubType>Designer</SubType>

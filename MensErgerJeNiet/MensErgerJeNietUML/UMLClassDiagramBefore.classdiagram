@@ -227,6 +227,32 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="11417e2b-a2ae-46e3-a40c-c295c89b68fc" />
           </association>
+          <association Id="ad00e719-b4d4-4f5b-b864-0a742cf8e2e8" isDerived="false" sourceEndRoleName="Board" targetEndRoleName="Player" isLeaf="false" isAbstract="false">
+            <classMoniker Id="d3f52153-5f09-4a05-b760-71a1be941807" LastKnownName="Player" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="263431f3-73f2-45c7-abaa-02f9342195e0" name="Board" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f0cc87b7-0dfd-428f-a51f-a57b9a70c5d8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="059f3a22-926b-4e60-8885-625bfaf41395" name="Player" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="86aa65de-203c-4115-a028-60bb41049343" name="Lower" value="2">
+                      <elementDefinition Id="4e19db7a-0711-4f15-81c7-28ea1f89232a" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="1ef95906-a822-4831-9d6c-b594742f6fe1" name="Upper" value="4">
+                      <elementDefinition Id="56987d62-eb24-4a5b-8b67-63ce0b594943" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="0ce47ff0-063a-4881-96ca-3ca2c46fd846" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="3167899c-3789-4db5-88b5-f65b8a5f7de6" />
+          </association>
         </targetEnds>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -416,6 +442,72 @@
         <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
       </referencedType>
     </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="d3f52153-5f09-4a05-b760-71a1be941807" name="Player" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="ed759377-5627-4459-89d2-988b61e811a8" />
+        <targetEnds>
+          <association Id="1469c2c8-415f-491e-87f0-b00e15a7342c" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <enumerationMoniker Id="9b042acf-47aa-4106-b3f1-26977f9cac3d" LastKnownName="Color" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="beba91a1-586b-4431-b73c-047a519a7196" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="d75117c2-5d19-4132-8481-a7c6589d109b" name="Lower">
+                      <elementDefinition Id="a1f83bb4-fa70-4878-8e4d-db61a00a54c8" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="e1b76c53-8a08-49ab-8bdd-d25c38cb33f0" name="Upper">
+                      <elementDefinition Id="47abe170-204e-47fe-b1fe-538f91c1cbdb" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="037f6abf-29f6-4e94-9ce7-89af98976c74" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="eb008d65-7f44-408a-928e-b17deb565892" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="25cb3e85-751d-41c8-b276-05411e0fdd69" name="Lower">
+                      <elementDefinition Id="ed38da72-dcbc-498c-ade1-ef05c6de9d70" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="d4a17f46-d908-425c-add0-c3411e88bcad" name="Upper">
+                      <elementDefinition Id="44aa3ea9-3ae1-406f-a052-a3d128710689" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="8e687b48-de74-43d6-9fbe-a6c869faede5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="78763bc6-59f2-45d2-9a63-327459c035f4" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="a834fec1-2bbe-442f-90c1-ed82ed62ee8b" name="GameController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="29eb77c0-85f7-4686-aa29-ffdebc1d9459" />
+        <targetEnds>
+          <association Id="c4efe4bf-9291-4c98-ab85-77bbec60698a" isDerived="false" sourceEndRoleName="GameController" targetEndRoleName="Board" isLeaf="false" isAbstract="false">
+            <classMoniker Id="30dbcde6-2324-48b6-a6a0-ae38c5db1ba1" LastKnownName="Board" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="864f3cb7-9db6-4141-b4e1-f4952df176d7" name="GameController" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="74fb6d42-9df7-43c3-a25f-5b5c773fe615" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="82f7e118-867a-4c51-abd4-1a8551bf1c01" name="Board" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5323f143-051c-4426-96f0-908159799610" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="5a96c5a1-ed87-4ca7-b3f9-e80061bafcb0" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
   </packagedElements>
   <package Id="2deb2d27-c188-4a6e-865b-318fa954bf19" name="MensErgerJeNietUML">
     <elementDefinition Id="12138fad-4e67-4d6d-9812-32f55f3593aa" />
