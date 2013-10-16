@@ -104,25 +104,25 @@ namespace MensErgerJeNiet
                 switch (index)
                 {
                     case 0: startPoint.X = 0; startPoint.Y = 5;
-                        if (current.MyPawn != null) { SetPawnImage(current.MyPawn); }
+                        if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); }
                         else if (current.GetType() == typeof(Field) || current.GetType() == typeof(EndField)) { currentImg.Source = srcField; }
                         else if (current.GetType() == typeof(StartField)) { currentImg.Source = startYellow; }
                         DrawPlayField(direction, startPoint, currentImg);
                         break;
                     case 1: startPoint.X = 7; startPoint.Y = 0; direction.X = 1; direction.Y = 1;
-                        if (current.MyPawn != null) { SetPawnImage(current.MyPawn); }
+                        if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); }
                         else if (current.GetType() == typeof(Field) || current.GetType() == typeof(EndField)) { currentImg.Source = srcField; }
                         else if (current.GetType() == typeof(StartField)) { currentImg.Source = startGreen; }
                         DrawPlayField(direction, startPoint, currentImg);
                         break;
                     case 2: startPoint.X = 10; startPoint.Y = 7; direction.X = -1; direction.Y = 1;
-                        if (current.MyPawn != null) { SetPawnImage(current.MyPawn); }
+                        if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); }
                         else if (current.GetType() == typeof(Field) || current.GetType() == typeof(EndField)) { currentImg.Source = srcField; }
                         else if (current.GetType() == typeof(StartField)) { currentImg.Source = startRed; }
                         DrawPlayField(direction, startPoint, currentImg);
                         break;
                     case 3: startPoint.X = 5; startPoint.Y = 10; direction.X = -1; direction.Y = -1;
-                        if (current.MyPawn != null) { SetPawnImage(current.MyPawn); }
+                        if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); }
                         else if (current.GetType() == typeof(Field) || current.GetType() == typeof(EndField)) { currentImg.Source = srcField; }
                         else if (current.GetType() == typeof(StartField)) { currentImg.Source = startBlue; }
                         DrawPlayField(direction, startPoint, currentImg);
