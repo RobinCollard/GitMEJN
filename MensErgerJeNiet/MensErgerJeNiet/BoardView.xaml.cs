@@ -149,7 +149,7 @@ namespace MensErgerJeNiet
                         if (current.MyPawn != null) { currentImg.Source = pawnYellow; } else { currentImg.Source = BaseYellow; }
                         DrawBaseFieldsSquare(currentImg, indextotal);
                         break;
-                    case 1: currentColor = Color.Green; startPoint.X = 0; startPoint.Y = 9; 
+                    case 1: currentColor = Color.Green; startPoint.X = 9; startPoint.Y = 0; 
                         if (current.MyPawn != null) { currentImg.Source = pawnGreen; } else { currentImg.Source = BaseGreen; }
                         DrawBaseFieldsSquare(currentImg, indextotal);
                         break;
@@ -157,7 +157,7 @@ namespace MensErgerJeNiet
                         if (current.MyPawn != null) { currentImg.Source = pawnRed; } else { currentImg.Source = BaseRed; }
                         DrawBaseFieldsSquare(currentImg, indextotal);
                         break;
-                    case 3: currentColor = Color.Blue; startPoint.X = 9; startPoint.Y = 0; 
+                    case 3: currentColor = Color.Blue; startPoint.X = 0; startPoint.Y = 9; 
                         if (current.MyPawn != null) { currentImg.Source = pawnBlue; } else { currentImg.Source = BaseBlue; }
                         DrawBaseFieldsSquare(currentImg, indextotal);
                         break;
@@ -176,8 +176,8 @@ namespace MensErgerJeNiet
                 case 2: startPoint.Y += 1; startPoint.X += 1; break;
                 case 3: startPoint.X += 1; break;
             }
-            currentImg.SetValue(Grid.RowProperty, (int) startPoint.X);
-            currentImg.SetValue(Grid.ColumnProperty, (int) startPoint.Y);
+            currentImg.SetValue(Grid.ColumnProperty, (int)startPoint.X);
+            currentImg.SetValue(Grid.RowProperty, (int)startPoint.Y);
 
             FieldsGrid.Children.Add(currentImg);
             
@@ -185,11 +185,11 @@ namespace MensErgerJeNiet
 
         private void DrawPlayField(Point direction, Point startPoint, Image currentImg, int indextotal, int index)
         {
-            currentImg.SetValue(Grid.RowProperty, (int)startPoint.X);
-            currentImg.SetValue(Grid.ColumnProperty, (int)startPoint.Y);
+            currentImg.SetValue(Grid.ColumnProperty, (int)startPoint.X);
+            currentImg.SetValue(Grid.RowProperty, (int)startPoint.Y);
 
             FieldsGrid.Children.Add(currentImg);
-
+     
             if (index % 2 == 1)
             {
                 if (indextotal % 10 < 4)
