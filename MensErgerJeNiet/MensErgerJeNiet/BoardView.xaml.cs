@@ -22,7 +22,7 @@ namespace MensErgerJeNiet
         //System.diagnostics.output.writeline
         private ImageSource aRed, aGreen, aYellow, aBlue, bRed, bGreen, bYellow, bBlue,
             cRed, cGreen, cYellow, cBlue, dRed, dGreen, dYellow, dBlue,
-            srcField, BaseRed, BaseGreen, BaseYellow, BaseBlue, noField,
+            srcField, BaseRed, BaseGreen, BaseYellow, BaseBlue,
             pawnRed, pawnGreen, pawnYellow, pawnBlue, startRed, startGreen, startYellow, startBlue;
         private Board myBoard;
         private int nRows = 11;
