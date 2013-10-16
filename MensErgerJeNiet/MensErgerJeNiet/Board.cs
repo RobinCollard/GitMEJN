@@ -159,6 +159,7 @@ namespace MensErgerJeNiet
                     }
                 }
             }
+            //Werkt niet.
             Origin.Previous = currentField;
             currentField.Next = Origin;
         }

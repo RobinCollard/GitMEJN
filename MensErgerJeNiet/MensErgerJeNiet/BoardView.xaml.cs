@@ -102,29 +102,29 @@ namespace MensErgerJeNiet
                 if (indextotal % 10 == 0) { index++; }
                 switch (index)
                 {
-                    case 0: startPoint.X = 0; startPoint.Y = 5;
+                    case 1: if(indextotal%10==0) {startPoint.X = 0; startPoint.Y = 4; direction.X = 1; direction.Y = -1;}
                         if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); }
                         else if (current.GetType() == typeof(Field) || current.GetType() == typeof(EndField)) { currentImg.Source = srcField; }
                         else if (current.GetType() == typeof(StartField)) { currentImg.Source = startYellow; }
-                        DrawPlayField(direction, startPoint, currentImg);
+                            DrawPlayField(direction, startPoint, currentImg, indextotal,index);
                         break;
-                    case 1: startPoint.X = 7; startPoint.Y = 0; direction.X = 1; direction.Y = 1;
+                    case 2: if(indextotal%10==0) {startPoint.X = 6; startPoint.Y = 0; direction.X = 1; direction.Y = 1;}
                         if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); }
                         else if (current.GetType() == typeof(Field) || current.GetType() == typeof(EndField)) { currentImg.Source = srcField; }
                         else if (current.GetType() == typeof(StartField)) { currentImg.Source = startGreen; }
-                        DrawPlayField(direction, startPoint, currentImg);
+                            DrawPlayField(direction, startPoint, currentImg, indextotal,index);
                         break;
-                    case 2: startPoint.X = 10; startPoint.Y = 7; direction.X = -1; direction.Y = 1;
+                    case 3:  if(indextotal%10==0) {startPoint.X = 10; startPoint.Y = 6; direction.X = -1; direction.Y = 1;}
                         if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); }
                         else if (current.GetType() == typeof(Field) || current.GetType() == typeof(EndField)) { currentImg.Source = srcField; }
                         else if (current.GetType() == typeof(StartField)) { currentImg.Source = startRed; }
-                        DrawPlayField(direction, startPoint, currentImg);
+                            DrawPlayField(direction, startPoint, currentImg, indextotal,index);
                         break;
-                    case 3: startPoint.X = 5; startPoint.Y = 10; direction.X = -1; direction.Y = -1;
+                    case 4: if (indextotal % 10 == 0) { startPoint.X = 4; startPoint.Y = 10; direction.X = -1; direction.Y = -1; }
                         if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); }
                         else if (current.GetType() == typeof(Field) || current.GetType() == typeof(EndField)) { currentImg.Source = srcField; }
                         else if (current.GetType() == typeof(StartField)) { currentImg.Source = startBlue; }
-                        DrawPlayField(direction, startPoint, currentImg);
+                            DrawPlayField(direction, startPoint, currentImg,indextotal,index);
                         break;
                     default: break;
                 }
@@ -183,15 +183,43 @@ namespace MensErgerJeNiet
             
         }
 
-        private void DrawPlayField(Point direction, Point startPoint, Image currentImg)
+        private void DrawPlayField(Point direction, Point startPoint, Image currentImg, int indextotal, int index)
         {
             currentImg.SetValue(Grid.RowProperty, (int)startPoint.X);
             currentImg.SetValue(Grid.ColumnProperty, (int)startPoint.Y);
 
             FieldsGrid.Children.Add(currentImg);
 
-            startPoint.X = (startPoint.X + (1 * direction.X));
-            startPoint.Y = (startPoint.Y + (1 * direction.Y));
+            if (index % 2 == 1)
+            {
+                if (indextotal % 10 < 4)
+                {
+                    this.startPoint.X = (this.startPoint.X + (1 * direction.X));
+                }
+                if (indextotal % 10 > 3 && indextotal % 10 < 8)
+                {
+                    this.startPoint.Y = (this.startPoint.Y + (1 * direction.Y));
+                }
+                if (indextotal % 10 > 7 && indextotal % 10 < 10)
+                {
+                    this.startPoint.X = (this.startPoint.X + (1 * direction.X));
+                }
+            }
+            else
+            {
+                if (indextotal % 10 < 4)
+                {
+                    this.startPoint.Y = (this.startPoint.Y + (1 * direction.Y));
+                }
+                if (indextotal % 10 > 3 && indextotal % 10 < 8)
+                {
+                    this.startPoint.X = (this.startPoint.X + (1 * direction.X));
+                }
+                if (indextotal % 10 > 7 && indextotal % 10 < 10)
+                {
+                    this.startPoint.Y = (this.startPoint.Y + (1 * direction.Y));
+                }
+            }
         }
 
         private ImageSource SetPawnImage(Pawn myPawn)
