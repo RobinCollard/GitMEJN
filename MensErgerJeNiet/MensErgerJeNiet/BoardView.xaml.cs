@@ -105,25 +105,28 @@ namespace MensErgerJeNiet
                     case 1: if(indextotal%10==0) {startPoint.X = 0; startPoint.Y = 4; direction.X = 1; direction.Y = -1;}
                         if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); }
                         else if (current.GetType() == typeof(Field)) { currentImg.Source = srcField; }
-                        else if (current.GetType() == typeof(EndField)) { DrawHomeFields(); }
+                        else if (current.GetType() == typeof(EndField)) { DrawHomeFields(startPoint, current); currentImg.Source = srcField; }
                         else if (current.GetType() == typeof(StartField)) { currentImg.Source = startYellow; }
                             DrawPlayField(direction, startPoint, currentImg, indextotal,index);
                         break;
                     case 2: if(indextotal%10==0) {startPoint.X = 6; startPoint.Y = 0; direction.X = 1; direction.Y = 1;}
                         if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); }
-                        else if (current.GetType() == typeof(Field) || current.GetType() == typeof(EndField)) { currentImg.Source = srcField; }
+                        else if (current.GetType() == typeof(Field)) { currentImg.Source = srcField; }
+                        else if (current.GetType() == typeof(EndField)) { DrawHomeFields(startPoint, current); currentImg.Source = srcField; }
                         else if (current.GetType() == typeof(StartField)) { currentImg.Source = startGreen; }
                             DrawPlayField(direction, startPoint, currentImg, indextotal,index);
                         break;
                     case 3:  if(indextotal%10==0) {startPoint.X = 10; startPoint.Y = 6; direction.X = -1; direction.Y = 1;}
                         if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); }
-                        else if (current.GetType() == typeof(Field) || current.GetType() == typeof(EndField)) { currentImg.Source = srcField; }
+                        else if (current.GetType() == typeof(Field)) { currentImg.Source = srcField; }
+                        else if (current.GetType() == typeof(EndField)) { DrawHomeFields(startPoint, current); currentImg.Source = srcField; }
                         else if (current.GetType() == typeof(StartField)) { currentImg.Source = startRed; }
                             DrawPlayField(direction, startPoint, currentImg, indextotal,index);
                         break;
                     case 4: if (indextotal % 10 == 0) { startPoint.X = 4; startPoint.Y = 10; direction.X = -1; direction.Y = -1; }
                         if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); }
-                        else if (current.GetType() == typeof(Field) || current.GetType() == typeof(EndField)) { currentImg.Source = srcField; }
+                        else if (current.GetType() == typeof(Field)) { currentImg.Source = srcField; }
+                        else if (current.GetType() == typeof(EndField)) { DrawHomeFields(startPoint, current); currentImg.Source = srcField; }
                         else if (current.GetType() == typeof(StartField)) { currentImg.Source = startBlue; }
                             DrawPlayField(direction, startPoint, currentImg,indextotal,index);
                         break;
@@ -223,11 +226,68 @@ namespace MensErgerJeNiet
             }
         }
 
-        public void DrawHomeFields(Point direction, Point startPoint, Field current)
+        public void DrawHomeFields(Point startPoint, Field current)
         {
             Point endFieldPoint = new Point(startPoint.X, startPoint.Y);
+            int index = 0;
 
-            switch(current.NextHome
+            while (current.NextHome != null)
+            {
+                Image img = new Image();
+                switch (current.NextHome.MyColor)
+                {
+                    case Color.Yellow:
+                        switch(index)
+                        {
+                            case 0: startPoint.Y += 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = aGreen; } break;
+                            case 1: startPoint.Y += 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = bGreen; } break;
+                            case 2: startPoint.Y += 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = cGreen; } break;
+                            case 3: startPoint.Y += 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = dGreen; } break;
+                        }
+                        img.SetValue(Grid.ColumnProperty, (int)startPoint.X);
+                        img.SetValue(Grid.RowProperty, (int)startPoint.Y);
+                        FieldsGrid.Children.Add(img);
+                        break;
+                    case Color.Green:
+                        switch(index)
+                        {
+                            case 0: startPoint.X -= 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = aRed; } break;
+                            case 1: startPoint.X -= 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = bRed; } break;
+                            case 2: startPoint.X -= 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = cRed; } break;
+                            case 3: startPoint.X -= 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = dRed; } break;
+                        }
+                        img.SetValue(Grid.ColumnProperty, (int)startPoint.X);
+                        img.SetValue(Grid.RowProperty, (int)startPoint.Y);
+                        FieldsGrid.Children.Add(img);
+                        break;
+                    case Color.Red:
+                        switch(index)
+                        {
+                            case 0: startPoint.Y -= 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = aBlue; } break;
+                            case 1: startPoint.Y -= 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = bBlue; } break;
+                            case 2: startPoint.Y -= 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = cBlue; } break;
+                            case 3: startPoint.Y -= 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = dBlue; } break;
+                        }
+                        img.SetValue(Grid.ColumnProperty, (int)startPoint.X);
+                        img.SetValue(Grid.RowProperty, (int)startPoint.Y);
+                        FieldsGrid.Children.Add(img);
+                        break;
+                    case Color.Blue:
+                        switch(index)
+                        {
+                            case 0: startPoint.X += 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = aYellow; } break;
+                            case 1: startPoint.X += 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = bYellow; } break;
+                            case 2: startPoint.X += 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = cYellow; } break;
+                            case 3: startPoint.X += 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = dYellow; } break;
+                        }
+                        img.SetValue(Grid.ColumnProperty, (int)startPoint.X);
+                        img.SetValue(Grid.RowProperty, (int)startPoint.Y);
+                        FieldsGrid.Children.Add(img);
+                        break;
+                }
+                index++;
+                current = current.NextHome;
+            }
 
             startPoint = endFieldPoint;
         }
