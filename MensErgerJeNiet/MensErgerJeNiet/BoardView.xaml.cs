@@ -90,7 +90,7 @@ namespace MensErgerJeNiet
             DrawBoard();
         }
 
-        public void DrawBoard() //TODO!!! code gekopiëerd van andere methode,nu nog aanpassen
+        public void DrawBoard()
         {
             Field current = (Field) myBoard.Origin;
             int index = 0;
