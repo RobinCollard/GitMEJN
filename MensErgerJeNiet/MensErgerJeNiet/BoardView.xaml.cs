@@ -27,9 +27,8 @@ namespace MensErgerJeNiet
         private Board myBoard;
         private int nRows = 11;
         private int nCols = 11;
-        private int startRow = 0;
-        private int startCol = 0;
         private int cellSize = 50;
+        private Point startPoint = new Point(0, 0);
 
         public BoardView(Board myBoard)
         {
@@ -89,39 +88,48 @@ namespace MensErgerJeNiet
             }
 
             DrawBaseFiels();
+            DrawBoard();
         }
 
         public void DrawBoard() //TODO!!! code gekopiëerd van andere methode,nu nog aanpassen
         {
-            StartField current = (StartField) myBoard.Origin;
+            Field current = (Field) myBoard.Origin;
             int index = 0;
             int indextotal = 0;
-
-            while (current != null)
+            Point direction = new Point(1, -1);
+            while (indextotal < 40)
             {
                 Image currentImg = new Image();
                 if (indextotal % 10 == 0) { index++; }
                 switch (index)
                 {
-                    case 0: startRow = 0; startCol = 0;
-                        if (current.MyPawn != null) { currentImg.Source = pawnYellow; } else { currentImg.Source = BaseYellow; }
-                        DrawBaseFieldsSquare(currentImg, indextotal);
+                    case 0: startPoint.X = 0; startPoint.Y = 5;
+                        if (current.MyPawn != null) { SetPawnImage(current.MyPawn); }
+                        else if (current.GetType() == typeof(Field) || current.GetType() == typeof(EndField)) { currentImg.Source = srcField; }
+                        else if (current.GetType() == typeof(StartField)) { currentImg.Source = startYellow; }
+                        DrawPlayField(direction, startPoint, currentImg);
                         break;
-                    case 1: startRow = 0; startCol = 9;
-                        if (current.MyPawn != null) { currentImg.Source = pawnGreen; } else { currentImg.Source = BaseGreen; }
-                        DrawBaseFieldsSquare(currentImg, indextotal);
+                    case 1: startPoint.X = 7; startPoint.Y = 0; direction.X = 1; direction.Y = 1;
+                        if (current.MyPawn != null) { SetPawnImage(current.MyPawn); }
+                        else if (current.GetType() == typeof(Field) || current.GetType() == typeof(EndField)) { currentImg.Source = srcField; }
+                        else if (current.GetType() == typeof(StartField)) { currentImg.Source = startGreen; }
+                        DrawPlayField(direction, startPoint, currentImg);
                         break;
-                    case 2: startRow = 9; startCol = 9;
-                        if (current.MyPawn != null) { currentImg.Source = pawnRed; } else { currentImg.Source = BaseRed; }
-                        DrawBaseFieldsSquare(currentImg, indextotal);
+                    case 2: startPoint.X = 10; startPoint.Y = 7; direction.X = -1; direction.Y = 1;
+                        if (current.MyPawn != null) { SetPawnImage(current.MyPawn); }
+                        else if (current.GetType() == typeof(Field) || current.GetType() == typeof(EndField)) { currentImg.Source = srcField; }
+                        else if (current.GetType() == typeof(StartField)) { currentImg.Source = startRed; }
+                        DrawPlayField(direction, startPoint, currentImg);
                         break;
-                    case 3: startRow = 9; startCol = 0;
-                        if (current.MyPawn != null) { currentImg.Source = pawnBlue; } else { currentImg.Source = BaseBlue; }
-                        DrawBaseFieldsSquare(currentImg, indextotal);
+                    case 3: startPoint.X = 5; startPoint.Y = 10; direction.X = -1; direction.Y = -1;
+                        if (current.MyPawn != null) { SetPawnImage(current.MyPawn); }
+                        else if (current.GetType() == typeof(Field) || current.GetType() == typeof(EndField)) { currentImg.Source = srcField; }
+                        else if (current.GetType() == typeof(StartField)) { currentImg.Source = startBlue; }
+                        DrawPlayField(direction, startPoint, currentImg);
                         break;
                     default: break;
                 }
-                current = (StartField)current.Next;
+                current = current.Next;
                 indextotal++;
             }
         }
@@ -138,19 +146,19 @@ namespace MensErgerJeNiet
                 if (current.MyColor != currentColor) { index++; }
                 switch (index)
                 {
-                    case 0: currentColor = Color.Yellow; startRow = 0; startCol = 0;
+                    case 0: currentColor = Color.Yellow; startPoint.X = 0; startPoint.Y = 0;
                         if (current.MyPawn != null) { currentImg.Source = pawnYellow; } else { currentImg.Source = BaseYellow; }
                         DrawBaseFieldsSquare(currentImg, indextotal);
                         break;
-                    case 1: currentColor = Color.Green; startRow = 0; startCol = 9; 
+                    case 1: currentColor = Color.Green; startPoint.X = 0; startPoint.Y = 9; 
                         if (current.MyPawn != null) { currentImg.Source = pawnGreen; } else { currentImg.Source = BaseGreen; }
                         DrawBaseFieldsSquare(currentImg, indextotal);
                         break;
-                    case 2: currentColor = Color.Red; startRow = 9; startCol = 9;
+                    case 2: currentColor = Color.Red; startPoint.X = 9; startPoint.Y = 9;
                         if (current.MyPawn != null) { currentImg.Source = pawnRed; } else { currentImg.Source = BaseRed; }
                         DrawBaseFieldsSquare(currentImg, indextotal);
                         break;
-                    case 3: currentColor = Color.Blue; startRow = 9; startCol = 0; 
+                    case 3: currentColor = Color.Blue; startPoint.X = 9; startPoint.Y = 0; 
                         if (current.MyPawn != null) { currentImg.Source = pawnBlue; } else { currentImg.Source = BaseBlue; }
                         DrawBaseFieldsSquare(currentImg, indextotal);
                         break;
@@ -165,15 +173,39 @@ namespace MensErgerJeNiet
         {
             switch (indextotal % 4)
             {
-                case 1: startCol += 1; break;
-                case 2: startCol += 1; startRow += 1; break;
-                case 3: startRow += 1; break;
+                case 1: startPoint.Y += 1; break;
+                case 2: startPoint.Y += 1; startPoint.X += 1; break;
+                case 3: startPoint.X += 1; break;
             }
-            currentImg.SetValue(Grid.RowProperty, startRow);
-            currentImg.SetValue(Grid.ColumnProperty, startCol);
+            currentImg.SetValue(Grid.RowProperty, (int) startPoint.X);
+            currentImg.SetValue(Grid.ColumnProperty, (int) startPoint.Y);
 
             FieldsGrid.Children.Add(currentImg);
             
+        }
+
+        private void DrawPlayField(Point direction, Point startPoint, Image currentImg)
+        {
+            currentImg.SetValue(Grid.RowProperty, (int)startPoint.X);
+            currentImg.SetValue(Grid.ColumnProperty, (int)startPoint.Y);
+
+            FieldsGrid.Children.Add(currentImg);
+
+            startPoint.X = (startPoint.X + (1 * direction.X));
+            startPoint.Y = (startPoint.Y + (1 * direction.Y));
+        }
+
+        private ImageSource SetPawnImage(Pawn myPawn)
+        {
+            ImageSource img = null;
+            switch (myPawn.MyColor)
+            {
+                case Color.Red: img = pawnRed; break;
+                case Color.Yellow: img = pawnYellow; break;
+                case Color.Blue: img = pawnBlue; break;
+                case Color.Green: img = pawnGreen; break;
+            }
+            return img;
         }
     }
 }
