@@ -104,7 +104,8 @@ namespace MensErgerJeNiet
                 {
                     case 1: if(indextotal%10==0) {startPoint.X = 0; startPoint.Y = 4; direction.X = 1; direction.Y = -1;}
                         if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); }
-                        else if (current.GetType() == typeof(Field) || current.GetType() == typeof(EndField)) { currentImg.Source = srcField; }
+                        else if (current.GetType() == typeof(Field)) { currentImg.Source = srcField; }
+                        else if (current.GetType() == typeof(EndField)) { DrawHomeFields(); }
                         else if (current.GetType() == typeof(StartField)) { currentImg.Source = startYellow; }
                             DrawPlayField(direction, startPoint, currentImg, indextotal,index);
                         break;
@@ -168,7 +169,7 @@ namespace MensErgerJeNiet
             }
         }
 
-        private void DrawBaseFieldsSquare(Image currentImg, int indextotal)
+        public void DrawBaseFieldsSquare(Image currentImg, int indextotal)
         {
             switch (indextotal % 4)
             {
@@ -183,7 +184,7 @@ namespace MensErgerJeNiet
             
         }
 
-        private void DrawPlayField(Point direction, Point startPoint, Image currentImg, int indextotal, int index)
+        public void DrawPlayField(Point direction, Point startPoint, Image currentImg, int indextotal, int index)
         {
             currentImg.SetValue(Grid.RowProperty, (int)startPoint.X);
             currentImg.SetValue(Grid.ColumnProperty, (int)startPoint.Y);
@@ -222,7 +223,16 @@ namespace MensErgerJeNiet
             }
         }
 
-        private ImageSource SetPawnImage(Pawn myPawn)
+        public void DrawHomeFields(Point direction, Point startPoint, Field current)
+        {
+            Point endFieldPoint = new Point(startPoint.X, startPoint.Y);
+
+            switch(current.NextHome
+
+            startPoint = endFieldPoint;
+        }
+
+        public ImageSource SetPawnImage(Pawn myPawn)
         {
             ImageSource img = null;
             switch (myPawn.MyColor)
