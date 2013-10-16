@@ -27,8 +27,7 @@ namespace MensErgerJeNiet
 
         private void btn4Speler_Click(object sender, RoutedEventArgs e)
         {
-            Board myBoard = new Board();
-            myBoard.StartNewGame(4);
+            Board myBoard = new Board(4);
             this.Close();
         }
     }

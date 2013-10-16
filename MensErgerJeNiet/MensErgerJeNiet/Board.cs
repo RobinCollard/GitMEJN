@@ -7,10 +7,12 @@ namespace MensErgerJeNiet
         public BaseField OriginBaseField { get; set; }
         public Field Origin { get; set; }
         public Color CurrentColor { get; set; }
+        public BoardView MyView { get; set; }
 
-        public Board()
+        public Board(int amountOfPlayers)
         {
-
+            StartNewGame(amountOfPlayers);
+            GameController gameController = new GameController(this);
         }
 
         public void StartNewGame(int amountOfPlayers)
@@ -41,8 +43,8 @@ namespace MensErgerJeNiet
 
             BuildBaseFields(lines);
             BuildBoardFields(lines);
-            BoardView myView = new BoardView(this);
-            myView.Show();
+            MyView = new BoardView(this);
+            MyView.Show();
 
         } // end BuildLevel
 

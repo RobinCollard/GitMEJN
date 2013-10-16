@@ -29,6 +29,7 @@ namespace MensErgerJeNiet
         private int nCols = 11;
         private int cellSize = 50;
         private Point startPoint = new Point(0, 0);
+        public Label Dice { get; set; }
 
         public BoardView(Board myBoard)
         {
@@ -88,6 +89,14 @@ namespace MensErgerJeNiet
 
             DrawBaseFiels();
             DrawBoard();
+
+            Dice = new Label();
+            Dice.FontSize = 35;
+            Dice.HorizontalAlignment = HorizontalAlignment.Center;
+            Dice.VerticalAlignment = VerticalAlignment.Center;
+            Grid.SetColumn(Dice, 5);
+            Grid.SetRow(Dice, 5);
+            FieldsGrid.Children.Add(Dice);
         }
 
         public void DrawBoard()
