@@ -70,7 +70,6 @@ namespace MensErgerJeNiet
             startYellow = new BitmapImage(new Uri("pack://application:,,,/images/startYellow.png"));
             startBlue = new BitmapImage(new Uri("pack://application:,,,/images/startBlue.png"));
 
-            noField = new BitmapImage(new Uri("pack://application:,,,/images/noField.png"));
             srcField = new BitmapImage(new Uri("pack://application:,,,/images/Field.png"));
 
             for (int i = 0; i < nCols; i++)
