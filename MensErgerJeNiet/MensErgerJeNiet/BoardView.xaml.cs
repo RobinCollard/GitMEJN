@@ -96,6 +96,7 @@ namespace MensErgerJeNiet
             StartField current = (StartField) myBoard.Origin;
             int index = 0;
             int indextotal = 0;
+
             while (current != null)
             {
                 Image currentImg = new Image();
