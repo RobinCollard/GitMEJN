@@ -2,7 +2,11 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="BoardView" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
-    <Grid x:Name="FieldsGrid">
-        
-    </Grid>
+    <Border BorderBrush="Red" BorderThickness="4">
+        <Grid x:Name="FieldsGrid">
+            <Grid.Background>
+                <SolidColorBrush Color="#FFFFA6" />
+            </Grid.Background>
+        </Grid>
+    </Border>
 </Window>
