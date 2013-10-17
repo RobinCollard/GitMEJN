@@ -30,5 +30,18 @@ namespace MensErgerJeNiet
             Board myBoard = new Board(4);
             this.Close();
         }
+
+        private void btn3Speler_Click(object sender, RoutedEventArgs e)
+        {
+            Board myBoard = new Board(3);
+            this.Close();
+        }
+
+        private void btn2Speler_Click(object sender, RoutedEventArgs e)
+        {
+            Board myBoard = new Board(2);
+            this.Close();
+        }
+
     }
 }

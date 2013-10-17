@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace MensErgerJeNiet
 {
-    class Player
+    public class Player
     {
         public bool MyTurn { get; set; }
         public Color MyColor { get; set; }
+        public Player Next { get; set; }
 
         public Player()
         {
-
+            
         }
     }
 }

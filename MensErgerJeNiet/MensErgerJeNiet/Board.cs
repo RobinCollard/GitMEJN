@@ -9,6 +9,7 @@ namespace MensErgerJeNiet
         public Color CurrentColor { get; set; }
         public BoardView MyView { get; set; }
         public GameController GameControl { get; set; }
+        public Player OriginPlayer { get; set; }
 
         public Board(int amountOfPlayers)
         {
@@ -18,18 +19,35 @@ namespace MensErgerJeNiet
 
         public void StartNewGame(int amountOfPlayers)
         {
-            if (amountOfPlayers == 4)
-            {
+            
                 string pathString = "";
                 string[] fileStrings = Directory.GetFiles(System.IO.Directory.GetCurrentDirectory() + @"\..\..\..\MEJN-Levels", "*.mejn");
                 foreach (string s in fileStrings)
                 {
-                    if (s.Contains("std.mejn"))
+                    if (amountOfPlayers == 4)
                     {
-                        pathString = s;
-                        buildLevel(pathString);
+                        if (s.Contains("std.mejn"))
+                        {
+                            pathString = s;
+                            buildLevel(pathString);
+                        }
                     }
-                }
+                    if (amountOfPlayers == 3)
+                    {
+                        if (s.Contains("std3.mejn"))
+                        {
+                            pathString = s;
+                            buildLevel(pathString);
+                        }
+                    }
+                    if (amountOfPlayers == 2)
+                    {
+                        if (s.Contains("std2.mejn"))
+                        {
+                            pathString = s;
+                            buildLevel(pathString);
+                        }
+                    }
             }
         }
 

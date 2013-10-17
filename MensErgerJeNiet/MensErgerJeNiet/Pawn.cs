@@ -4,6 +4,7 @@
     {
         public Field MyField { get; set; }
         public Color MyColor { get; set; }
+        public int Number { get; set; }
 
         public Pawn(Field myField, Color myColor)
         {

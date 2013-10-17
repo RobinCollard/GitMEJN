@@ -14,7 +14,6 @@ namespace MensErgerJeNiet
         public GameController(Board board)
         {
             this.board = board;
-            ThrowDice();
         }
 
         public int ThrowDice()
