@@ -345,6 +345,22 @@ namespace MensErgerJeNiet
                         current = current.Next;
                     }
                 }
+                else if(e.Key.Equals(Key.D1) || e.Key.Equals(Key.NumPad1))
+                {
+
+                }
+                else if(e.Key.Equals(Key.D2) || e.Key.Equals(Key.NumPad2))
+                {
+
+                }
+                else if(e.Key.Equals(Key.D3) || e.Key.Equals(Key.NumPad3))
+                {
+
+                }
+                else if(e.Key.Equals(Key.D4) || e.Key.Equals(Key.NumPad4))
+                {
+
+                }
             }
         }
 
