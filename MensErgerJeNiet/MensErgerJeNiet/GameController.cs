@@ -30,7 +30,7 @@ namespace MensErgerJeNiet
 
         public void PlayTurn(int key)
         {
-            if (WaitForSpaceInput == true)
+            if (WaitForSpaceInput == true && WaitForNumberInput == false)
             {
                 WaitForSpaceInput = false;
 
@@ -45,18 +45,21 @@ namespace MensErgerJeNiet
                     WaitForSpaceInput = true;
                 }
             }
-            if (WaitForNumberInput == true)
+            else if (WaitForNumberInput == true && WaitForSpaceInput == false)
             {
                 if (myEvent == "newPawn")
                 {
                     Pawn pawnToMove = myBoard.CurrentTurn.getBaseByNumber(key).MyPawn;
                     myBoard.CurrentTurn.getBaseByNumber(key).MyPawn = null;
                     myBoard.CurrentTurn.MyStart.MyPawn = pawnToMove;
-                    myBoard.MyView.UpdateView();         
+                    myBoard.MyView.UpdateView();
+                    myEvent = "movePawn";
                 }
                 if (myEvent == "movePawn")
                 {
-
+                    // bij 6 numberinput true laten
+                    WaitForNumberInput = false;
+                    WaitForSpaceInput = true;
                 }
             }
 

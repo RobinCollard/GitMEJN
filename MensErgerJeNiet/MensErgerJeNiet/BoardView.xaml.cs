@@ -54,8 +54,7 @@ namespace MensErgerJeNiet
                 FieldsGrid.RowDefinitions.Add(row);
             }
 
-            DrawBaseFiels();
-            DrawBoard();
+            UpdateView();
 
             Dice = new Label();
             Dice.FontSize = 35;
@@ -66,6 +65,12 @@ namespace MensErgerJeNiet
             Grid.SetColumn(Dice, 5);
             Grid.SetRow(Dice, 5);
             FieldsGrid.Children.Add(Dice);
+        }
+
+        public void UpdateView()
+        {
+            DrawBaseFiels();
+            DrawBoard();
         }
 
         public void DrawBoard()
@@ -345,26 +350,28 @@ namespace MensErgerJeNiet
                         current = current.Next;
                     }
                 }
-                if (myBoard.GameControl.WaitForNumberInput)
-                {
+            }
+             if(myBoard.GameControl.WaitForNumberInput)
+             {
                     if(e.Key.Equals(Key.D1) || e.Key.Equals(Key.NumPad1))
                     {
-
+                        myBoard.GameControl.PlayTurn(1);
                     }
                     else if(e.Key.Equals(Key.D2) || e.Key.Equals(Key.NumPad2))
                     {
-
+                        myBoard.GameControl.PlayTurn(2);
                     }
                     else if(e.Key.Equals(Key.D3) || e.Key.Equals(Key.NumPad3))
                     {
-
+                        myBoard.GameControl.PlayTurn(3);
                     }
                     else if(e.Key.Equals(Key.D4) || e.Key.Equals(Key.NumPad4))
                     {
-
+                        myBoard.GameControl.PlayTurn(4);
                     }
-                }
-            }
+                   }
+            
+
         }
 
         private void LoadPictures()
