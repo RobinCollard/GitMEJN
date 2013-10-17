@@ -10,6 +10,7 @@ namespace MensErgerJeNiet
     {
         private Board board;
         private Random rand = new Random();
+        private int eyes;
 
         public GameController(Board board)
         {
@@ -18,7 +19,7 @@ namespace MensErgerJeNiet
 
         public int ThrowDice()
         {
-            int eyes = rand.Next(6);
+            eyes = rand.Next(6);
             eyes++;
             board.MyView.Dice.Content = " " + eyes;
             return eyes;
