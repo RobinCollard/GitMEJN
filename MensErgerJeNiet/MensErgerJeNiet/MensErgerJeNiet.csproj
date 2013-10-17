@@ -175,18 +175,6 @@
     <Resource Include="images\BaseYellow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="images\pawnBlue.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\pawnGreen.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\pawnRed.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\pawnYellow.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="images\startBlue.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -201,6 +189,30 @@
     <Resource Include="images\startYellow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\pawnBlue1.png" />
+    <Resource Include="images\pawnBlue2.png" />
+    <Resource Include="images\pawnBlue3.png" />
+    <Resource Include="images\pawnBlue4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\pawnGreen1.png" />
+    <Resource Include="images\pawnGreen2.png" />
+    <Resource Include="images\pawnGreen3.png" />
+    <Resource Include="images\pawnGreen4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\pawnRed1.png" />
+    <Resource Include="images\pawnRed2.png" />
+    <Resource Include="images\pawnRed3.png" />
+    <Resource Include="images\pawnRed4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\pawnYellow1.png" />
+    <Resource Include="images\pawnYellow2.png" />
+    <Resource Include="images\pawnYellow3.png" />
+    <Resource Include="images\pawnYellow4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
