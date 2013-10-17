@@ -371,10 +371,25 @@ namespace MensErgerJeNiet
             BaseYellow = new BitmapImage(new Uri("pack://application:,,,/images/BaseYellow.png"));
             BaseBlue = new BitmapImage(new Uri("pack://application:,,,/images/BaseBlue.png"));
 
-            pawnRed = new BitmapImage(new Uri("pack://application:,,,/images/pawnRed.png"));
-            pawnGreen = new BitmapImage(new Uri("pack://application:,,,/images/pawnGreen.png"));
-            pawnYellow = new BitmapImage(new Uri("pack://application:,,,/images/pawnYellow.png"));
-            pawnBlue = new BitmapImage(new Uri("pack://application:,,,/images/pawnBlue.png"));
+            pawnRed1 = new BitmapImage(new Uri("pack://application:,,,/images/pawnRed1.png"));
+            pawnRed2 = new BitmapImage(new Uri("pack://application:,,,/images/pawnRed2.png"));
+            pawnRed3 = new BitmapImage(new Uri("pack://application:,,,/images/pawnRed3.png"));
+            pawnRed4 = new BitmapImage(new Uri("pack://application:,,,/images/pawnRed4.png"));
+            
+            pawnGreen1 = new BitmapImage(new Uri("pack://application:,,,/images/pawnGreen1.png"));
+            pawnGreen2 = new BitmapImage(new Uri("pack://application:,,,/images/pawnGreen2.png"));
+            pawnGreen3 = new BitmapImage(new Uri("pack://application:,,,/images/pawnGreen3.png"));
+            pawnGreen4 = new BitmapImage(new Uri("pack://application:,,,/images/pawnGreen4.png"));
+            
+            pawnYellow1 = new BitmapImage(new Uri("pack://application:,,,/images/pawnYellow1.png"));
+            pawnYellow2 = new BitmapImage(new Uri("pack://application:,,,/images/pawnYellow2.png"));
+            pawnYellow3 = new BitmapImage(new Uri("pack://application:,,,/images/pawnYellow3.png"));
+            pawnYellow4 = new BitmapImage(new Uri("pack://application:,,,/images/pawnYellow4.png"));
+
+            pawnBlue1 = new BitmapImage(new Uri("pack://application:,,,/images/pawnBlue1.png"));
+            pawnBlue2 = new BitmapImage(new Uri("pack://application:,,,/images/pawnBlue2.png"));
+            pawnBlue3 = new BitmapImage(new Uri("pack://application:,,,/images/pawnBlue3.png"));
+            pawnBlue4 = new BitmapImage(new Uri("pack://application:,,,/images/pawnBlue4.png"));
 
             startRed = new BitmapImage(new Uri("pack://application:,,,/images/startRed.png"));
             startGreen = new BitmapImage(new Uri("pack://application:,,,/images/startGreen.png"));
