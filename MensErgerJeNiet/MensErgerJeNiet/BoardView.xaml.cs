@@ -128,19 +128,19 @@ namespace MensErgerJeNiet
                 switch (index)
                 {
                     case 0: currentColor = Color.Yellow; startPoint.X = 0; startPoint.Y = 0;
-                        if (current.MyPawn != null) { currentImg.Source = pawnYellow; } else { currentImg.Source = BaseYellow; }
+                        if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); } else { currentImg.Source = BaseYellow; }
                         DrawBaseFieldsSquare(currentImg, indextotal);
                         break;
-                    case 1: currentColor = Color.Green; startPoint.X = 9; startPoint.Y = 0; 
-                        if (current.MyPawn != null) { currentImg.Source = pawnGreen; } else { currentImg.Source = BaseGreen; }
+                    case 1: currentColor = Color.Green; startPoint.X = 9; startPoint.Y = 0;
+                        if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); } else { currentImg.Source = BaseGreen; }
                         DrawBaseFieldsSquare(currentImg, indextotal);
                         break;
                     case 2: currentColor = Color.Red; startPoint.X = 9; startPoint.Y = 9;
-                        if (current.MyPawn != null) { currentImg.Source = pawnRed; } else { currentImg.Source = BaseRed; }
+                        if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); } else { currentImg.Source = BaseRed; }
                         DrawBaseFieldsSquare(currentImg, indextotal);
                         break;
-                    case 3: currentColor = Color.Blue; startPoint.X = 0; startPoint.Y = 9; 
-                        if (current.MyPawn != null) { currentImg.Source = pawnBlue; } else { currentImg.Source = BaseBlue; }
+                    case 3: currentColor = Color.Blue; startPoint.X = 0; startPoint.Y = 9;
+                        if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); } else { currentImg.Source = BaseBlue; }
                         DrawBaseFieldsSquare(currentImg, indextotal);
                         break;
                     default: break;
@@ -272,12 +272,11 @@ namespace MensErgerJeNiet
 
         public ImageSource SetPawnImage(Pawn myPawn)
         {
-            int i = 1;
             ImageSource img = null;
             switch (myPawn.MyColor)
             {
                 case Color.Red:
-                    switch(myPawn.Number)
+                    switch(myPawn.MyNumber)
                     {
                         case 1: img = pawnRed1; break;
                         case 2: img = pawnRed2; break;
@@ -285,8 +284,9 @@ namespace MensErgerJeNiet
                         case 4: img = pawnRed3; break;
                         default: break;
                     }
+                    break;
                 case Color.Yellow:
-                    switch (i)
+                    switch (myPawn.MyNumber)
                     {
                         case 1: img = pawnYellow1; break;
                         case 2: img = pawnYellow2; break;
@@ -294,8 +294,9 @@ namespace MensErgerJeNiet
                         case 4: img = pawnYellow4; break;
                         default: break;
                     }
+                    break;
                 case Color.Blue:
-                    switch (i)
+                    switch (myPawn.MyNumber)
                     {
                         case 1: img = pawnBlue1; break;
                         case 2: img = pawnBlue2; break;
@@ -303,8 +304,9 @@ namespace MensErgerJeNiet
                         case 4: img = pawnBlue4; break;
                         default: break;
                     }
+                    break;
                 case Color.Green:
-                    switch (i)
+                    switch (myPawn.MyNumber)
                     {
                         case 1: img = pawnGreen1; break;
                         case 2: img = pawnGreen2; break;
@@ -312,6 +314,8 @@ namespace MensErgerJeNiet
                         case 4: img = pawnGreen4; break;
                         default: break;
                     }
+                    break;
+                default: break;
             }
             return img;
         }
