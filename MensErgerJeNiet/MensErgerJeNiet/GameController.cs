@@ -24,5 +24,10 @@ namespace MensErgerJeNiet
             board.MyView.Dice.Content = " " + eyes;
             return eyes;
         }
+
+        public void PlayTurn()
+        {
+
+        }
     }
 }
