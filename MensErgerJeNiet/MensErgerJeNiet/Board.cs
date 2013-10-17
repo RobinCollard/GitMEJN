@@ -10,6 +10,7 @@ namespace MensErgerJeNiet
         public BoardView MyView { get; set; }
         public GameController GameControl { get; set; }
         public Player OriginPlayer { get; set; }
+        public Player CurrentTurn { get; set; }
 
         public Board(int amountOfPlayers)
         {
@@ -65,7 +66,7 @@ namespace MensErgerJeNiet
                         currentPlayer = currentPlayer.Next;
                         currentPlayer.Next = OriginPlayer;
                     }
-                    OriginPlayer.MyTurn = true;
+                    CurrentTurn = OriginPlayer;
             }
         }
 
