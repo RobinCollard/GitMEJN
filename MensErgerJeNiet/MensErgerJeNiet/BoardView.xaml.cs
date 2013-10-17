@@ -327,7 +327,7 @@ namespace MensErgerJeNiet
                 if (e.Key.Equals(Key.Space))
                 {
                     myBoard.GameControl.ThrowDice();
-                    myBoard.GameControl.PlayTurn();
+                    myBoard.GameControl.PlayTurn(0);
 
                     Player current = myBoard.OriginPlayer;
                     BrushConverter bc = new BrushConverter();
@@ -345,21 +345,24 @@ namespace MensErgerJeNiet
                         current = current.Next;
                     }
                 }
-                else if(e.Key.Equals(Key.D1) || e.Key.Equals(Key.NumPad1))
+                if (myBoard.GameControl.WaitForNumberInput)
                 {
+                    if(e.Key.Equals(Key.D1) || e.Key.Equals(Key.NumPad1))
+                    {
 
-                }
-                else if(e.Key.Equals(Key.D2) || e.Key.Equals(Key.NumPad2))
-                {
+                    }
+                    else if(e.Key.Equals(Key.D2) || e.Key.Equals(Key.NumPad2))
+                    {
 
-                }
-                else if(e.Key.Equals(Key.D3) || e.Key.Equals(Key.NumPad3))
-                {
+                    }
+                    else if(e.Key.Equals(Key.D3) || e.Key.Equals(Key.NumPad3))
+                    {
 
-                }
-                else if(e.Key.Equals(Key.D4) || e.Key.Equals(Key.NumPad4))
-                {
+                    }
+                    else if(e.Key.Equals(Key.D4) || e.Key.Equals(Key.NumPad4))
+                    {
 
+                    }
                 }
             }
         }
