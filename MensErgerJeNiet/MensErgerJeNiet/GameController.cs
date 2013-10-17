@@ -8,26 +8,30 @@ namespace MensErgerJeNiet
 {
     public class GameController
     {
-        private Board board;
+        private Board myBoard;
         private Random rand = new Random();
         private int eyes;
+        public bool WaitForSpaceInput { get; set; }
+        public bool WaitForNumberInput { get; set; }
 
         public GameController(Board board)
         {
-            this.board = board;
+            this.myBoard = board;
+            WaitForSpaceInput = true;
         }
 
-        public int ThrowDice()
+        public void ThrowDice()
         {
             eyes = rand.Next(6);
             eyes++;
-            board.MyView.Dice.Content = " " + eyes;
-            return eyes;
+            myBoard.MyView.Dice.Content = " " + eyes;
         }
 
         public void PlayTurn()
         {
+            WaitForSpaceInput = false;
 
+           // if(myBoard.CurrentTurn.MyColor = 
         }
     }
 }

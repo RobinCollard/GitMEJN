@@ -25,46 +25,46 @@ namespace MensErgerJeNiet
                 string[] fileStrings = Directory.GetFiles(System.IO.Directory.GetCurrentDirectory() + @"\..\..\..\MEJN-Levels", "*.mejn");
                 foreach (string s in fileStrings)
                 {
-                    OriginPlayer = new Player(Color.Blue);
+                    OriginPlayer = new Player(Color.Yellow);
                     Player currentPlayer = OriginPlayer;
                     if (amountOfPlayers == 4)
                     {
+                        currentPlayer.Next = new Player(Color.Green);
+                        currentPlayer = currentPlayer.Next;
+                        currentPlayer.Next = new Player(Color.Red);
+                        currentPlayer = currentPlayer.Next;
+                        currentPlayer.Next = new Player(Color.Blue);
+                        currentPlayer = currentPlayer.Next;
+                        currentPlayer.Next = OriginPlayer;
                         if (s.Contains("std.mejn"))
                         {
                             pathString = s;
                             buildLevel(pathString);
                         }
-                        currentPlayer.Next = new Player(Color.Yellow);
-                        currentPlayer = currentPlayer.Next;
+                    }
+                    if (amountOfPlayers == 3)
+                    {
                         currentPlayer.Next = new Player(Color.Green);
                         currentPlayer = currentPlayer.Next;
                         currentPlayer.Next = new Player(Color.Red);
                         currentPlayer = currentPlayer.Next;
                         currentPlayer.Next = OriginPlayer;
-                    }
-                    if (amountOfPlayers == 3)
-                    {
                         if (s.Contains("std3.mejn"))
                         {
                             pathString = s;
                             buildLevel(pathString);
                         }
-                        currentPlayer.Next = new Player(Color.Yellow);
-                        currentPlayer = currentPlayer.Next;
-                        currentPlayer.Next = new Player(Color.Green);
-                        currentPlayer = currentPlayer.Next;
-                        currentPlayer.Next = OriginPlayer;
                     }
                     if (amountOfPlayers == 2)
                     {
+                        OriginPlayer.Next = new Player(Color.Red);
+                        currentPlayer = currentPlayer.Next;
+                        currentPlayer.Next = OriginPlayer;
                         if (s.Contains("std2.mejn"))
                         {
                             pathString = s;
                             buildLevel(pathString);
                         }
-                        OriginPlayer.Next = new Player(Color.Green);
-                        currentPlayer = currentPlayer.Next;
-                        currentPlayer.Next = OriginPlayer;
                     }
                     CurrentTurn = OriginPlayer;
             }
@@ -90,6 +90,7 @@ namespace MensErgerJeNiet
         {
             Field currentField = null;
             Field previousField = null;
+            Player currentPlayer;
             int numberY = 1, numberG = 1, numberR = 1, numberB = 1;
             for (int y = 0; y < 1; y++)
             {
@@ -103,27 +104,47 @@ namespace MensErgerJeNiet
                     {
                         case 'Y': currentField = new BaseField(Color.Yellow);
                             currentField.MyPawn = new Pawn(currentField, Color.Yellow, numberY);
+                            currentPlayer = GetPlayerByColor(Color.Yellow);
+                            currentPlayer.AddBase((BaseField) currentField);
+                            currentPlayer.AddPawn(currentField.MyPawn);
                             numberY++;
                             break;
                         case 'G': currentField = new BaseField(Color.Green);
                             currentField.MyPawn = new Pawn(currentField, Color.Green, numberG);
+                            currentPlayer = GetPlayerByColor(Color.Green);
+                            currentPlayer.AddBase((BaseField) currentField);
+                            currentPlayer.AddPawn(currentField.MyPawn);
                             numberG++;
                             break;
                         case 'R': currentField = new BaseField(Color.Red);
                             currentField.MyPawn = new Pawn(currentField, Color.Red, numberR);
+                            currentPlayer = GetPlayerByColor(Color.Red);
+                            currentPlayer.AddBase((BaseField) currentField);
+                            currentPlayer.AddPawn(currentField.MyPawn);
                             numberR++;
                             break;
                         case 'B': currentField = new BaseField(Color.Blue);
                             currentField.MyPawn = new Pawn(currentField, Color.Blue, numberB);
+                            currentPlayer = GetPlayerByColor(Color.Blue);
+                            currentPlayer.AddBase((BaseField) currentField);
+                            currentPlayer.AddPawn(currentField.MyPawn);
                             numberB++;
                             break;
                         case '5': currentField = new BaseField(Color.Yellow);
+                            currentPlayer = GetPlayerByColor(Color.Yellow);
+                            currentPlayer.AddBase((BaseField) currentField);
                             break;
                         case '6': currentField = new BaseField(Color.Green);
+                            currentPlayer = GetPlayerByColor(Color.Green);
+                            currentPlayer.AddBase((BaseField) currentField);
                             break;
                         case '7': currentField = new BaseField(Color.Red);
+                            currentPlayer = GetPlayerByColor(Color.Red);
+                            currentPlayer.AddBase((BaseField) currentField);
                             break;
                         case '8': currentField = new BaseField(Color.Blue);
+                            currentPlayer = GetPlayerByColor(Color.Blue);
+                            currentPlayer.AddBase((BaseField) currentField);
                             break;
                         default:
                             break;
@@ -140,6 +161,7 @@ namespace MensErgerJeNiet
             Field currentField = null;
             Field previousField = null;
             Field continueOn = null;
+            Player currentPlayer;
             for (int y = 1; y < lines.Length; y++)
             {
                 for (int x = 0; x < lines[y].Length; x++)
@@ -160,6 +182,8 @@ namespace MensErgerJeNiet
                         currentField = new StartField(CurrentColor);
                         if (y == 1) { Origin = currentField; }
                         if (y > 1) { previousField = continueOn; previousField.Next = currentField; currentField.Previous = previousField; }
+                        currentPlayer = GetPlayerByColor(CurrentColor);
+                        currentPlayer.MyStart = (StartField)currentField;
 
                     }
                     if (x > 0 && x < 9)
@@ -180,6 +204,8 @@ namespace MensErgerJeNiet
                         currentField = new HomeField(CurrentColor);
                         currentField.Previous = previousField;
                         previousField.NextHome = (HomeField)currentField;
+                        currentPlayer = GetPlayerByColor(CurrentColor);
+                        currentPlayer.AddHome((HomeField)currentField);
                     }
                     if (lines[y][x] != 'o')
                     {
@@ -209,11 +235,28 @@ namespace MensErgerJeNiet
                             current = (BaseField) current.Next;
                         }
                         currentField.MyPawn = new Pawn(current, CurrentColor, (amount + 1));
+                        currentPlayer = GetPlayerByColor(CurrentColor);
+                        currentPlayer.AddPawn(currentField.MyPawn);
                     }
                 }
             }
             Origin.Previous = continueOn;
             continueOn.Next = Origin;
+        }
+
+        public Player GetPlayerByColor(Color color)
+        {
+            Player current = OriginPlayer;
+            while(current.Next != null)
+            {
+                if (current.MyColor == color)
+                {
+                    break;
+                }
+                current = current.Next;
+            }
+            return current;
+            
         }
     }
 }
