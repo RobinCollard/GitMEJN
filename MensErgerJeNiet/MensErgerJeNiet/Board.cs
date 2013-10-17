@@ -89,6 +89,7 @@ namespace MensErgerJeNiet
         {
             Field currentField = null;
             Field previousField = null;
+            int numberY = 1, numberG = 1, numberR = 1, numberB = 1;
             for (int y = 0; y < 1; y++)
             {
                 for (int x = 0; x < lines[y].Length; x++)
@@ -100,16 +101,20 @@ namespace MensErgerJeNiet
                     switch (lines[y][x])
                     {
                         case 'Y': currentField = new BaseField(Color.Yellow);
-                            currentField.MyPawn = new Pawn(currentField, Color.Yellow);
+                            currentField.MyPawn = new Pawn(currentField, Color.Yellow, numberY);
+                            numberY++;
                             break;
                         case 'G': currentField = new BaseField(Color.Green);
-                            currentField.MyPawn = new Pawn(currentField, Color.Green);
+                            currentField.MyPawn = new Pawn(currentField, Color.Green, numberG);
+                            numberG++;
                             break;
                         case 'R': currentField = new BaseField(Color.Red);
-                            currentField.MyPawn = new Pawn(currentField, Color.Red);
+                            currentField.MyPawn = new Pawn(currentField, Color.Red, numberR);
+                            numberR++;
                             break;
                         case 'B': currentField = new BaseField(Color.Blue);
-                            currentField.MyPawn = new Pawn(currentField, Color.Blue);
+                            currentField.MyPawn = new Pawn(currentField, Color.Blue, numberB);
+                            numberB++;
                             break;
                         case '5': currentField = new BaseField(Color.Yellow);
                             break;
@@ -186,6 +191,14 @@ namespace MensErgerJeNiet
                             case 'r': CurrentColor = Color.Red; break;
                             default: break;
                         }
+                        int amount = 0;
+                        while (current.MyColor == CurrentColor)
+                        {
+                            if (current.MyPawn != null)
+                                amount++;
+                            current = (BaseField)current.Next;
+                        }
+                        current = OriginBaseField;
                         while(current.Next != null)
                         {
                             if(current.MyColor == CurrentColor && current.MyPawn == null)
@@ -194,7 +207,7 @@ namespace MensErgerJeNiet
                             }
                             current = (BaseField) current.Next;
                         }
-                        currentField.MyPawn = new Pawn(current, CurrentColor);
+                        currentField.MyPawn = new Pawn(current, CurrentColor, (amount + 1));
                     }
                 }
             }
