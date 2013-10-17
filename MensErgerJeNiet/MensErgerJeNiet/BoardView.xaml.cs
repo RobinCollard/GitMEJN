@@ -57,6 +57,8 @@ namespace MensErgerJeNiet
 
             Dice = new Label();
             Dice.FontSize = 35;
+            Dice.Height = 50;
+            Dice.Width = 50;
             Dice.HorizontalAlignment = HorizontalAlignment.Center;
             Dice.VerticalAlignment = VerticalAlignment.Center;
             Grid.SetColumn(Dice, 5);
