@@ -331,7 +331,7 @@ namespace MensErgerJeNiet
                 Brush brush;
                 while (current.Next != null)
                 {
-                    if (current.MyTurn)
+                    if (current.Equals(myBoard.CurrentTurn))
                     {
                         if (current.MyColor == Color.Blue) { brush = (Brush)bc.ConvertFrom("#00A2E8"); Dice.Background = brush; }
                         if (current.MyColor == Color.Red) { brush = (Brush)bc.ConvertFrom("#ED1C24"); Dice.Background = brush; }
