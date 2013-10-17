@@ -64,10 +64,10 @@ namespace MensErgerJeNiet
             return true;
         }
 
-        public BaseField getBaseByNumber(int number)
+        public BaseField GetBaseByNumber(int number)
         {
             BaseField bf = null;
-            for (int i = 0; i < 4; i++)
+            for (int i = 1; i < 5; i++)
             {
                 if (MyBases[i].MyNumber == number)
                 {
@@ -76,6 +76,20 @@ namespace MensErgerJeNiet
                 }
             }
             return bf;
+        }
+
+        public Pawn GetPawnByNumber(int number)
+        {
+            Pawn pawn = null;
+            for (int i = 1; i < 5; i++)
+            {
+                if (MyPawns[i].MyNumber == number)
+                {
+                    pawn = MyPawns[i];
+                    break;
+                }
+            }
+            return pawn;
         }
     }
 }

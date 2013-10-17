@@ -49,8 +49,8 @@ namespace MensErgerJeNiet
             {
                 if (myEvent == "newPawn")
                 {
-                    Pawn pawnToMove = myBoard.CurrentTurn.getBaseByNumber(key).MyPawn;
-                    myBoard.CurrentTurn.getBaseByNumber(key).MyPawn = null;
+                    Pawn pawnToMove = myBoard.CurrentTurn.GetPawnByNumber(key);
+                    myBoard.CurrentTurn.GetBaseByNumber(key).MyPawn = null;
                     myBoard.CurrentTurn.MyStart.MyPawn = pawnToMove;
                     myBoard.MyView.UpdateView();
                     myEvent = "movePawn";
@@ -58,7 +58,23 @@ namespace MensErgerJeNiet
                 if (myEvent == "movePawn")
                 {
                     // bij 6 numberinput true laten
-                    WaitForNumberInput = false;
+                    
+                    
+                    
+                    Field current = myBoard.CurrentTurn.GetPawnByNumber(key).MyField;
+                    Pawn pawnToMove = myBoard.CurrentTurn.GetPawnByNumber(key);
+                    if(current.GetType() != typeof(BaseField))
+                    {
+                        WaitForNumberInput = false;
+                        current.MyPawn = null;
+                        for (int i = 0; i < eyes; i++)
+                        {
+                            current = current.Next;
+                        }
+                        current.MyPawn = pawnToMove;
+                        myBoard.MyView.UpdateView();
+                    }
+
                     WaitForSpaceInput = true;
                 }
             }
