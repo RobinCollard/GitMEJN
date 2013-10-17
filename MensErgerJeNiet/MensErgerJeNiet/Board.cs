@@ -65,6 +65,7 @@ namespace MensErgerJeNiet
                         currentPlayer = currentPlayer.Next;
                         currentPlayer.Next = OriginPlayer;
                     }
+                    OriginPlayer.MyTurn = true;
             }
         }
 
