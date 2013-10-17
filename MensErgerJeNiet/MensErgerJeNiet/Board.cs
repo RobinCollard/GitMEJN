@@ -24,6 +24,8 @@ namespace MensErgerJeNiet
                 string[] fileStrings = Directory.GetFiles(System.IO.Directory.GetCurrentDirectory() + @"\..\..\..\MEJN-Levels", "*.mejn");
                 foreach (string s in fileStrings)
                 {
+                    OriginPlayer = new Player(Color.Blue);
+                    Player currentPlayer = OriginPlayer;
                     if (amountOfPlayers == 4)
                     {
                         if (s.Contains("std.mejn"))
@@ -31,6 +33,13 @@ namespace MensErgerJeNiet
                             pathString = s;
                             buildLevel(pathString);
                         }
+                        currentPlayer.Next = new Player(Color.Yellow);
+                        currentPlayer = currentPlayer.Next;
+                        OriginPlayer.Next = new Player(Color.Green);
+                        currentPlayer = currentPlayer.Next;
+                        currentPlayer.Next = new Player(Color.Red);
+                        currentPlayer = currentPlayer.Next;
+                        currentPlayer.Next = OriginPlayer;
                     }
                     if (amountOfPlayers == 3)
                     {
@@ -39,6 +48,11 @@ namespace MensErgerJeNiet
                             pathString = s;
                             buildLevel(pathString);
                         }
+                        currentPlayer.Next = new Player(Color.Yellow);
+                        currentPlayer = currentPlayer.Next;
+                        OriginPlayer.Next = new Player(Color.Green);
+                        currentPlayer = currentPlayer.Next;
+                        currentPlayer.Next = OriginPlayer;
                     }
                     if (amountOfPlayers == 2)
                     {
@@ -47,6 +61,9 @@ namespace MensErgerJeNiet
                             pathString = s;
                             buildLevel(pathString);
                         }
+                        OriginPlayer.Next = new Player(Color.Green);
+                        currentPlayer = currentPlayer.Next;
+                        currentPlayer.Next = OriginPlayer;
                     }
             }
         }

@@ -12,9 +12,9 @@ namespace MensErgerJeNiet
         public Color MyColor { get; set; }
         public Player Next { get; set; }
 
-        public Player()
+        public Player(Color myColor)
         {
-            
+            this.MyColor = myColor;
         }
     }
 }
