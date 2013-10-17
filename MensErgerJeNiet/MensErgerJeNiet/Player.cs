@@ -63,5 +63,19 @@ namespace MensErgerJeNiet
             }
             return true;
         }
+
+        public BaseField getBaseByNumber(int number)
+        {
+            BaseField bf = null;
+            for (int i = 0; i < 4; i++)
+            {
+                if (MyBases[i].MyNumber == number)
+                {
+                    bf = MyBases[i];
+                    break;
+                }
+            }
+            return bf;
+        }
     }
 }

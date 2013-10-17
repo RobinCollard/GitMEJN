@@ -13,6 +13,7 @@ namespace MensErgerJeNiet
         private int eyes;
         public bool WaitForSpaceInput { get; set; }
         public bool WaitForNumberInput { get; set; }
+        private String myEvent;
 
         public GameController(Board board)
         {
@@ -22,23 +23,41 @@ namespace MensErgerJeNiet
 
         public void ThrowDice()
         {
-            eyes = rand.Next(5);
+            eyes = rand.Next(6);
             eyes++;
             myBoard.MyView.Dice.Content = " " + eyes;
         }
 
-        public void PlayTurn()
+        public void PlayTurn(int key)
         {
-            WaitForSpaceInput = false;
+            if (WaitForSpaceInput == true)
+            {
+                WaitForSpaceInput = false;
 
-            if (myBoard.CurrentTurn.FullBase() && eyes == 6) // Als bases vol zijn
-            {
-                WaitForNumberInput = true;
+                if (myBoard.CurrentTurn.FullBase() && eyes == 6) // Als bases vol zijn
+                {
+                    WaitForNumberInput = true;
+                    myEvent = "newPawn";
+                }
+                else
+                {
+                    myBoard.CurrentTurn = myBoard.CurrentTurn.Next;
+                    WaitForSpaceInput = true;
+                }
             }
-            else
+            if (WaitForNumberInput == true)
             {
-                myBoard.CurrentTurn = myBoard.CurrentTurn.Next;
-                WaitForSpaceInput = true;
+                if (myEvent == "newPawn")
+                {
+                    Pawn pawnToMove = myBoard.CurrentTurn.getBaseByNumber(key).MyPawn;
+                    myBoard.CurrentTurn.getBaseByNumber(key).MyPawn = null;
+                    myBoard.CurrentTurn.MyStart.MyPawn = pawnToMove;
+                    myBoard.MyView.UpdateView();         
+                }
+                if (myEvent == "movePawn")
+                {
+
+                }
             }
 
         }
