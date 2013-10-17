@@ -1,7 +1,7 @@
-﻿<Window x:Class="MensErgerJeNiet.BoardView"
+﻿<Window x:Name="BoardWindow" x:Class="MensErgerJeNiet.BoardView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="BoardView" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+        Title="BoardView" SizeToContent="WidthAndHeight" ResizeMode="NoResize" KeyDown="BoardWindow_KeyDown">
     <Border BorderBrush="Red" BorderThickness="4">
         <Grid x:Name="FieldsGrid">
             <Grid.Background>

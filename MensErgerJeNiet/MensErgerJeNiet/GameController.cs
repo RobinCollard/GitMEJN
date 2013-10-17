@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MensErgerJeNiet
 {
-    class GameController
+    public class GameController
     {
         private Board board;
         private Random rand = new Random();
@@ -20,7 +20,7 @@ namespace MensErgerJeNiet
         public int ThrowDice()
         {
             int eyes = rand.Next(7);
-            board.MyView.Dice.Content = 6;
+            board.MyView.Dice.Content = eyes;
             return eyes;
         }
     }

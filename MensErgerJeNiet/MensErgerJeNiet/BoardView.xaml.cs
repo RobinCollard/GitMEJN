@@ -35,43 +35,8 @@ namespace MensErgerJeNiet
         {
             InitializeComponent();
             this.myBoard = myBoard;
-        
-            aRed = new BitmapImage(new Uri("pack://application:,,,/images/aRed.png"));
-            aGreen = new BitmapImage(new Uri("pack://application:,,,/images/aGreen.png"));
-            aYellow = new BitmapImage(new Uri("pack://application:,,,/images/aYellow.png"));
-            aBlue = new BitmapImage(new Uri("pack://application:,,,/images/aBlue.png"));
 
-            bRed = new BitmapImage(new Uri("pack://application:,,,/images/bRed.png"));
-            bGreen = new BitmapImage(new Uri("pack://application:,,,/images/bGreen.png"));
-            bYellow = new BitmapImage(new Uri("pack://application:,,,/images/bYellow.png"));
-            bBlue = new BitmapImage(new Uri("pack://application:,,,/images/bBlue.png"));
-
-            cRed = new BitmapImage(new Uri("pack://application:,,,/images/cRed.png"));
-            cGreen = new BitmapImage(new Uri("pack://application:,,,/images/cGreen.png"));
-            cYellow = new BitmapImage(new Uri("pack://application:,,,/images/cYellow.png"));
-            cBlue = new BitmapImage(new Uri("pack://application:,,,/images/cBlue.png"));
-
-            dRed = new BitmapImage(new Uri("pack://application:,,,/images/dRed.png"));
-            dGreen = new BitmapImage(new Uri("pack://application:,,,/images/dGreen.png"));
-            dYellow = new BitmapImage(new Uri("pack://application:,,,/images/dYellow.png"));
-            dBlue = new BitmapImage(new Uri("pack://application:,,,/images/dBlue.png"));
-
-            BaseRed = new BitmapImage(new Uri("pack://application:,,,/images/BaseRed.png"));
-            BaseGreen = new BitmapImage(new Uri("pack://application:,,,/images/BaseGreen.png"));
-            BaseYellow = new BitmapImage(new Uri("pack://application:,,,/images/BaseYellow.png"));
-            BaseBlue = new BitmapImage(new Uri("pack://application:,,,/images/BaseBlue.png"));
-
-            pawnRed = new BitmapImage(new Uri("pack://application:,,,/images/pawnRed.png"));
-            pawnGreen = new BitmapImage(new Uri("pack://application:,,,/images/pawnGreen.png"));
-            pawnYellow = new BitmapImage(new Uri("pack://application:,,,/images/pawnYellow.png"));
-            pawnBlue = new BitmapImage(new Uri("pack://application:,,,/images/pawnBlue.png"));
-
-            startRed = new BitmapImage(new Uri("pack://application:,,,/images/startRed.png"));
-            startGreen = new BitmapImage(new Uri("pack://application:,,,/images/startGreen.png"));
-            startYellow = new BitmapImage(new Uri("pack://application:,,,/images/startYellow.png"));
-            startBlue = new BitmapImage(new Uri("pack://application:,,,/images/startBlue.png"));
-
-            srcField = new BitmapImage(new Uri("pack://application:,,,/images/Field.png"));
+            LoadPictures();
 
             for (int i = 0; i < nCols; i++)
             {
@@ -312,6 +277,54 @@ namespace MensErgerJeNiet
                 case Color.Green: img = pawnGreen; break;
             }
             return img;
+        }
+
+        private void BoardWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key.Equals(Key.Space))
+            {
+                myBoard.GameControl.ThrowDice();
+            }
+        }
+
+        private void LoadPictures()
+        {
+            aRed = new BitmapImage(new Uri("pack://application:,,,/images/aRed.png"));
+            aGreen = new BitmapImage(new Uri("pack://application:,,,/images/aGreen.png"));
+            aYellow = new BitmapImage(new Uri("pack://application:,,,/images/aYellow.png"));
+            aBlue = new BitmapImage(new Uri("pack://application:,,,/images/aBlue.png"));
+
+            bRed = new BitmapImage(new Uri("pack://application:,,,/images/bRed.png"));
+            bGreen = new BitmapImage(new Uri("pack://application:,,,/images/bGreen.png"));
+            bYellow = new BitmapImage(new Uri("pack://application:,,,/images/bYellow.png"));
+            bBlue = new BitmapImage(new Uri("pack://application:,,,/images/bBlue.png"));
+
+            cRed = new BitmapImage(new Uri("pack://application:,,,/images/cRed.png"));
+            cGreen = new BitmapImage(new Uri("pack://application:,,,/images/cGreen.png"));
+            cYellow = new BitmapImage(new Uri("pack://application:,,,/images/cYellow.png"));
+            cBlue = new BitmapImage(new Uri("pack://application:,,,/images/cBlue.png"));
+
+            dRed = new BitmapImage(new Uri("pack://application:,,,/images/dRed.png"));
+            dGreen = new BitmapImage(new Uri("pack://application:,,,/images/dGreen.png"));
+            dYellow = new BitmapImage(new Uri("pack://application:,,,/images/dYellow.png"));
+            dBlue = new BitmapImage(new Uri("pack://application:,,,/images/dBlue.png"));
+
+            BaseRed = new BitmapImage(new Uri("pack://application:,,,/images/BaseRed.png"));
+            BaseGreen = new BitmapImage(new Uri("pack://application:,,,/images/BaseGreen.png"));
+            BaseYellow = new BitmapImage(new Uri("pack://application:,,,/images/BaseYellow.png"));
+            BaseBlue = new BitmapImage(new Uri("pack://application:,,,/images/BaseBlue.png"));
+
+            pawnRed = new BitmapImage(new Uri("pack://application:,,,/images/pawnRed.png"));
+            pawnGreen = new BitmapImage(new Uri("pack://application:,,,/images/pawnGreen.png"));
+            pawnYellow = new BitmapImage(new Uri("pack://application:,,,/images/pawnYellow.png"));
+            pawnBlue = new BitmapImage(new Uri("pack://application:,,,/images/pawnBlue.png"));
+
+            startRed = new BitmapImage(new Uri("pack://application:,,,/images/startRed.png"));
+            startGreen = new BitmapImage(new Uri("pack://application:,,,/images/startGreen.png"));
+            startYellow = new BitmapImage(new Uri("pack://application:,,,/images/startYellow.png"));
+            startBlue = new BitmapImage(new Uri("pack://application:,,,/images/startBlue.png"));
+
+            srcField = new BitmapImage(new Uri("pack://application:,,,/images/Field.png"));
         }
     }
 }

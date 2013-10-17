@@ -8,11 +8,12 @@ namespace MensErgerJeNiet
         public Field Origin { get; set; }
         public Color CurrentColor { get; set; }
         public BoardView MyView { get; set; }
+        public GameController GameControl { get; set; }
 
         public Board(int amountOfPlayers)
         {
             StartNewGame(amountOfPlayers);
-            GameController gameController = new GameController(this);
+            GameControl = new GameController(this);
         }
 
         public void StartNewGame(int amountOfPlayers)
