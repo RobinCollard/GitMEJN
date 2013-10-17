@@ -482,6 +482,100 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="78763bc6-59f2-45d2-9a63-327459c035f4" />
           </association>
+          <association Id="d0cc3a8b-f8b6-468f-a405-53e95c735273" isDerived="false" sourceEndRoleName="Player" targetEndRoleName="Pawn" isLeaf="false" isAbstract="false">
+            <classMoniker Id="5a907dd8-6475-413f-a265-ba2e2b4f2110" LastKnownName="Pawn" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7afe116b-fb51-4a7d-abfc-c291d100380a" name="Player" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="53270270-fd61-43cb-941f-179d777b7160" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="dd0c271c-ab31-49c1-8cb3-2809448627db" name="Pawn" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="d550120f-2d21-44fa-9f11-d794d40c9940" name="Lower" value="4">
+                      <elementDefinition Id="39ee18e9-4a1d-4faf-bac9-8ce3809f2709" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="17959322-0b01-476b-9cec-47d669a0e6b6" name="Upper" value="4">
+                      <elementDefinition Id="8639dc4f-1ca9-4f5a-acb0-d30d6d3e16c3" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="a8c02633-b9fc-4c6b-bc3f-8d09a626219c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="1d64060f-33ef-4d1f-9473-1439df0bb4f2" />
+          </association>
+          <association Id="2c52827f-4999-4f16-b503-8b69e0b484b3" isDerived="false" sourceEndRoleName="Player" targetEndRoleName="HomeField" isLeaf="false" isAbstract="false">
+            <classMoniker Id="c215ee2a-5a4f-4660-aba9-9c758f27ed0f" LastKnownName="HomeField" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f20f1141-1bf7-44fa-bf50-8790f154553c" name="Player" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="02bc50fc-6ec8-4295-b78e-0d0d1238c959" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="df90aca8-e57f-4775-8bb0-d9cad6d6c00f" name="HomeField" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="24b5fa6e-b7d5-4f6d-b429-b947a67a900c" name="Lower" value="4">
+                      <elementDefinition Id="b576ded0-8ebf-4be9-aca9-14d6f7cc52f1" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="015ddcce-c6f6-4b65-bc07-b64d0cfe29a9" name="Upper" value="4">
+                      <elementDefinition Id="df87b37b-6bd1-4e31-bfa8-63ea0f111bdd" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="4c375318-bfcb-48f1-b1e8-ceb2fe1b7e8a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="1d265e68-91c0-4924-b103-1d5ecac4f8c5" />
+          </association>
+          <association Id="cb978ff9-15fb-4b6f-b9f2-014979861589" isDerived="false" sourceEndRoleName="Player" targetEndRoleName="BaseField" isLeaf="false" isAbstract="false">
+            <classMoniker Id="f3a19d44-0048-4b08-b760-f35a563d9f9d" LastKnownName="BaseField" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="91316328-a6d3-470d-b7d6-d37a92f6f06a" name="Player" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e18d7bb5-ea35-4178-a560-0e3b4f4d27c7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="54c45515-50d8-47cd-b6fa-d174ffe0fac6" name="BaseField" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="bba425c8-d7a0-48bc-a2de-80907d1d6daa" name="Lower" value="4">
+                      <elementDefinition Id="c7f39147-c4ae-40c4-908a-322d26d5ff5d" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="b90dc390-7e0d-4c95-a938-1abc543d3413" name="Upper" value="4">
+                      <elementDefinition Id="eccdaa55-1694-48bc-a2e7-7a9d05c3fef6" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="e7f44de0-3b8d-4323-b6b4-f6fbdfcbc19b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="27fa1b97-5241-49dd-bb0b-ae3c87528739" />
+          </association>
+          <association Id="5b054c7c-8d3e-4129-9d89-e136e257de23" isDerived="false" sourceEndRoleName="Player" targetEndRoleName="StartField" isLeaf="false" isAbstract="false">
+            <classMoniker Id="662c9346-eaf3-4e87-a6ec-f1b6ebe0a53b" LastKnownName="StartField" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7154b060-2b73-4317-8194-bd70277ff98c" name="Player" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f6a927f8-459d-475e-a54a-606f9d090423" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e8334e92-327f-44ca-a268-d6d7e178f2ec" name="StartField" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d845bc77-d3c3-4e1a-b209-11608873609e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="324d70dd-5c1a-4e2c-bec7-0abfa48447e9" />
+          </association>
         </targetEnds>
       </class>
     </logicalClassDesignerModelHasTypes>
