@@ -35,7 +35,7 @@ namespace MensErgerJeNiet
                         }
                         currentPlayer.Next = new Player(Color.Yellow);
                         currentPlayer = currentPlayer.Next;
-                        OriginPlayer.Next = new Player(Color.Green);
+                        currentPlayer.Next = new Player(Color.Green);
                         currentPlayer = currentPlayer.Next;
                         currentPlayer.Next = new Player(Color.Red);
                         currentPlayer = currentPlayer.Next;
@@ -50,7 +50,7 @@ namespace MensErgerJeNiet
                         }
                         currentPlayer.Next = new Player(Color.Yellow);
                         currentPlayer = currentPlayer.Next;
-                        OriginPlayer.Next = new Player(Color.Green);
+                        currentPlayer.Next = new Player(Color.Green);
                         currentPlayer = currentPlayer.Next;
                         currentPlayer.Next = OriginPlayer;
                     }

@@ -18,8 +18,9 @@ namespace MensErgerJeNiet
 
         public int ThrowDice()
         {
-            int eyes = rand.Next(7);
-            board.MyView.Dice.Content = eyes;
+            int eyes = rand.Next(6);
+            eyes++;
+            board.MyView.Dice.Content = " " + eyes;
             return eyes;
         }
     }
