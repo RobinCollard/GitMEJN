@@ -577,6 +577,14 @@
             <elementDefinition Id="324d70dd-5c1a-4e2c-bec7-0abfa48447e9" />
           </association>
         </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="504bf5bd-d3f0-49ec-8235-88a4107b88a1" name="color" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="08cbd64d-c65e-4627-a400-25192795cff3" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="22552d48-4efc-486d-9f30-be552cf80133" LastKnownName="Color" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
