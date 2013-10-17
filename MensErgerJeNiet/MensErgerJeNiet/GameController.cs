@@ -22,7 +22,7 @@ namespace MensErgerJeNiet
 
         public void ThrowDice()
         {
-            eyes = rand.Next(6);
+            eyes = rand.Next(5);
             eyes++;
             myBoard.MyView.Dice.Content = " " + eyes;
         }
@@ -31,7 +31,16 @@ namespace MensErgerJeNiet
         {
             WaitForSpaceInput = false;
 
-           // if(myBoard.CurrentTurn.MyColor = 
+            if (myBoard.CurrentTurn.FullBase() && eyes == 6) // Als bases vol zijn
+            {
+                WaitForNumberInput = true;
+            }
+            else
+            {
+                myBoard.CurrentTurn = myBoard.CurrentTurn.Next;
+                WaitForSpaceInput = true;
+            }
+
         }
     }
 }

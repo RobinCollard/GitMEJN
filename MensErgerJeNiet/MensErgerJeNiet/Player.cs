@@ -8,7 +8,6 @@ namespace MensErgerJeNiet
 {
     public class Player
     {
-        public bool MyTurn { get; set; }
         public Color MyColor { get; set; }
         public Player Next { get; set; }
         public Pawn[] MyPawns{ get; set; }
@@ -51,6 +50,18 @@ namespace MensErgerJeNiet
                     break;
                 }
             }
+        }
+
+        public bool FullBase()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (this.MyBases[i].MyPawn == null)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

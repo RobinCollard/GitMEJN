@@ -338,7 +338,7 @@ namespace MensErgerJeNiet
                         {
                             if (current.MyColor == Color.Blue) { brush = (Brush)bc.ConvertFrom("#00A2E8"); Dice.Background = brush; }
                             if (current.MyColor == Color.Red) { brush = (Brush)bc.ConvertFrom("#ED1C24"); Dice.Background = brush; }
-                            if (current.MyColor == Color.Yellow) { brush = (Brush)bc.ConvertFrom("FFF200"); Dice.Background = brush; }
+                            if (current.MyColor == Color.Yellow) { brush = (Brush)bc.ConvertFrom("#FFF200"); Dice.Background = brush; }
                             if (current.MyColor == Color.Green) { brush = (Brush)bc.ConvertFrom("#22B14C"); Dice.Background = brush; }
                             break;
                         }

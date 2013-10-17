@@ -25,49 +25,60 @@ namespace MensErgerJeNiet
                 string[] fileStrings = Directory.GetFiles(System.IO.Directory.GetCurrentDirectory() + @"\..\..\..\MEJN-Levels", "*.mejn");
                 foreach (string s in fileStrings)
                 {
-                    OriginPlayer = new Player(Color.Yellow);
-                    Player currentPlayer = OriginPlayer;
                     if (amountOfPlayers == 4)
                     {
-                        currentPlayer.Next = new Player(Color.Green);
-                        currentPlayer = currentPlayer.Next;
-                        currentPlayer.Next = new Player(Color.Red);
-                        currentPlayer = currentPlayer.Next;
-                        currentPlayer.Next = new Player(Color.Blue);
-                        currentPlayer = currentPlayer.Next;
-                        currentPlayer.Next = OriginPlayer;
                         if (s.Contains("std.mejn"))
                         {
+                            OriginPlayer = new Player(Color.Yellow);
+                            Player currentPlayer = OriginPlayer;
+                            currentPlayer.Next = new Player(Color.Green);
+                            currentPlayer = currentPlayer.Next;
+                            currentPlayer.Next = new Player(Color.Red);
+                            currentPlayer = currentPlayer.Next;
+                            currentPlayer.Next = new Player(Color.Blue);
+                            currentPlayer = currentPlayer.Next;
+                            currentPlayer.Next = OriginPlayer;
+                        
                             pathString = s;
                             buildLevel(pathString);
+                            break;
                         }
                     }
                     if (amountOfPlayers == 3)
                     {
-                        currentPlayer.Next = new Player(Color.Green);
-                        currentPlayer = currentPlayer.Next;
-                        currentPlayer.Next = new Player(Color.Red);
-                        currentPlayer = currentPlayer.Next;
-                        currentPlayer.Next = OriginPlayer;
                         if (s.Contains("std3.mejn"))
                         {
+                            OriginPlayer = new Player(Color.Yellow);
+                            Player currentPlayer = OriginPlayer;
+                            currentPlayer.Next = new Player(Color.Green);
+                            currentPlayer = currentPlayer.Next;
+                            currentPlayer.Next = new Player(Color.Red);
+                            currentPlayer = currentPlayer.Next;
+                            currentPlayer.Next = OriginPlayer;
+                        
                             pathString = s;
                             buildLevel(pathString);
+                            break;
                         }
                     }
                     if (amountOfPlayers == 2)
                     {
-                        OriginPlayer.Next = new Player(Color.Red);
-                        currentPlayer = currentPlayer.Next;
-                        currentPlayer.Next = OriginPlayer;
                         if (s.Contains("std2.mejn"))
                         {
+                            OriginPlayer = new Player(Color.Yellow);
+                            Player currentPlayer = OriginPlayer;
+                            OriginPlayer.Next = new Player(Color.Red);
+                            currentPlayer = currentPlayer.Next;
+                            currentPlayer.Next = OriginPlayer;
+                        
                             pathString = s;
                             buildLevel(pathString);
+                            break;
                         }
                     }
-                    CurrentTurn = OriginPlayer;
-            }
+                    
+                }
+                CurrentTurn = OriginPlayer;
         }
 
         public void buildLevel(string pathString)
