@@ -281,7 +281,7 @@ namespace MensErgerJeNiet
                         case 1: img = pawnRed1; break;
                         case 2: img = pawnRed2; break;
                         case 3: img = pawnRed3; break;
-                        case 4: img = pawnRed3; break;
+                        case 4: img = pawnRed4; break;
                         default: break;
                     }
                     break;
