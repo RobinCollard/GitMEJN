@@ -951,7 +951,223 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="1d64060f-33ef-4d1f-9473-1439df0bb4f2"
+            isDerived="false"
+            sourceEndRoleName="Player"
+            targetEndRoleName="Pawn"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="105d4656-817b-4d9b-a2e0-76fc9881ca1b"
+              LastKnownName="Pawn"
+              LastKnownLocation="MensErgerJeNietUML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="53270270-fd61-43cb-941f-179d777b7160"
+                  name="Player"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a8c02633-b9fc-4c6b-bc3f-8d09a626219c"
+                  name="Pawn"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="39ee18e9-4a1d-4faf-bac9-8ce3809f2709"
+                      name="Lower"
+                      value="4" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="8639dc4f-1ca9-4f5a-acb0-d30d6d3e16c3"
+                      name="Upper"
+                      value="4" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="1d265e68-91c0-4924-b103-1d5ecac4f8c5"
+            isDerived="false"
+            sourceEndRoleName="Player"
+            targetEndRoleName="HomeField"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="562aeef0-155a-4dee-9775-e7b9341910d5"
+              LastKnownName="HomeField"
+              LastKnownLocation="MensErgerJeNietUML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="02bc50fc-6ec8-4295-b78e-0d0d1238c959"
+                  name="Player"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4c375318-bfcb-48f1-b1e8-ceb2fe1b7e8a"
+                  name="HomeField"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="b576ded0-8ebf-4be9-aca9-14d6f7cc52f1"
+                      name="Lower"
+                      value="4" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="df87b37b-6bd1-4e31-bfa8-63ea0f111bdd"
+                      name="Upper"
+                      value="4" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="27fa1b97-5241-49dd-bb0b-ae3c87528739"
+            isDerived="false"
+            sourceEndRoleName="Player"
+            targetEndRoleName="BaseField"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="caae544b-cdda-4e42-9e0f-da1bea5257c4"
+              LastKnownName="BaseField"
+              LastKnownLocation="MensErgerJeNietUML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e18d7bb5-ea35-4178-a560-0e3b4f4d27c7"
+                  name="Player"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e7f44de0-3b8d-4323-b6b4-f6fbdfcbc19b"
+                  name="BaseField"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="c7f39147-c4ae-40c4-908a-322d26d5ff5d"
+                      name="Lower"
+                      value="4" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="eccdaa55-1694-48bc-a2e7-7a9d05c3fef6"
+                      name="Upper"
+                      value="4" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="324d70dd-5c1a-4e2c-bec7-0abfa48447e9"
+            isDerived="false"
+            sourceEndRoleName="Player"
+            targetEndRoleName="StartField"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="39f58df2-04b6-4cb7-9fec-1a47f1306a9d"
+              LastKnownName="StartField"
+              LastKnownLocation="MensErgerJeNietUML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f6a927f8-459d-475e-a54a-606f9d090423"
+                  name="Player"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d845bc77-d3c3-4e1a-b209-11608873609e"
+                  name="StartField"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="08cbd64d-c65e-4627-a400-25192795cff3"
+            name="color"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="424581da-5638-4221-b6da-bd776ba6f11f"
+                LastKnownName="Color"
+                LastKnownLocation="MensErgerJeNietUML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
