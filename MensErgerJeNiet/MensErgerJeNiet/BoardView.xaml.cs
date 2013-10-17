@@ -23,7 +23,9 @@ namespace MensErgerJeNiet
         private ImageSource aRed, aGreen, aYellow, aBlue, bRed, bGreen, bYellow, bBlue,
             cRed, cGreen, cYellow, cBlue, dRed, dGreen, dYellow, dBlue,
             srcField, BaseRed, BaseGreen, BaseYellow, BaseBlue,
-            pawnRed, pawnGreen, pawnYellow, pawnBlue, startRed, startGreen, startYellow, startBlue;
+            pawnRed1, pawnRed2, pawnRed3, pawnRed4, pawnGreen1, pawnGreen2, pawnGreen3, pawnGreen4,
+            pawnYellow1, pawnYellow2, pawnYellow3, pawnYellow4, pawnBlue1, pawnBlue2, pawnBlue3, pawnBlue4,
+            startRed, startGreen, startYellow, startBlue;
         private Board myBoard;
         private int nRows = 11;
         private int nCols = 11;
@@ -270,13 +272,46 @@ namespace MensErgerJeNiet
 
         public ImageSource SetPawnImage(Pawn myPawn)
         {
+            int i = 1;
             ImageSource img = null;
             switch (myPawn.MyColor)
             {
-                case Color.Red: img = pawnRed; break;
-                case Color.Yellow: img = pawnYellow; break;
-                case Color.Blue: img = pawnBlue; break;
-                case Color.Green: img = pawnGreen; break;
+                case Color.Red:
+                    switch(myPawn.Number)
+                    {
+                        case 1: img = pawnRed1; break;
+                        case 2: img = pawnRed2; break;
+                        case 3: img = pawnRed3; break;
+                        case 4: img = pawnRed3; break;
+                        default: break;
+                    }
+                case Color.Yellow:
+                    switch (i)
+                    {
+                        case 1: img = pawnYellow1; break;
+                        case 2: img = pawnYellow2; break;
+                        case 3: img = pawnYellow3; break;
+                        case 4: img = pawnYellow4; break;
+                        default: break;
+                    }
+                case Color.Blue:
+                    switch (i)
+                    {
+                        case 1: img = pawnBlue1; break;
+                        case 2: img = pawnBlue2; break;
+                        case 3: img = pawnBlue3; break;
+                        case 4: img = pawnBlue4; break;
+                        default: break;
+                    }
+                case Color.Green:
+                    switch (i)
+                    {
+                        case 1: img = pawnGreen1; break;
+                        case 2: img = pawnGreen2; break;
+                        case 3: img = pawnGreen3; break;
+                        case 4: img = pawnGreen4; break;
+                        default: break;
+                    }
             }
             return img;
         }
