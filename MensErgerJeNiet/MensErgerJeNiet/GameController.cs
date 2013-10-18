@@ -14,13 +14,12 @@ namespace MensErgerJeNiet
         private int eyes;
         public bool WaitForSpaceInput { get; set; }
         public bool WaitForNumberInput { get; set; }
-        private String myEvent;
+        private GameEvent myEvent;
 
         public GameController(Board board)
         {
             this.myBoard = board;
             WaitForSpaceInput = true;
-            myEvent = "";
         }
 
         public void ThrowDice()
@@ -41,13 +40,13 @@ namespace MensErgerJeNiet
                 {
                     WaitForNumberInput = true;
                     WaitForSpaceInput = false;
-                    myEvent = "newPawn";
+                    myEvent = GameEvent.newPawn;
                 }
-                if (myEvent == "movePawnAfterNew")
+                if (myEvent == GameEvent.moveNewPawn)
                 {
                     WaitForSpaceInput = false;
                     WaitForNumberInput = false;
-                    myEvent = "movePawn";
+                    myEvent = GameEvent.movePawn;
                     
                 }
                 else if(myBoard.CurrentTurn.FullBase() && eyes != 6)
@@ -58,35 +57,24 @@ namespace MensErgerJeNiet
             }
             else if (WaitForNumberInput == true && WaitForSpaceInput == false)
             {
-                if (myEvent == "newPawn")
+                if (myEvent == GameEvent.newPawn)
                 {
                     pawnToMove = myBoard.CurrentTurn.GetPawnByNumber(key);
                     myBoard.CurrentTurn.GetBaseByNumber(key).MyPawn = null;
                     myBoard.CurrentTurn.MyStart.MyPawn = pawnToMove;
                     pawnToMove.MyField = myBoard.CurrentTurn.MyStart;
                     myBoard.MyView.UpdateView();
-                    myEvent = "movePawnAfterNew";
+                    myEvent = GameEvent.moveNewPawn;
                     
                     WaitForNumberInput = false;
                     WaitForSpaceInput = true;
                 }
-                if (myEvent == "movePawn")
+                if (myEvent == GameEvent.movePawn)
                 {
                     // bij 6 numberinput true laten
                     current = myBoard.CurrentTurn.GetPawnByNumber(key).MyField;
                     pawnToMove = myBoard.CurrentTurn.GetPawnByNumber(key);
                     if (current.GetType() != typeof(BaseField))
-                    {
-                        WaitForNumberInput = false;
-                        current.MyPawn = null;
-                        for (int i = 0; i < eyes; i++)
-                        {
-                            current = current.Next;
-                        }
-                        current.MyPawn = pawnToMove;
-                        myBoard.MyView.UpdateView();
-                    }
-                    else
                     {
                         WaitForNumberInput = false;
                         current.MyPawn = null;
