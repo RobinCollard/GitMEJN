@@ -37,6 +37,13 @@ namespace MensErgerJeNiet
 
         public void FirstTurns(int key)
         {
+            if (amountOfTurns == myBoard.AmountOfPlayers)
+            {
+                myBoard.CurrentTurn = highestPlayer;
+                eyes = 0;
+                myBoard.MyView.Dice.Content = " ";
+                myBoard.MyView.UpdateDice();
+            }
             if (eyes == highest)
             {
                 twoHighest = true;
@@ -45,33 +52,31 @@ namespace MensErgerJeNiet
             {
                 highest = eyes;
                 highestPlayer = myBoard.CurrentTurn;
+
             }
-            if (amountOfTurns == 4)
-            {
-                myBoard.CurrentTurn = highestPlayer;
-                eyes = 0;
-                myBoard.MyView.Dice.Content = " ";
-                myBoard.MyView.UpdateDice();
-            }
-            if (twoHighest && amountOfTurns == 3)
-            {
-                myBoard.CurrentTurn = myBoard.OriginPlayer;
-                highest = 0;
-                amountOfTurns = 0;
-            }
-            if (twoHighest == false && amountOfTurns != 3)
+            if (twoHighest == false && amountOfTurns != myBoard.AmountOfPlayers)
             {
                 amountOfTurns++;
             }
+            if (twoHighest && amountOfTurns == myBoard.AmountOfPlayers - 1)
+            {
+                myBoard.CurrentTurn = myBoard.OriginPlayer;
+                highest = 0;
+                highestPlayer = null;
+                amountOfTurns = 0;
+                twoHighest = false;
+            }
+            
+            
         }
 
         public void PlayTurn(int key)
         {
-            if (amountOfTurns < 5)
+            if (amountOfTurns < myBoard.AmountOfPlayers + 1)
             {
                 myEvent = GameEvent.firstTurns;
                 FirstTurns(key);
-                myBoard.CurrentTurn = myBoard.CurrentTurn.Next;
+                if (amountOfTurns != 0) { myBoard.CurrentTurn = myBoard.CurrentTurn.Next; }
             }
             else
             {
