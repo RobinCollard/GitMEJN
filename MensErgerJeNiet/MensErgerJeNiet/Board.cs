@@ -78,7 +78,7 @@ namespace MensErgerJeNiet
                     }
                     
                 }
-                xCurrentTurn = OriginPlayer;
+                CurrentTurn = OriginPlayer;
         }
 
         public void buildLevel(string pathString)
