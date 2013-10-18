@@ -331,8 +331,6 @@ namespace MensErgerJeNiet
             {
                 if (e.Key.Equals(Key.Space))
                 {
-                    myBoard.GameControl.ThrowDice();
-                    UpdateDice();
                     myBoard.GameControl.PlayTurn(0);
                     
                 }

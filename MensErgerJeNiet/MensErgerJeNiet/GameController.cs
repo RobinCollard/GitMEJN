@@ -37,6 +37,8 @@ namespace MensErgerJeNiet
 
         public void FirstTurns(int key)
         {
+            ThrowDice();
+            myBoard.MyView.UpdateDice();
             if (amountOfTurns == myBoard.AmountOfPlayers)
             {
                 myBoard.CurrentTurn = highestPlayer;
@@ -51,29 +53,29 @@ namespace MensErgerJeNiet
             if (eyes > highest)
             {
                 highest = eyes;
+                twoHighest = false;  
                 highestPlayer = myBoard.CurrentTurn;
 
             }
-            if (twoHighest == false && amountOfTurns != myBoard.AmountOfPlayers)
+            if (twoHighest == false)
             {
                 amountOfTurns++;
             }
-            if (twoHighest && amountOfTurns == myBoard.AmountOfPlayers - 1)
+            if (twoHighest)
             {
                 myBoard.CurrentTurn = myBoard.OriginPlayer;
                 highest = 0;
                 highestPlayer = null;
                 amountOfTurns = 0;
                 twoHighest = false;
-            }
-            
-            
+            }           
         }
 
         public void PlayTurn(int key)
         {
             if (amountOfTurns < myBoard.AmountOfPlayers + 1)
             {
+                Debug.WriteLine(amountOfTurns + " " + myBoard.AmountOfPlayers);
                 myEvent = GameEvent.firstTurns;
                 FirstTurns(key);
                 if (amountOfTurns != 0) { myBoard.CurrentTurn = myBoard.CurrentTurn.Next; }
