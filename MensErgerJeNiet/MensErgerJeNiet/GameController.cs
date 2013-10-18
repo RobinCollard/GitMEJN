@@ -97,7 +97,8 @@ namespace MensErgerJeNiet
                         prevKey = 1;
                         currentField = currentPawn.MyField;
                         currentField.MyPawn = null;
-                        currentPawn.MyField = myBoard.CurrentTurn.MyStart;
+                        currentField = myBoard.CurrentTurn.MyStart;
+                        currentPawn.MyField = currentField;
                         myBoard.CurrentTurn.MyStart.MyPawn = currentPawn;
                         myEvent = GameEvent.throwDice;
                         amountOfTurns += 10;
