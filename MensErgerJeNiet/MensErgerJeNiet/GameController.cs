@@ -21,6 +21,8 @@ namespace MensErgerJeNiet
         private int highest;
         private bool twoHighest;
         private Player highestPlayer;
+        private Pawn currentPawn;
+        private Field currentField;
 
         public GameController(Board board)
         {
@@ -78,15 +80,77 @@ namespace MensErgerJeNiet
                 Debug.WriteLine(amountOfTurns + " " + myBoard.AmountOfPlayers);
                 myEvent = GameEvent.firstTurns;
                 FirstTurns(key);
-                if (amountOfTurns != 0) { myBoard.CurrentTurn = myBoard.CurrentTurn.Next; }
+                if (amountOfTurns != 0 && amountOfTurns != myBoard.AmountOfPlayers + 1) { myBoard.CurrentTurn = myBoard.CurrentTurn.Next; }
+                if (amountOfTurns == myBoard.AmountOfPlayers + 1) { WaitForSpaceInput = true; }
             }
             else
             {
-                WaitForSpaceInput = false;
+                if (amountOfTurns == myBoard.AmountOfPlayers + 1)
+                {
+                    WaitForSpaceInput = true;
+                    ThrowDice();
+                    myBoard.MyView.UpdateDice();
+                    if (amountOfTurns < myBoard.AmountOfPlayers + 2)
+                    {
+                        WaitForSpaceInput = false;
+                        currentPawn = myBoard.CurrentTurn.GetPawnByNumber(1);
+                        prevKey = 1;
+                        currentField = currentPawn.MyField;
+                        currentField.MyPawn = null;
+                        currentPawn.MyField = myBoard.CurrentTurn.MyStart;
+                        myBoard.CurrentTurn.MyStart.MyPawn = currentPawn;
+                        myEvent = GameEvent.throwDice;
+                        amountOfTurns += 10;
+                        myBoard.MyView.UpdateView();
+                        SpaceToRethrow = true;
+                    }
+                }
+                else
+                {
+                    if (SpaceToRethrow)
+                    {
+                        if (eyes == 6)
+                        {
+                            if (!myBoard.CurrentTurn.FullBase())
+                            {
+                                //new pawn
+                                SixAndBaseNotFull(currentPawn);
+                            }
+                        }
+                        else
+                        {
+                            Move(currentPawn, eyes, currentField);
+                        }
+                    }
+                }
             }
-            Field current;
-            Pawn pawnToMove;
-            
+        }
+
+        public void Move(Pawn currentPawn, int eyes, Field currentField)
+        {
+            currentField.MyPawn = null;
+            for (int i = 0; i < eyes; i++)
+            {
+                currentField = currentField.Next;
+            }
+            currentPawn.MyField = currentField;
+            currentField.MyPawn = currentPawn;
+            myBoard.MyView.UpdateView();
+        }
+
+        public void SixAndBaseNotFull(Pawn currentPawn)
+        {
+            if (currentPawn.MyField.GetType() == typeof(BaseField))
+            {
+
+            }
+            else
+            {
+                if (currentPawn.MyField.GetType() == typeof(StartField))
+                {
+                    Move(currentPawn, eyes, currentPawn.MyField);
+                }
+            }
         }
     }
 }

@@ -337,7 +337,7 @@ namespace MensErgerJeNiet
             }
             if(myBoard.GameControl.SpaceToRethrow)
             {
-                
+                myBoard.GameControl.PlayTurn(0);
             }
              if(myBoard.GameControl.WaitForNumberInput)
              {
