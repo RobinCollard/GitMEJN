@@ -11,9 +11,11 @@ namespace MensErgerJeNiet
         public GameController GameControl { get; set; }
         public Player OriginPlayer { get; set; }
         public Player CurrentTurn { get; set; }
+        public int AmountOfPlayers {get; set;}
 
         public Board(int amountOfPlayers)
         {
+            this.AmountOfPlayers = amountOfPlayers;
             StartNewGame(amountOfPlayers);
             GameControl = new GameController(this);
         }
@@ -115,47 +117,71 @@ namespace MensErgerJeNiet
                     {
                         case 'Y': currentField = new BaseField(Color.Yellow, numberY);
                             currentField.MyPawn = new Pawn(currentField, Color.Yellow, numberY);
-                            currentPlayer = GetPlayerByColor(Color.Yellow);
-                            currentPlayer.AddBase((BaseField) currentField);
-                            currentPlayer.AddPawn(currentField.MyPawn);
+                            if (GetPlayerByColor(Color.Yellow) != null)
+                            {
+                                currentPlayer = GetPlayerByColor(Color.Yellow);
+                                currentPlayer.AddBase((BaseField)currentField);
+                                currentPlayer.AddPawn(currentField.MyPawn);
+                            }
                             numberY++;
                             break;
                         case 'G': currentField = new BaseField(Color.Green, numberG);
                             currentField.MyPawn = new Pawn(currentField, Color.Green, numberG);
-                            currentPlayer = GetPlayerByColor(Color.Green);
-                            currentPlayer.AddBase((BaseField) currentField);
-                            currentPlayer.AddPawn(currentField.MyPawn);
+                            if (GetPlayerByColor(Color.Green) != null)
+                            {
+                                currentPlayer = GetPlayerByColor(Color.Green);
+                                currentPlayer.AddBase((BaseField)currentField);
+                                currentPlayer.AddPawn(currentField.MyPawn);
+                            }
                             numberG++;
                             break;
                         case 'R': currentField = new BaseField(Color.Red,numberR);
                             currentField.MyPawn = new Pawn(currentField, Color.Red, numberR);
-                            currentPlayer = GetPlayerByColor(Color.Red);
-                            currentPlayer.AddBase((BaseField) currentField);
-                            currentPlayer.AddPawn(currentField.MyPawn);
+                            if (GetPlayerByColor(Color.Red) != null)
+                            {
+                                currentPlayer = GetPlayerByColor(Color.Red);
+                                currentPlayer.AddBase((BaseField)currentField);
+                                currentPlayer.AddPawn(currentField.MyPawn);
+                            }
                             numberR++;
                             break;
                         case 'B': currentField = new BaseField(Color.Blue,numberB);
                             currentField.MyPawn = new Pawn(currentField, Color.Blue, numberB);
-                            currentPlayer = GetPlayerByColor(Color.Blue);
-                            currentPlayer.AddBase((BaseField) currentField);
-                            currentPlayer.AddPawn(currentField.MyPawn);
+                            if (GetPlayerByColor(Color.Blue) != null)
+                            {
+                                currentPlayer = GetPlayerByColor(Color.Blue);
+                                currentPlayer.AddBase((BaseField)currentField);
+                                currentPlayer.AddPawn(currentField.MyPawn);
+                            }
                             numberB++;
                             break;
                         case '5': currentField = new BaseField(Color.Yellow,numberY);
-                            currentPlayer = GetPlayerByColor(Color.Yellow);
-                            currentPlayer.AddBase((BaseField) currentField);
+                            if(GetPlayerByColor(Color.Yellow) != null)
+                            {
+                                currentPlayer = GetPlayerByColor(Color.Yellow);
+                                currentPlayer.AddBase((BaseField) currentField);
+                            }
                             break;
                         case '6': currentField = new BaseField(Color.Green,numberG);
-                            currentPlayer = GetPlayerByColor(Color.Green);
-                            currentPlayer.AddBase((BaseField) currentField);
+                            if(GetPlayerByColor(Color.Green) != null)
+                            {
+                                currentPlayer = GetPlayerByColor(Color.Green);
+                                currentPlayer.AddBase((BaseField) currentField);
+                            }
                             break;
                         case '7': currentField = new BaseField(Color.Red,numberR);
-                            currentPlayer = GetPlayerByColor(Color.Red);
-                            currentPlayer.AddBase((BaseField) currentField);
+                            if(GetPlayerByColor(Color.Red) != null)
+                            {
+                                currentPlayer = GetPlayerByColor(Color.Red);
+                                currentPlayer.AddBase((BaseField) currentField);
+                            }
                             break;
                         case '8': currentField = new BaseField(Color.Blue,numberB);
-                            currentPlayer = GetPlayerByColor(Color.Blue);
-                            currentPlayer.AddBase((BaseField) currentField);
+                            if(GetPlayerByColor(Color.Blue) != null)
+                            {
+                                currentPlayer = GetPlayerByColor(Color.Blue);
+                                currentPlayer.AddBase((BaseField) currentField);
+                            }
                             break;
                         default:
                             break;
@@ -193,8 +219,11 @@ namespace MensErgerJeNiet
                         currentField = new StartField(CurrentColor);
                         if (y == 1) { Origin = currentField; }
                         if (y > 1) { previousField = continueOn; previousField.Next = currentField; currentField.Previous = previousField; }
-                        currentPlayer = GetPlayerByColor(CurrentColor);
-                        currentPlayer.MyStart = (StartField)currentField;
+                        if (GetPlayerByColor(CurrentColor) != null)
+                        {
+                            currentPlayer = GetPlayerByColor(CurrentColor);
+                            currentPlayer.MyStart = (StartField)currentField;
+                        }
 
                     }
                     if (x > 0 && x < 9)
@@ -215,8 +244,11 @@ namespace MensErgerJeNiet
                         currentField = new HomeField(CurrentColor);
                         currentField.Previous = previousField;
                         previousField.NextHome = (HomeField)currentField;
-                        currentPlayer = GetPlayerByColor(CurrentColor);
-                        currentPlayer.AddHome((HomeField)currentField);
+                        if (GetPlayerByColor(CurrentColor) != null)
+                        {
+                            currentPlayer = GetPlayerByColor(CurrentColor);
+                            currentPlayer.AddHome((HomeField)currentField);
+                        }
                     }
                     if (lines[y][x] != 'o')
                     {
@@ -246,8 +278,11 @@ namespace MensErgerJeNiet
                             current = (BaseField) current.Next;
                         }
                         currentField.MyPawn = new Pawn(current, CurrentColor, (amount + 1));
-                        currentPlayer = GetPlayerByColor(CurrentColor);
-                        currentPlayer.AddPawn(currentField.MyPawn);
+                        if (GetPlayerByColor(CurrentColor) != null)
+                        {
+                            currentPlayer = GetPlayerByColor(CurrentColor);
+                            currentPlayer.AddPawn(currentField.MyPawn);
+                        }
                     }
                 }
             }
@@ -257,16 +292,18 @@ namespace MensErgerJeNiet
 
         public Player GetPlayerByColor(Color color)
         {
+            int max = 0;
             Player current = OriginPlayer;
-            while(current.Next != null)
+            while(max < 4)
             {
                 if (current.MyColor == color)
                 {
-                    break;
+                    return current;
                 }
                 current = current.Next;
+                max++;
             }
-            return current;
+            return null;
             
         }
     }
