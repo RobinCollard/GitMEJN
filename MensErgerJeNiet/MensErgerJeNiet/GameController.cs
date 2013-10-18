@@ -37,14 +37,14 @@ namespace MensErgerJeNiet
 
         public void FirstTurns(int key)
         {
+            if (eyes == highest)
+            {
+                twoHighest = true;
+            }
             if (eyes > highest)
             {
                 highest = eyes;
                 highestPlayer = myBoard.CurrentTurn;
-            }
-            if (eyes == highest)
-            {
-                twoHighest = true;
             }
             if (amountOfTurns == 4)
             {
@@ -75,7 +75,7 @@ namespace MensErgerJeNiet
             }
             else
             {
-
+                WaitForSpaceInput = false;
             }
             Field current;
             Pawn pawnToMove;
