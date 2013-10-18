@@ -332,24 +332,14 @@ namespace MensErgerJeNiet
                 if (e.Key.Equals(Key.Space))
                 {
                     myBoard.GameControl.ThrowDice();
+                    UpdateDice();
                     myBoard.GameControl.PlayTurn(0);
-
-                    Player current = myBoard.OriginPlayer;
-                    BrushConverter bc = new BrushConverter();
-                    Brush brush;
-                    while (current.Next != null)
-                    {
-                        if (current.Equals(myBoard.CurrentTurn))
-                        {
-                            if (current.MyColor == Color.Blue) { brush = (Brush)bc.ConvertFrom("#00A2E8"); Dice.Background = brush; }
-                            if (current.MyColor == Color.Red) { brush = (Brush)bc.ConvertFrom("#ED1C24"); Dice.Background = brush; }
-                            if (current.MyColor == Color.Yellow) { brush = (Brush)bc.ConvertFrom("#FFF200"); Dice.Background = brush; }
-                            if (current.MyColor == Color.Green) { brush = (Brush)bc.ConvertFrom("#22B14C"); Dice.Background = brush; }
-                            break;
-                        }
-                        current = current.Next;
-                    }
+                    
                 }
+            }
+            if(myBoard.GameControl.SpaceToRethrow)
+            {
+                
             }
              if(myBoard.GameControl.WaitForNumberInput)
              {
@@ -370,6 +360,25 @@ namespace MensErgerJeNiet
                     myBoard.GameControl.PlayTurn(4);
                 }
              }
+        }
+
+        public void UpdateDice()
+        {
+            Player current = myBoard.OriginPlayer;
+            BrushConverter bc = new BrushConverter();
+            Brush brush;
+            while (current.Next != null)
+            {
+                if (current.Equals(myBoard.CurrentTurn))
+                {
+                    if (current.MyColor == Color.Blue) { brush = (Brush)bc.ConvertFrom("#00A2E8"); Dice.Background = brush; }
+                    if (current.MyColor == Color.Red) { brush = (Brush)bc.ConvertFrom("#ED1C24"); Dice.Background = brush; }
+                    if (current.MyColor == Color.Yellow) { brush = (Brush)bc.ConvertFrom("#FFF200"); Dice.Background = brush; }
+                    if (current.MyColor == Color.Green) { brush = (Brush)bc.ConvertFrom("#22B14C"); Dice.Background = brush; }
+                    break;
+                }
+                current = current.Next;
+            }
         }
 
         private void LoadPictures()

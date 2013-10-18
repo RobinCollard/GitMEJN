@@ -9,7 +9,9 @@ namespace MensErgerJeNiet
     public enum GameEvent
     {
         newPawn,
-        moveNewPawn,
-        movePawn
+        moveNewPawnOr6,
+        movePawn,
+        throwDice,
+        firstTurns
     }
 }

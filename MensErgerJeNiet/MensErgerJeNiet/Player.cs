@@ -67,7 +67,7 @@ namespace MensErgerJeNiet
         public BaseField GetBaseByNumber(int number)
         {
             BaseField bf = null;
-            for (int i = 1; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 if (MyBases[i].MyNumber == number)
                 {
@@ -81,7 +81,7 @@ namespace MensErgerJeNiet
         public Pawn GetPawnByNumber(int number)
         {
             Pawn pawn = null;
-            for (int i = 1; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 if (MyPawns[i].MyNumber == number)
                 {
