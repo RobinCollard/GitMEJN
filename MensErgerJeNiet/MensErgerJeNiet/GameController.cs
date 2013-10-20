@@ -81,47 +81,41 @@ namespace MensErgerJeNiet
                 myEvent = GameEvent.firstTurns;
                 FirstTurns(key);
                 if (amountOfTurns != 0 && amountOfTurns != myBoard.AmountOfPlayers + 1) { myBoard.CurrentTurn = myBoard.CurrentTurn.Next; }
-                if (amountOfTurns == myBoard.AmountOfPlayers + 1) { WaitForSpaceInput = true; }
+                if (amountOfTurns == myBoard.AmountOfPlayers + 1)
+                {
+                    currentPawn = myBoard.CurrentTurn.GetPawnByNumber(1);
+                    prevKey = 1;
+                    currentField = currentPawn.MyField;
+                    currentField.MyPawn = null;
+                    currentField = myBoard.CurrentTurn.MyStart;
+                    currentPawn.MyField = currentField;
+                    myBoard.CurrentTurn.MyStart.MyPawn = currentPawn;
+                    myBoard.MyView.UpdateView();
+                    SpaceToRethrow = true;
+                    WaitForSpaceInput = false;
+                    amountOfTurns += 2;
+
+                }
             }
             else
             {
-                if (amountOfTurns == myBoard.AmountOfPlayers + 1)
+                if (SpaceToRethrow)
                 {
-                    WaitForSpaceInput = true;
                     ThrowDice();
                     myBoard.MyView.UpdateDice();
-                    if (amountOfTurns < myBoard.AmountOfPlayers + 2)
+                    if (eyes == 6)
                     {
-                        WaitForSpaceInput = false;
-                        currentPawn = myBoard.CurrentTurn.GetPawnByNumber(1);
-                        prevKey = 1;
-                        currentField = currentPawn.MyField;
-                        currentField.MyPawn = null;
-                        currentField = myBoard.CurrentTurn.MyStart;
-                        currentPawn.MyField = currentField;
-                        myBoard.CurrentTurn.MyStart.MyPawn = currentPawn;
-                        myEvent = GameEvent.throwDice;
-                        amountOfTurns += 10;
-                        myBoard.MyView.UpdateView();
-                        SpaceToRethrow = true;
+                        if (!myBoard.CurrentTurn.FullBase())
+                        {
+                            SixAndBaseNotFull(currentPawn);
+                        }
                     }
-                }
-                else
-                {
-                    if (SpaceToRethrow)
+                    else
                     {
-                        if (eyes == 6)
-                        {
-                            if (!myBoard.CurrentTurn.FullBase())
-                            {
-                                //new pawn
-                                SixAndBaseNotFull(currentPawn);
-                            }
-                        }
-                        else
-                        {
-                            Move(currentPawn, eyes, currentField);
-                        }
+                        Move(currentPawn, eyes, currentField);
+                        myBoard.CurrentTurn = myBoard.CurrentTurn.Next;
+                        SpaceToRethrow = false;
+                        WaitForSpaceInput = true;
                     }
                 }
             }
