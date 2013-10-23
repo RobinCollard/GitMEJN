@@ -164,7 +164,7 @@ namespace MensErgerJeNiet
                     else
                     {
                         WaitForNumberInput = false;
-                        currentPawn = myBoard.CurrentTurn.GetPawnByNumber(key);
+                        currentPawn = myBoard.CurrentTurn.GetPawnByNumber(key); 
                         currentField = currentPawn.MyField;
                         Move(currentPawn, eyes, currentField);
                         myBoard.CurrentTurn = myBoard.CurrentTurn.Next;
@@ -199,7 +199,7 @@ namespace MensErgerJeNiet
                 {
                     if (currentField.MyPawn.MyColor == currentPlayer.MyColor)
                     {
-                        currentField.MyPawn.MyField = currentPlayer.GetFreeBase();
+                        currentField.MyPawn.MyField = currentPlayer.GetBaseByNumber(currentField.MyPawn.MyNumber);
                         currentField.MyPawn = null;
                         currentField = currentPlayer.GetFreeBase();
                         currentField.MyPawn = collisionPawn;
