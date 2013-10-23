@@ -173,6 +173,7 @@ namespace MensErgerJeNiet
                             WaitForNumberInput = false;
                             currentPawn = myBoard.CurrentTurn.GetPawnByNumber(key);
                             currentField = currentPawn.MyField;
+                            currentField.MyPawn = currentPawn;
                             Move(currentPawn, eyes, currentField);
                             if (eyes == 6)
                             {
@@ -201,47 +202,35 @@ namespace MensErgerJeNiet
             {
                 if ((currentField.GetType() == typeof(EndField) && currentField.NextHome.MyColor == currentPawn.MyColor) || (currentField.GetType() == typeof(HomeField)))
                 {
-                    if (currentField.NextHome != null)
+                    if (currentField.NextHome.IsLocked && setToPrevious == false)
                     {
-                        if (currentField.NextHome.IsLocked)
+                        while (currentField.NextHome.IsLocked)
                         {
-                            if (setToPrevious == true)
+                            if (currentField.NextHome != null)
                             {
-                                currentField = currentField.Previous;
+                                currentField = currentField.NextHome;
                             }
-                            if (currentField.NextHome.NextHome == null || setToPrevious == true)
-                            {
-                                currentField = currentField.Previous;
-                            }
-                            currentField = currentField.NextHome;
-                        }
-                        else
-                        {
-                            if (setToPrevious == true)
-                            {
-                                if (currentField.Previous.IsLocked)
-                                {
-                                    while (currentField.Previous.IsLocked)
-                                    {
-                                        currentField = currentField.Previous.Previous;
-                                    }
-                                }
-                                else
-                                {
-                                    currentField = currentField.Previous;
-                                }
-                            }
-                            if (currentField.NextHome.NextHome == null || setToPrevious == true)
+                            else
                             {
                                 setToPrevious = true;
-                                currentField = currentField.Previous;
+                                break;
                             }
-                            currentField = currentField.NextHome;
                         }
                     }
                     else
                     {
                         currentField = currentField.NextHome;
+                    }
+                    if (setToPrevious)
+                    {
+                        while (currentField.Previous.IsLocked)
+                        {
+                            currentField = currentField.Previous;
+                        }
+                    }
+                    else
+                    {
+                        currentField = currentField.Previous;
                     }
                 }
                 else
