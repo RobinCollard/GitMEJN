@@ -191,7 +191,6 @@ namespace MensErgerJeNiet
             currentField.MyPawn = null;
             for (int i = 0; i < eyes; i++)
             {
-                currentField = currentField.Next;
                 if ((currentField.GetType() == typeof(EndField) && currentField.NextHome.MyColor == currentPawn.MyColor) || (currentField.GetType() == typeof(HomeField)))
                 {
                     if (currentField.NextHome == null)
