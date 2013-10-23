@@ -76,7 +76,6 @@ namespace MensErgerJeNiet
         {
             if (amountOfTurns < myBoard.AmountOfPlayers + 1)
             {
-                Debug.WriteLine(amountOfTurns + " " + myBoard.AmountOfPlayers);
                 myEvent = GameEvent.firstTurns;
                 FirstTurns(key);
                 if (amountOfTurns != 0 && amountOfTurns != myBoard.AmountOfPlayers + 1) { myBoard.CurrentTurn = myBoard.CurrentTurn.Next; }
@@ -98,7 +97,7 @@ namespace MensErgerJeNiet
             }
             else
             {
-                if (SpaceToRethrow)
+                if (SpaceToRethrow && !WaitForNumberInput && !WaitForSpaceInput)
                 {
                     ThrowDice();
                     myBoard.MyView.UpdateDice();
@@ -117,9 +116,37 @@ namespace MensErgerJeNiet
                         WaitForSpaceInput = true;
                     }
                 }
-                if (WaitForSpaceInput)
+                if (WaitForSpaceInput && !SpaceToRethrow && !WaitForNumberInput)
                 {
+                    ThrowDice();
+                    myBoard.MyView.UpdateDice();
+                    if (eyes == 6)
+                    {
 
+                    }
+                    else
+                    {
+                        WaitForSpaceInput = false;
+                        WaitForNumberInput = true;
+                    }
+                }
+                if (WaitForNumberInput && !WaitForSpaceInput && !SpaceToRethrow)
+                {
+                    if (myBoard.CurrentTurn.GetPawnByNumber(key).MyField.GetType() == typeof(BaseField))
+                    {
+                        WaitForNumberInput = true;
+                        //output
+                    }
+                    else
+                    {
+                        WaitForNumberInput = false;
+                        currentPawn = myBoard.CurrentTurn.GetPawnByNumber(key);
+                        currentField = currentPawn.MyField;
+                        Move(currentPawn, eyes, currentField);
+                        myBoard.CurrentTurn = myBoard.CurrentTurn.Next;
+                        SpaceToRethrow = false;
+                        WaitForSpaceInput = true;
+                    }
                 }
             }
         }
