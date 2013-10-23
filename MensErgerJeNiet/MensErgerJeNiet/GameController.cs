@@ -202,26 +202,23 @@ namespace MensErgerJeNiet
             {
                 if ((currentField.GetType() == typeof(EndField) && currentField.NextHome.MyColor == currentPawn.MyColor) || (currentField.GetType() == typeof(HomeField)))
                 {
-                    if (currentField.NextHome.IsLocked && setToPrevious == false)
+                    if (currentField.NextHome != null && setToPrevious == false)
                     {
-                        if (currentField.NextHome != null)
-                        { 
+                        if (currentField.NextHome.IsLocked)
+                        {
                             while (currentField.NextHome.IsLocked)
                             {
-                        
                                 currentField = currentField.NextHome;
                             }
                         }
                         else
                         {
-                            setToPrevious = true;
-                            break;
-                        
+                            currentField = currentField.NextHome;
                         }
                     }
-                    else
+                    else if (currentField.NextHome == null)
                     {
-                        currentField = currentField.NextHome;
+                        setToPrevious = true;
                     }
                     if (setToPrevious)
                     {
@@ -273,7 +270,7 @@ namespace MensErgerJeNiet
                 }
                 myBoard.MyView.UpdateView();
             }
-        }
+                 }
 
         public void SixAndBaseNotFull(Pawn currentPawn)
         {
