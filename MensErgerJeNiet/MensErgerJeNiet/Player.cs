@@ -91,19 +91,5 @@ namespace MensErgerJeNiet
             }
             return pawn;
         }
-
-        public BaseField GetFreeBase()
-        {
-            BaseField bf = null;
-            for (int i = 0; i < 4; i++)
-            {
-                if (MyBases[i].MyNumber == null)
-                {
-                    bf = MyBases[i];
-                    break;
-                }
-            }
-            return bf;
-        }
     }
 }

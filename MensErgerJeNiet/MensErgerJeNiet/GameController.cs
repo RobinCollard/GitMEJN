@@ -105,17 +105,19 @@ namespace MensErgerJeNiet
                     myBoard.MyView.UpdateDice();
                     if (eyes == 6)
                     {
-                        if (!myBoard.CurrentTurn.FullBase())
-                        {
-                            SixAndBaseNotFull(currentPawn);
-                        }
-
+                        WaitForNumberInput = true;
                     }
                     else
                     {
-                        Move(currentPawn, eyes, currentField);
-                        myBoard.CurrentTurn = myBoard.CurrentTurn.Next;
-                        WaitForSpaceInput = true;
+                        if (myBoard.CurrentTurn.FullBase())
+                        {
+                            myBoard.CurrentTurn = myBoard.CurrentTurn.Next;
+                            WaitForSpaceInput = true;
+                        }
+                        else
+                        {
+                            WaitForNumberInput = true;
+                        }
                     }
                 }
                 else if (WaitForSpaceInput && !SpaceToRethrow && !WaitForNumberInput)
@@ -151,6 +153,7 @@ namespace MensErgerJeNiet
                             currentField = currentPawn.MyField;
                             currentField.MyPawn = null;
                             currentField = myBoard.CurrentTurn.MyStart;
+                            CheckIfCollision(currentField);
                             currentPawn.MyField = currentField;
                             currentField.MyPawn = currentPawn;
                             myBoard.CurrentTurn.MyStart.MyPawn = currentPawn;
@@ -166,12 +169,18 @@ namespace MensErgerJeNiet
                     else
                     {
                         WaitForNumberInput = false;
-                        currentPawn = myBoard.CurrentTurn.GetPawnByNumber(key); 
+                        currentPawn = myBoard.CurrentTurn.GetPawnByNumber(key);
                         currentField = currentPawn.MyField;
                         Move(currentPawn, eyes, currentField);
-                        myBoard.CurrentTurn = myBoard.CurrentTurn.Next;
-                        SpaceToRethrow = false;
-                        WaitForSpaceInput = true;
+                        if (eyes == 6)
+                        {
+                            SpaceToRethrow = true;
+                        }
+                        else
+                        {
+                            myBoard.CurrentTurn = myBoard.CurrentTurn.Next;
+                            WaitForSpaceInput = true;
+                        }
                     }
                 }
             }
@@ -183,6 +192,18 @@ namespace MensErgerJeNiet
             for (int i = 0; i < eyes; i++)
             {
                 currentField = currentField.Next;
+                if ((currentField.GetType() == typeof(EndField) && currentField.NextHome.MyColor == currentPawn.MyColor) || (currentField.GetType() == typeof(HomeField)))
+                {
+                    if (currentField.NextHome == null)
+                    {
+                        currentField = currentField.Previous;
+                    }
+                    currentField = currentField.NextHome;
+                }
+                else
+                {
+                    currentField = currentField.Next;
+                }
             }
             CheckIfCollision(currentField);
             currentPawn.MyField = currentField;
@@ -196,14 +217,16 @@ namespace MensErgerJeNiet
             {
                 Player currentPlayer = myBoard.CurrentTurn;
                 Pawn collisionPawn = currentField.MyPawn;
+                BaseField newField = null;
 
                 for (int i = 0; i < myBoard.AmountOfPlayers; i++)
                 {
                     if (currentField.MyPawn.MyColor == currentPlayer.MyColor)
                     {
-                        currentField.MyPawn.MyField = currentPlayer.GetBaseByNumber(currentField.MyPawn.MyNumber);
+                        newField = currentPlayer.GetBaseByNumber(currentField.MyPawn.MyNumber);
+                        currentField.MyPawn.MyField = newField;
                         currentField.MyPawn = null;
-                        currentField = currentPlayer.GetFreeBase();
+                        currentField = newField;
                         currentField.MyPawn = collisionPawn;
                         collisionPawn.MyField = currentField;
                         break;
