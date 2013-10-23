@@ -219,7 +219,7 @@ namespace MensErgerJeNiet
                 Image img = new Image();
                 switch (current.NextHome.MyColor)
                 {
-                    case Color.Yellow:
+                    case Color.Green:
                         switch(index)
                         {
                             case 0: startPoint.Y += 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = aGreen; } break;
@@ -231,7 +231,7 @@ namespace MensErgerJeNiet
                         img.SetValue(Grid.RowProperty, (int)startPoint.Y);
                         FieldsGrid.Children.Add(img);
                         break;
-                    case Color.Green:
+                    case Color.Red:
                         switch(index)
                         {
                             case 0: startPoint.X -= 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = aRed; } break;
@@ -243,7 +243,7 @@ namespace MensErgerJeNiet
                         img.SetValue(Grid.RowProperty, (int)startPoint.Y);
                         FieldsGrid.Children.Add(img);
                         break;
-                    case Color.Red:
+                    case Color.Blue:
                         switch(index)
                         {
                             case 0: startPoint.Y -= 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = aBlue; } break;
@@ -255,7 +255,7 @@ namespace MensErgerJeNiet
                         img.SetValue(Grid.RowProperty, (int)startPoint.Y);
                         FieldsGrid.Children.Add(img);
                         break;
-                    case Color.Blue:
+                    case Color.Yellow:
                         switch(index)
                         {
                             case 0: startPoint.X += 1; if (current.MyPawn != null) { img.Source = SetPawnImage(current.MyPawn); } else { img.Source = aYellow; } break;
