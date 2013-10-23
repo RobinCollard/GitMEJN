@@ -8,8 +8,6 @@ namespace MensErgerJeNiet
 {
     public class HomeField : Field
     {
-        public Color MyColor { get; set; }
-
         public HomeField(Color color)
         {
             this.MyColor = color;

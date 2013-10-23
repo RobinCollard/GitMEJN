@@ -204,17 +204,19 @@ namespace MensErgerJeNiet
                 {
                     if (currentField.NextHome.IsLocked && setToPrevious == false)
                     {
-                        while (currentField.NextHome.IsLocked)
-                        {
-                            if (currentField.NextHome != null)
+                        if (currentField.NextHome != null)
+                        { 
+                            while (currentField.NextHome.IsLocked)
                             {
+                        
                                 currentField = currentField.NextHome;
                             }
-                            else
-                            {
-                                setToPrevious = true;
-                                break;
-                            }
+                        }
+                        else
+                        {
+                            setToPrevious = true;
+                            break;
+                        
                         }
                     }
                     else

@@ -7,7 +7,6 @@ namespace MensErgerJeNiet
 {
     public class StartField : Field
     {
-        public Color MyColor { get; set; }
 
         public StartField(Color color)
         {

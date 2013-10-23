@@ -88,28 +88,28 @@ namespace MensErgerJeNiet
                     case 1: if(indextotal%10==0) {startPoint.X = 0; startPoint.Y = 4; direction.X = 1; direction.Y = -1;}
                         if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); }
                         else if (current.GetType() == typeof(Field)) { currentImg.Source = srcField; }
-                        else if (current.GetType() == typeof(EndField)) { DrawHomeFields(startPoint, current); currentImg.Source = srcField; }
+                        else if (current.GetType() == typeof(EndField)) { DrawHomeFields(startPoint, current.NextHome); currentImg.Source = srcField; }
                         else if (current.GetType() == typeof(StartField)) { currentImg.Source = startYellow; }
                             DrawPlayField(direction, startPoint, currentImg, indextotal,index);
                         break;
                     case 2: if(indextotal%10==0) {startPoint.X = 6; startPoint.Y = 0; direction.X = 1; direction.Y = 1;}
                         if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); }
                         else if (current.GetType() == typeof(Field)) { currentImg.Source = srcField; }
-                        else if (current.GetType() == typeof(EndField)) { DrawHomeFields(startPoint, current); currentImg.Source = srcField; }
+                        else if (current.GetType() == typeof(EndField)) { DrawHomeFields(startPoint, current.NextHome); currentImg.Source = srcField; }
                         else if (current.GetType() == typeof(StartField)) { currentImg.Source = startGreen; }
                             DrawPlayField(direction, startPoint, currentImg, indextotal,index);
                         break;
                     case 3:  if(indextotal%10==0) {startPoint.X = 10; startPoint.Y = 6; direction.X = -1; direction.Y = 1;}
                         if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); }
                         else if (current.GetType() == typeof(Field)) { currentImg.Source = srcField; }
-                        else if (current.GetType() == typeof(EndField)) { DrawHomeFields(startPoint, current); currentImg.Source = srcField; }
+                        else if (current.GetType() == typeof(EndField)) { DrawHomeFields(startPoint, current.NextHome); currentImg.Source = srcField; }
                         else if (current.GetType() == typeof(StartField)) { currentImg.Source = startRed; }
                             DrawPlayField(direction, startPoint, currentImg, indextotal,index);
                         break;
                     case 4: if (indextotal % 10 == 0) { startPoint.X = 4; startPoint.Y = 10; direction.X = -1; direction.Y = -1; }
                         if (current.MyPawn != null) { currentImg.Source = SetPawnImage(current.MyPawn); }
                         else if (current.GetType() == typeof(Field)) { currentImg.Source = srcField; }
-                        else if (current.GetType() == typeof(EndField)) { DrawHomeFields(startPoint, current); currentImg.Source = srcField; }
+                        else if (current.GetType() == typeof(EndField)) { DrawHomeFields(startPoint, current.NextHome); currentImg.Source = srcField; }
                         else if (current.GetType() == typeof(StartField)) { currentImg.Source = startBlue; }
                             DrawPlayField(direction, startPoint, currentImg,indextotal,index);
                         break;
@@ -214,10 +214,10 @@ namespace MensErgerJeNiet
             Point endFieldPoint = new Point(startPoint.X, startPoint.Y);
             int index = 0;
 
-            while (current.NextHome != null)
+            while (current != null)
             {
                 Image img = new Image();
-                switch (current.NextHome.MyColor)
+                switch (current.MyColor)
                 {
                     case Color.Green:
                         switch(index)

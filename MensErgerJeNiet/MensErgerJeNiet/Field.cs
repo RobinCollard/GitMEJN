@@ -7,6 +7,7 @@
         public HomeField NextHome { get; set; }
         public Pawn MyPawn { get; set; }
         public bool IsLocked { get; set; }
+        public Color MyColor { get; set; }
 
         public Field()
         {
