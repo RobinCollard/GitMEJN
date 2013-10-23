@@ -99,6 +99,7 @@ namespace MensErgerJeNiet
             {
                 if (SpaceToRethrow && !WaitForNumberInput && !WaitForSpaceInput)
                 {
+                    SpaceToRethrow = false;
                     ThrowDice();
                     myBoard.MyView.UpdateDice();
                     if (eyes == 6)
@@ -107,33 +108,53 @@ namespace MensErgerJeNiet
                         {
                             SixAndBaseNotFull(currentPawn);
                         }
+
                     }
                     else
                     {
                         Move(currentPawn, eyes, currentField);
                         myBoard.CurrentTurn = myBoard.CurrentTurn.Next;
-                        SpaceToRethrow = false;
                         WaitForSpaceInput = true;
                     }
                 }
-                if (WaitForSpaceInput && !SpaceToRethrow && !WaitForNumberInput)
+                else if (WaitForSpaceInput && !SpaceToRethrow && !WaitForNumberInput)
                 {
+                    WaitForSpaceInput = false;
                     ThrowDice();
                     myBoard.MyView.UpdateDice();
                     if (eyes == 6)
                     {
-
+                        WaitForNumberInput = true;
                     }
                     else
                     {
-                        WaitForSpaceInput = false;
-                        WaitForNumberInput = true;
+                        if (myBoard.CurrentTurn.FullBase())
+                        {
+                            myBoard.CurrentTurn = myBoard.CurrentTurn.Next;
+                            WaitForSpaceInput = true;
+                        }
+                        else
+                        {
+                            WaitForNumberInput = true;
+                        }
                     }
                 }
-                if (WaitForNumberInput && !WaitForSpaceInput && !SpaceToRethrow)
+                else if (WaitForNumberInput && !WaitForSpaceInput && !SpaceToRethrow)
                 {
+                    WaitForNumberInput = false;
                     if (myBoard.CurrentTurn.GetPawnByNumber(key).MyField.GetType() == typeof(BaseField))
                     {
+                        if (eyes == 6)
+                        {
+                            currentPawn = myBoard.CurrentTurn.GetPawnByNumber(key);
+                            currentField = currentPawn.MyField;
+                            currentField.MyPawn = null;
+                            currentField = myBoard.CurrentTurn.MyStart;
+                            currentPawn.MyField = currentField;
+                            myBoard.CurrentTurn.MyStart.MyPawn = currentPawn;
+                            myBoard.MyView.UpdateView();
+                            SpaceToRethrow = true;
+                        }
                         WaitForNumberInput = true;
                         //output
                     }
@@ -169,12 +190,13 @@ namespace MensErgerJeNiet
             {
 
             }
-            else
+            else if (currentPawn.MyField.GetType() == typeof(StartField))
             {
-                if (currentPawn.MyField.GetType() == typeof(StartField))
-                {
-                    Move(currentPawn, eyes, currentPawn.MyField);
-                }
+                Move(currentPawn, eyes, currentPawn.MyField);
+            }
+            else if(currentPawn.MyField.GetType() == typeof(Field))
+            {
+                Move(currentPawn, eyes, currentPawn.MyField);
             }
         }
     }
