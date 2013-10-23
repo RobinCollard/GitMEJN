@@ -56,7 +56,7 @@ namespace MensErgerJeNiet
         {
             for (int i = 0; i < 4; i++)
             {
-                if (this.MyBases[i].MyPawn == null)
+                if (this.MyBases[i].MyPawn == null && !MyPawns[i].IsLocked)
                 {
                     return false;
                 }

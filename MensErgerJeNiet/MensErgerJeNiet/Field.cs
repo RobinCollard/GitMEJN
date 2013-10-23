@@ -6,6 +6,7 @@
         public Field Previous { get; set; }
         public HomeField NextHome { get; set; }
         public Pawn MyPawn { get; set; }
+        public bool IsLocked { get; set; }
 
         public Field()
         {

@@ -144,43 +144,50 @@ namespace MensErgerJeNiet
                 }
                 else if (WaitForNumberInput && !WaitForSpaceInput && !SpaceToRethrow)
                 {
-                    WaitForNumberInput = false;
-                    if (myBoard.CurrentTurn.GetPawnByNumber(key).MyField.GetType() == typeof(BaseField))
+                    if (!myBoard.CurrentTurn.GetPawnByNumber(key).IsLocked)
                     {
-                        if (eyes == 6)
+                        WaitForNumberInput = false;
+                        if (myBoard.CurrentTurn.GetPawnByNumber(key).MyField.GetType() == typeof(BaseField))
                         {
-                            currentPawn = myBoard.CurrentTurn.GetPawnByNumber(key);
-                            currentField = currentPawn.MyField;
-                            currentField.MyPawn = null;
-                            currentField = myBoard.CurrentTurn.MyStart;
-                            CheckIfCollision(currentField);
-                            currentPawn.MyField = currentField;
-                            currentField.MyPawn = currentPawn;
-                            myBoard.CurrentTurn.MyStart.MyPawn = currentPawn;
-                            myBoard.MyView.UpdateView();
-                            SpaceToRethrow = true;
+                            if (eyes == 6)
+                            {
+                                currentPawn = myBoard.CurrentTurn.GetPawnByNumber(key);
+                                currentField = currentPawn.MyField;
+                                currentField.MyPawn = null;
+                                currentField = myBoard.CurrentTurn.MyStart;
+                                CheckIfCollision(currentField);
+                                currentPawn.MyField = currentField;
+                                currentField.MyPawn = currentPawn;
+                                myBoard.CurrentTurn.MyStart.MyPawn = currentPawn;
+                                myBoard.MyView.UpdateView();
+                                SpaceToRethrow = true;
+                            }
+                            else
+                            {
+                                WaitForNumberInput = true;
+                                //output
+                            }
                         }
                         else
                         {
-                            WaitForNumberInput = true;
-                            //output
+                            WaitForNumberInput = false;
+                            currentPawn = myBoard.CurrentTurn.GetPawnByNumber(key);
+                            currentField = currentPawn.MyField;
+                            Move(currentPawn, eyes, currentField);
+                            if (eyes == 6)
+                            {
+                                SpaceToRethrow = true;
+                            }
+                            else
+                            {
+                                myBoard.CurrentTurn = myBoard.CurrentTurn.Next;
+                                WaitForSpaceInput = true;
+                            }
                         }
                     }
                     else
                     {
-                        WaitForNumberInput = false;
-                        currentPawn = myBoard.CurrentTurn.GetPawnByNumber(key);
-                        currentField = currentPawn.MyField;
-                        Move(currentPawn, eyes, currentField);
-                        if (eyes == 6)
-                        {
-                            SpaceToRethrow = true;
-                        }
-                        else
-                        {
-                            myBoard.CurrentTurn = myBoard.CurrentTurn.Next;
-                            WaitForSpaceInput = true;
-                        }
+                        WaitForNumberInput = true;
                     }
                 }
             }
@@ -188,16 +195,54 @@ namespace MensErgerJeNiet
 
         public void Move(Pawn currentPawn, int eyes, Field currentField)
         {
+            bool setToPrevious = false;
             currentField.MyPawn = null;
             for (int i = 0; i < eyes; i++)
             {
                 if ((currentField.GetType() == typeof(EndField) && currentField.NextHome.MyColor == currentPawn.MyColor) || (currentField.GetType() == typeof(HomeField)))
                 {
-                    if (currentField.NextHome == null)
+                    if (currentField.NextHome != null)
                     {
-                        currentField = currentField.Previous;
+                        if (currentField.NextHome.IsLocked)
+                        {
+                            if (setToPrevious == true)
+                            {
+                                currentField = currentField.Previous;
+                            }
+                            if (currentField.NextHome.NextHome == null || setToPrevious == true)
+                            {
+                                currentField = currentField.Previous;
+                            }
+                            currentField = currentField.NextHome;
+                        }
+                        else
+                        {
+                            if (setToPrevious == true)
+                            {
+                                if (currentField.Previous.IsLocked)
+                                {
+                                    while (currentField.Previous.IsLocked)
+                                    {
+                                        currentField = currentField.Previous.Previous;
+                                    }
+                                }
+                                else
+                                {
+                                    currentField = currentField.Previous;
+                                }
+                            }
+                            if (currentField.NextHome.NextHome == null || setToPrevious == true)
+                            {
+                                setToPrevious = true;
+                                currentField = currentField.Previous;
+                            }
+                            currentField = currentField.NextHome;
+                        }
                     }
-                    currentField = currentField.NextHome;
+                    else
+                    {
+                        currentField = currentField.NextHome;
+                    }
                 }
                 else
                 {
@@ -207,7 +252,13 @@ namespace MensErgerJeNiet
             CheckIfCollision(currentField);
             currentPawn.MyField = currentField;
             currentField.MyPawn = currentPawn;
+            if(currentField.GetType() == typeof(HomeField))
+            {
+                currentField.IsLocked = true;
+                currentPawn.IsLocked = true;
+            }
             myBoard.MyView.UpdateView();
+            setToPrevious = false;
         }
 
         public void CheckIfCollision(Field currentField)
