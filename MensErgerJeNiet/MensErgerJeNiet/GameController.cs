@@ -118,6 +118,10 @@ namespace MensErgerJeNiet
                         WaitForSpaceInput = true;
                     }
                 }
+                if (WaitForSpaceInput)
+                {
+
+                }
             }
         }
 
