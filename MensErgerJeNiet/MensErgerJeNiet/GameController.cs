@@ -155,8 +155,11 @@ namespace MensErgerJeNiet
                             myBoard.MyView.UpdateView();
                             SpaceToRethrow = true;
                         }
-                        WaitForNumberInput = true;
-                        //output
+                        else
+                        {
+                            WaitForNumberInput = true;
+                            //output
+                        }
                     }
                     else
                     {
@@ -179,9 +182,33 @@ namespace MensErgerJeNiet
             {
                 currentField = currentField.Next;
             }
+            CheckIfCollision(currentField);
             currentPawn.MyField = currentField;
             currentField.MyPawn = currentPawn;
             myBoard.MyView.UpdateView();
+        }
+
+        public void CheckIfCollision(Field currentField)
+        {
+            if (currentField.MyPawn != null)
+            {
+                Player currentPlayer = myBoard.CurrentTurn;
+                Pawn collisionPawn = currentField.MyPawn;
+
+                for (int i = 0; i < myBoard.AmountOfPlayers; i++)
+                {
+                    if (currentField.MyPawn.MyColor == currentPlayer.MyColor)
+                    {
+                        currentField.MyPawn.MyField = currentPlayer.GetFreeBase();
+                        currentField.MyPawn = null;
+                        currentField = currentPlayer.GetFreeBase();
+                        currentField.MyPawn = collisionPawn;
+                        break;
+                    }
+                    currentPlayer = currentPlayer.Next;
+                }
+                myBoard.MyView.UpdateView();
+            }
         }
 
         public void SixAndBaseNotFull(Pawn currentPawn)
