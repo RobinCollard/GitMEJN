@@ -87,6 +87,7 @@ namespace MensErgerJeNiet
                     currentField.MyPawn = null;
                     currentField = myBoard.CurrentTurn.MyStart;
                     currentPawn.MyField = currentField;
+                    currentField.MyPawn = currentPawn;
                     myBoard.CurrentTurn.MyStart.MyPawn = currentPawn;
                     myBoard.MyView.UpdateView();
                     SpaceToRethrow = true;
@@ -151,6 +152,7 @@ namespace MensErgerJeNiet
                             currentField.MyPawn = null;
                             currentField = myBoard.CurrentTurn.MyStart;
                             currentPawn.MyField = currentField;
+                            currentField.MyPawn = currentPawn;
                             myBoard.CurrentTurn.MyStart.MyPawn = currentPawn;
                             myBoard.MyView.UpdateView();
                             SpaceToRethrow = true;
@@ -203,6 +205,7 @@ namespace MensErgerJeNiet
                         currentField.MyPawn = null;
                         currentField = currentPlayer.GetFreeBase();
                         currentField.MyPawn = collisionPawn;
+                        collisionPawn.MyField = currentField;
                         break;
                     }
                     currentPlayer = currentPlayer.Next;
