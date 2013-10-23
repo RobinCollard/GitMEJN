@@ -379,6 +379,11 @@ namespace MensErgerJeNiet
             }
         }
 
+        public void ShowWinMessage(Color myColor)
+        {
+            System.Windows.MessageBox.Show("GAME OVER! \n Player " + myColor + " heeft gewonnen!");
+            this.Close();
+        }
         private void LoadPictures()
         {
             aRed = new BitmapImage(new Uri("pack://application:,,,/images/aRed.png"));

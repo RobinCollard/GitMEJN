@@ -15,8 +15,6 @@ namespace MensErgerJeNiet
         public bool WaitForSpaceInput { get; set; }
         public bool WaitForNumberInput { get; set; }
         public bool SpaceToRethrow { get; set; }
-        private GameEvent myEvent;
-        private int prevKey;
         private int amountOfTurns;
         private int highest;
         private bool twoHighest;
@@ -76,13 +74,11 @@ namespace MensErgerJeNiet
         {
             if (amountOfTurns < myBoard.AmountOfPlayers + 1)
             {
-                myEvent = GameEvent.firstTurns;
                 FirstTurns(key);
                 if (amountOfTurns != 0 && amountOfTurns != myBoard.AmountOfPlayers + 1) { myBoard.CurrentTurn = myBoard.CurrentTurn.Next; }
                 if (amountOfTurns == myBoard.AmountOfPlayers + 1)
                 {
                     currentPawn = myBoard.CurrentTurn.GetPawnByNumber(1);
-                    prevKey = 1;
                     currentField = currentPawn.MyField;
                     currentField.MyPawn = null;
                     currentField = myBoard.CurrentTurn.MyStart;
@@ -241,6 +237,7 @@ namespace MensErgerJeNiet
             {
                 currentField.IsLocked = true;
                 currentPawn.IsLocked = true;
+                CheckIfWon(myBoard.CurrentTurn);
             }
             myBoard.MyView.UpdateView();
             setToPrevious = false;
@@ -287,5 +284,21 @@ namespace MensErgerJeNiet
                 Move(currentPawn, eyes, currentPawn.MyField);
             }
         }
+
+         public void CheckIfWon(Player current)
+         {
+             int total = 0;
+             for(int i = 0; i < 4; i++)
+             {
+                 if (current.MyPawns[i].IsLocked)
+                 {
+                     total++;
+                 }
+             }
+             if (total == 4)
+             {
+                 myBoard.MyView.ShowWinMessage(current.MyColor);
+             }
+         }
     }
 }
