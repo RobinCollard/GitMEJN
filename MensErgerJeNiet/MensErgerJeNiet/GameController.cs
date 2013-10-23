@@ -227,9 +227,6 @@ namespace MensErgerJeNiet
                         {
                             currentField = currentField.Previous;
                         }
-                    }
-                    else
-                    {
                         currentField = currentField.Previous;
                     }
                 }
