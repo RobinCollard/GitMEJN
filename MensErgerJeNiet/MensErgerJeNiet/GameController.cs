@@ -32,8 +32,7 @@ namespace MensErgerJeNiet
 
         public void ThrowDice()
         {
-            eyes = rand.Next(6);
-            eyes++;
+            eyes = rand.Next(1, 7);
             myBoard.MyView.Dice.Content = " " + eyes;
         }
 
