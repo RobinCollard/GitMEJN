@@ -241,6 +241,11 @@ namespace MensErgerJeNiet
                     }
                     if (x > 9)
                     {
+                        Color previousColour = CurrentColor;
+                        if (previousColour == Color.Yellow) CurrentColor = Color.Green;
+                        if (previousColour == Color.Green) CurrentColor = Color.Red;
+                        if (previousColour == Color.Red) CurrentColor = Color.Blue;
+                        if (previousColour == Color.Blue) CurrentColor = Color.Yellow;
                         currentField = new HomeField(CurrentColor);
                         currentField.Previous = previousField;
                         previousField.NextHome = (HomeField)currentField;
@@ -249,6 +254,7 @@ namespace MensErgerJeNiet
                             currentPlayer = GetPlayerByColor(CurrentColor);
                             currentPlayer.AddHome((HomeField)currentField);
                         }
+                        CurrentColor = previousColour;
                     }
                     if (lines[y][x] != 'o')
                     {
