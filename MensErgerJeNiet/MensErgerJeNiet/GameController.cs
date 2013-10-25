@@ -261,7 +261,6 @@ namespace MensErgerJeNiet
                             currentField.MyPawn.MyField = newField;
                             currentField.MyPawn = null;
                             currentField = newField;
-                            if(collisionPawn != null)
                             currentField.MyPawn = collisionPawn;
                             collisionPawn.MyField = currentField;
                             break;
