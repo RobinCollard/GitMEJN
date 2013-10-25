@@ -245,29 +245,32 @@ namespace MensErgerJeNiet
 
         public void CheckIfCollision(Field currentField)
         {
-            if (currentField.MyPawn != null)
+            if (currentField != null)
             {
-                Player currentPlayer = myBoard.CurrentTurn;
-                Pawn collisionPawn = currentField.MyPawn;
-                BaseField newField = null;
-
-                for (int i = 0; i < myBoard.AmountOfPlayers; i++)
+                if (currentField.MyPawn != null)
                 {
-                    if (currentField.MyPawn.MyColor == currentPlayer.MyColor)
+                    Player currentPlayer = myBoard.CurrentTurn;
+                    Pawn collisionPawn = currentField.MyPawn;
+                    BaseField newField = null;
+
+                    for (int i = 0; i < myBoard.AmountOfPlayers; i++)
                     {
-                        newField = currentPlayer.GetBaseByNumber(currentField.MyPawn.MyNumber);
-                        currentField.MyPawn.MyField = newField;
-                        currentField.MyPawn = null;
-                        currentField = newField;
-                        currentField.MyPawn = collisionPawn;
-                        collisionPawn.MyField = currentField;
-                        break;
+                        if (currentField.MyPawn.MyColor == currentPlayer.MyColor)
+                        {
+                            newField = currentPlayer.GetBaseByNumber(currentField.MyPawn.MyNumber);
+                            currentField.MyPawn.MyField = newField;
+                            currentField.MyPawn = null;
+                            currentField = newField;
+                            currentField.MyPawn = collisionPawn;
+                            collisionPawn.MyField = currentField;
+                            break;
+                        }
+                        currentPlayer = currentPlayer.Next;
                     }
-                    currentPlayer = currentPlayer.Next;
+                    myBoard.MyView.UpdateView();
                 }
-                myBoard.MyView.UpdateView();
             }
-                 }
+        }
 
         public void SixAndBaseNotFull(Pawn currentPawn)
         {
