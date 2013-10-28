@@ -161,6 +161,7 @@ namespace MensErgerJeNiet
                                 currentPlayer = GetPlayerByColor(Color.Yellow);
                                 currentPlayer.AddBase((BaseField) currentField);
                             }
+                            numberY++;
                             break;
                         case '6': currentField = new BaseField(Color.Green,numberG);
                             if(GetPlayerByColor(Color.Green) != null)
@@ -168,6 +169,7 @@ namespace MensErgerJeNiet
                                 currentPlayer = GetPlayerByColor(Color.Green);
                                 currentPlayer.AddBase((BaseField) currentField);
                             }
+                            numberG++;
                             break;
                         case '7': currentField = new BaseField(Color.Red,numberR);
                             if(GetPlayerByColor(Color.Red) != null)
@@ -175,6 +177,7 @@ namespace MensErgerJeNiet
                                 currentPlayer = GetPlayerByColor(Color.Red);
                                 currentPlayer.AddBase((BaseField) currentField);
                             }
+                            numberR++;
                             break;
                         case '8': currentField = new BaseField(Color.Blue,numberB);
                             if(GetPlayerByColor(Color.Blue) != null)
@@ -182,6 +185,7 @@ namespace MensErgerJeNiet
                                 currentPlayer = GetPlayerByColor(Color.Blue);
                                 currentPlayer.AddBase((BaseField) currentField);
                             }
+                            numberB++;
                             break;
                         default:
                             break;
@@ -268,10 +272,13 @@ namespace MensErgerJeNiet
                             default: break;
                         }
                         int amount = 0;
+                        int baseNr = 0;
                         while (current.MyColor == CurrentColor)
                         {
                             if (current.MyPawn != null)
+                            {
                                 amount++;
+                            }
                             current = (BaseField)current.Next;
                         }
                         current = OriginBaseField;
@@ -279,11 +286,12 @@ namespace MensErgerJeNiet
                         {
                             if(current.MyColor == CurrentColor && current.MyPawn == null)
                             {
+                                baseNr = current.MyNumber;
                                 break;
                             }
                             current = (BaseField) current.Next;
                         }
-                        currentField.MyPawn = new Pawn(current, CurrentColor, (amount + 1));
+                        currentField.MyPawn = new Pawn(current, CurrentColor, (amount + baseNr));
                         if (GetPlayerByColor(CurrentColor) != null)
                         {
                             currentPlayer = GetPlayerByColor(CurrentColor);
