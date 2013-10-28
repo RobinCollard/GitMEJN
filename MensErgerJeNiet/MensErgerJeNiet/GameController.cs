@@ -192,55 +192,92 @@ namespace MensErgerJeNiet
 
         public void Move(Pawn currentPawn, int eyes, Field currentField)
         {
-            bool setToPrevious = false;
-            currentField.MyPawn = null;
-            for (int i = 0; i < eyes; i++)
+            if (currentField != null)
             {
-                if ((currentField.GetType() == typeof(EndField) && currentField.NextHome.MyColor == currentPawn.MyColor) || (currentField.GetType() == typeof(HomeField)))
+                bool setToPrevious = false;
+                currentField.MyPawn = null;
+                for (int i = 0; i < eyes; i++)
                 {
-                    if (currentField.NextHome != null && setToPrevious == false)
+                    if ((currentField.GetType() == typeof(EndField) && currentField.NextHome.MyColor == currentPawn.MyColor) || (currentField.GetType() == typeof(HomeField)))
                     {
-                        if (currentField.NextHome.IsLocked)
+                        if (i == eyes - 1)
                         {
-                            while (currentField.NextHome.IsLocked)
+                            if (currentField.NextHome != null)
                             {
                                 currentField = currentField.NextHome;
+                            }
+                            else
+                            {
+                                setToPrevious = true;
+                                currentField = currentField.Previous;
+                            }
+                            if (currentField.IsLocked)
+                            {
+                                while (currentField.IsLocked)
+                                {
+                                    if (currentField.NextHome != null)
+                                    {
+                                        currentField = currentField.NextHome;
+                                    }
+                                    else
+                                    {
+                                        setToPrevious = true;
+                                        currentField = currentField.Previous;
+                                    }
+                                }
+                                if (setToPrevious)
+                                {
+                                    while (currentField.IsLocked)
+                                    {
+                                        currentField = currentField.Previous;
+                                    }
+                                }
                             }
                         }
                         else
                         {
-                            currentField = currentField.NextHome;
+                            if (setToPrevious)
+                            {
+                                currentField = currentField.Previous;
+                            }
+                            else
+                            {
+                                if (currentField.NextHome != null)
+                                {
+                                    currentField = currentField.NextHome;
+                                }
+                                else
+                                {
+                                    setToPrevious = true;
+                                    currentField = currentField.Previous;
+                                }
+                            }
                         }
                     }
-                    else if (currentField.NextHome == null)
+                    else
                     {
-                        setToPrevious = true;
-                    }
-                    if (setToPrevious)
-                    {
-                        while (currentField.Previous.IsLocked)
+                        if (setToPrevious)
                         {
                             currentField = currentField.Previous;
                         }
-                        currentField = currentField.Previous;
+                        else
+                        {
+                            currentField = currentField.Next;
+                        }
                     }
                 }
-                else
+                CheckIfCollision(currentField);
+                currentPawn.MyField = currentField;
+                currentField.MyPawn = currentPawn;
+                if (currentField.GetType() == typeof(HomeField))
                 {
-                    currentField = currentField.Next;
+                    currentField.IsLocked = true;
+                    currentPawn.IsLocked = true;
+                    CheckIfWon(myBoard.CurrentTurn);
                 }
+                myBoard.MyView.UpdateView();
+                setToPrevious = false;
             }
-            CheckIfCollision(currentField);
-            currentPawn.MyField = currentField;
-            currentField.MyPawn = currentPawn;
-            if(currentField.GetType() == typeof(HomeField))
-            {
-                currentField.IsLocked = true;
-                currentPawn.IsLocked = true;
-                CheckIfWon(myBoard.CurrentTurn);
-            }
-            myBoard.MyView.UpdateView();
-            setToPrevious = false;
         }
 
         public void CheckIfCollision(Field currentField)
@@ -300,6 +337,7 @@ namespace MensErgerJeNiet
              }
              if (total == 4)
              {
+                 myBoard.MyView.UpdateView();
                  myBoard.MyView.ShowWinMessage(current.MyColor);
              }
          }
