@@ -91,5 +91,18 @@ namespace MensErgerJeNiet
             }
             return pawn;
         }
+
+        public int GetNonUsedNumber()
+        {
+            int nonUsed = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                if (MyPawns[i] == null)
+                {
+                    nonUsed = i + 1;
+                }
+            }
+            return nonUsed;
+        }
     }
 }

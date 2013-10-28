@@ -282,19 +282,25 @@ namespace MensErgerJeNiet
                             current = (BaseField)current.Next;
                         }
                         current = OriginBaseField;
-                        while(current.Next != null)
+                        while (current.Next != null)
                         {
-                            if(current.MyColor == CurrentColor && current.MyPawn == null)
+                            if (current.MyColor == CurrentColor && current.MyPawn == null)
                             {
                                 baseNr = current.MyNumber;
                                 break;
                             }
-                            current = (BaseField) current.Next;
+                            current = (BaseField)current.Next;
                         }
-                        currentField.MyPawn = new Pawn(current, CurrentColor, (amount + baseNr));
                         if (GetPlayerByColor(CurrentColor) != null)
                         {
                             currentPlayer = GetPlayerByColor(CurrentColor);
+                            currentField.MyPawn = new Pawn(current, CurrentColor, currentPlayer.GetNonUsedNumber());
+                            currentField.MyPawn.MyField = currentField;
+                            if(currentField.GetType() == typeof(HomeField))
+                            {
+                                currentField.IsLocked = true;
+                                currentField.MyPawn.IsLocked = true;
+                            }
                             currentPlayer.AddPawn(currentField.MyPawn);
                         }
                     }
