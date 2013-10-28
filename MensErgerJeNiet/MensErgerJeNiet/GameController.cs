@@ -79,17 +79,19 @@ namespace MensErgerJeNiet
                 if (amountOfTurns == myBoard.AmountOfPlayers + 1)
                 {
                     currentPawn = myBoard.CurrentTurn.GetPawnByNumber(1);
-                    currentField = currentPawn.MyField;
-                    currentField.MyPawn = null;
-                    currentField = myBoard.CurrentTurn.MyStart;
-                    currentPawn.MyField = currentField;
-                    currentField.MyPawn = currentPawn;
-                    myBoard.CurrentTurn.MyStart.MyPawn = currentPawn;
-                    myBoard.MyView.UpdateView();
+                    if (currentPawn.MyField.GetType() == typeof(BaseField))
+                    {
+                        currentField = currentPawn.MyField;
+                        currentField.MyPawn = null;
+                        currentField = myBoard.CurrentTurn.MyStart;
+                        currentPawn.MyField = currentField;
+                        currentField.MyPawn = currentPawn;
+                        myBoard.CurrentTurn.MyStart.MyPawn = currentPawn;
+                        myBoard.MyView.UpdateView();
+                    }
                     SpaceToRethrow = true;
                     WaitForSpaceInput = false;
                     amountOfTurns += 2;
-
                 }
             }
             else
@@ -216,13 +218,6 @@ namespace MensErgerJeNiet
                                 while (currentField.IsLocked)
                                 {
                                     currentField = currentField.Previous;
-                                }
-                                if (setToPrevious)
-                                {
-                                    while (currentField.IsLocked)
-                                    {
-                                        currentField = currentField.Previous;
-                                    }
                                 }
                             }
                         }
