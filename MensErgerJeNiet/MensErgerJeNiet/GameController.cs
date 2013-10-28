@@ -215,13 +215,16 @@ namespace MensErgerJeNiet
                             {
                                 while (currentField.IsLocked)
                                 {
-                                    if (currentField.NextHome != null)
+                                    if (currentField.NextHome != null && !setToPrevious)
                                     {
                                         currentField = currentField.NextHome;
                                     }
                                     else
                                     {
                                         setToPrevious = true;
+                                    }
+                                    if (setToPrevious)
+                                    {
                                         currentField = currentField.Previous;
                                     }
                                 }
