@@ -11,8 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MensErgerJeNiet.Controller;
+using MensErgerJeNiet.Model;
 
-namespace MensErgerJeNiet
+namespace MensErgerJeNiet.View
 {
     /// <summary>
     /// Interaction logic for BoardView.xaml

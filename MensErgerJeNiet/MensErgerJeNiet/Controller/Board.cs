@@ -1,7 +1,10 @@
 ﻿using System.ComponentModel;
 using System.IO;
 using System.Text.RegularExpressions;
-namespace MensErgerJeNiet
+using MensErgerJeNiet.View;
+using MensErgerJeNiet.Model;
+
+namespace MensErgerJeNiet.Controller
 {
     public class Board
     {

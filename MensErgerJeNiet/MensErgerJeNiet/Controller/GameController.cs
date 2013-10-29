@@ -5,8 +5,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MensErgerJeNiet.Model;
+using MensErgerJeNiet.View;
 
-namespace MensErgerJeNiet
+namespace MensErgerJeNiet.Controller
 {
     public class GameController
     {
