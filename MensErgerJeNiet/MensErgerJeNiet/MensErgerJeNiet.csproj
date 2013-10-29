@@ -59,7 +59,6 @@
       <DependentUpon>BoardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Color.cs" />
-    <Compile Include="Model\Dice.cs" />
     <Compile Include="Model\EndField.cs" />
     <Compile Include="Controller\GameController.cs" />
     <Compile Include="Model\HomeField.cs" />
