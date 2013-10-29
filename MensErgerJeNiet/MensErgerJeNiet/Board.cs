@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.ComponentModel;
+using System.IO;
 using System.Text.RegularExpressions;
 namespace MensErgerJeNiet
 {
@@ -80,7 +81,7 @@ namespace MensErgerJeNiet
                     }
                     
                 }
-                CurrentTurn = OriginPlayer;
+                CurrentTurn = OriginPlayer;                
         }
 
         public void buildLevel(string pathString)
@@ -324,7 +325,6 @@ namespace MensErgerJeNiet
                 max++;
             }
             return null;
-            
         }
     }
 }

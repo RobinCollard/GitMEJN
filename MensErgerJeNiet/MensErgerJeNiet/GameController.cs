@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -21,11 +22,22 @@ namespace MensErgerJeNiet
         private Player highestPlayer;
         private Pawn currentPawn;
         private Field currentField;
+        private Color currentTurnColor;
 
         public GameController(Board board)
         {
             this.myBoard = board;
             WaitForSpaceInput = true;
+            myBoard.MyView.DataContext = currentTurnColor;
+        }
+
+        public Color CurrentTurnColor
+        {
+            get { return currentTurnColor; }
+            set
+            {
+                currentTurnColor = value;
+            }
         }
 
         public void ThrowDice()
@@ -67,7 +79,9 @@ namespace MensErgerJeNiet
                 highestPlayer = null;
                 amountOfTurns = 0;
                 twoHighest = false;
-            }           
+            }
+            currentTurnColor = myBoard.CurrentTurn.MyColor;
+            myBoard.MyView.TurnLabel.Content = currentTurnColor;
         }
 
         public void PlayTurn(int key)
@@ -75,7 +89,7 @@ namespace MensErgerJeNiet
             if (amountOfTurns < myBoard.AmountOfPlayers + 1)
             {
                 FirstTurns(key);
-                if (amountOfTurns != 0 && amountOfTurns != myBoard.AmountOfPlayers + 1) { myBoard.CurrentTurn = myBoard.CurrentTurn.Next; }
+                if (amountOfTurns != 0 && amountOfTurns != myBoard.AmountOfPlayers + 1) { myBoard.CurrentTurn = myBoard.CurrentTurn.Next; currentTurnColor = myBoard.CurrentTurn.MyColor; myBoard.MyView.TurnLabel.Content = currentTurnColor; }
                 if (amountOfTurns == myBoard.AmountOfPlayers + 1)
                 {
                     currentPawn = myBoard.CurrentTurn.GetPawnByNumber(1);
@@ -110,6 +124,8 @@ namespace MensErgerJeNiet
                         if (myBoard.CurrentTurn.FullBase())
                         {
                             myBoard.CurrentTurn = myBoard.CurrentTurn.Next;
+                            currentTurnColor = myBoard.CurrentTurn.MyColor;
+                            myBoard.MyView.TurnLabel.Content = currentTurnColor;
                             WaitForSpaceInput = true;
                         }
                         else
@@ -132,6 +148,8 @@ namespace MensErgerJeNiet
                         if (myBoard.CurrentTurn.FullBase())
                         {
                             myBoard.CurrentTurn = myBoard.CurrentTurn.Next;
+                            currentTurnColor = myBoard.CurrentTurn.MyColor; 
+                            myBoard.MyView.TurnLabel.Content = currentTurnColor;
                             WaitForSpaceInput = true;
                         }
                         else
@@ -180,6 +198,8 @@ namespace MensErgerJeNiet
                             else
                             {
                                 myBoard.CurrentTurn = myBoard.CurrentTurn.Next;
+                                currentTurnColor = myBoard.CurrentTurn.MyColor;
+                                myBoard.MyView.TurnLabel.Content = currentTurnColor;
                                 WaitForSpaceInput = true;
                             }
                         }
