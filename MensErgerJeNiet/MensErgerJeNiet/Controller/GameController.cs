@@ -228,7 +228,14 @@ namespace MensErgerJeNiet.Controller
                         {
                             if (currentField.NextHome != null)
                             {
-                                currentField = currentField.NextHome;
+                                if (setToPrevious)
+                                {
+                                    currentField = currentField.Previous;
+                                }
+                                else
+                                {
+                                    currentField = currentField.NextHome;
+                                }
                             }
                             else
                             {
