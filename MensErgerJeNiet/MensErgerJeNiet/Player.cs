@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +9,12 @@ namespace MensErgerJeNiet
 {
     public class Player
     {
-        public Color MyColor { get; set; }
+        public Color MyColor;
         public Player Next { get; set; }
-        public Pawn[] MyPawns{ get; set; }
+        public Pawn[] MyPawns { get; set; }
         public BaseField[] MyBases { get; set; }
         public HomeField[] MyHomes { get; set; }
-        public StartField MyStart { get; set;  }
+        public StartField MyStart { get; set; }
 
         public Player(Color myColor)
         {
