@@ -53,19 +53,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BaseField.cs" />
-    <Compile Include="Board.cs" />
-    <Compile Include="BoardView.xaml.cs">
+    <Compile Include="Model\BaseField.cs" />
+    <Compile Include="Controller\Board.cs" />
+    <Compile Include="View\BoardView.xaml.cs">
       <DependentUpon>BoardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Color.cs" />
-    <Compile Include="Dice.cs" />
-    <Compile Include="EndField.cs" />
-    <Compile Include="GameController.cs" />
-    <Compile Include="HomeField.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="StartField.cs" />
-    <Page Include="BoardView.xaml">
+    <Compile Include="Model\Dice.cs" />
+    <Compile Include="Model\EndField.cs" />
+    <Compile Include="Controller\GameController.cs" />
+    <Compile Include="Model\HomeField.cs" />
+    <Compile Include="Model\Player.cs" />
+    <Compile Include="Model\StartField.cs" />
+    <Page Include="View\BoardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -77,14 +77,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Field.cs" />
+    <Compile Include="Model\Field.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pawn.cs" />
+    <Compile Include="Model\Pawn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MensErgerJeNiet
+namespace MensErgerJeNiet.Model
 {
-    public class HomeField : Field
+    public class EndField : Field
     {
-        public HomeField(Color color)
+        public EndField()
         {
-            this.MyColor = color;
+
         }
     }
 }

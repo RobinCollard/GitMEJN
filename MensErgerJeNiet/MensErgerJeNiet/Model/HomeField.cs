@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace MensErgerJeNiet
+namespace MensErgerJeNiet.Model
 {
-    public class StartField : Field
+    public class HomeField : Field
     {
-
-        public StartField(Color color)
+        public HomeField(Color color)
         {
             this.MyColor = color;
         }
