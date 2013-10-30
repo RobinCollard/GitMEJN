@@ -5,10 +5,10 @@
       <class Id="6dd78d0a-de11-478e-ac4e-7310195052bb" name="Field" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="8b0cc810-9a10-469f-a9c9-b6457a146586" />
         <ownedAttributesInternal>
-          <property Id="324628ef-8fe2-40cd-81c7-a83141a71d57" name="isOccupied" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+          <property Id="324628ef-8fe2-40cd-81c7-a83141a71d57" name="IsLocked" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="f104dcaa-6445-4bba-a45f-577ef43ef823" />
             <type_NamedElement>
-              <referencedTypeMoniker Id="f05c412c-1c05-4763-b0f1-14d3372d496f" LastKnownName="Boolean" />
+              <referencedTypeMoniker Id="5807e7a3-0000-43bd-b33d-018aa6759787" LastKnownName="bool" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -61,14 +61,6 @@
             <elementDefinition Id="267db891-b550-42a2-b88f-c37e1ec00c2c" />
           </association>
         </targetEnds>
-        <ownedAttributesInternal>
-          <property Id="19a41e7a-9da0-4ef4-a459-50ec6dd27788" name="color" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="37bf08e8-66e8-490e-96b4-d624fa250d36" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="22552d48-4efc-486d-9f30-be552cf80133" LastKnownName="Color" />
-            </type_NamedElement>
-          </property>
-        </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
@@ -118,14 +110,6 @@
             <elementDefinition Id="cd12e299-cd7a-429d-9ea7-64be4ada1351" />
           </association>
         </targetEnds>
-        <ownedAttributesInternal>
-          <property Id="7ba2780d-27e0-4626-ad27-93c1d5041df4" name="color" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="27cf262f-8a7c-4fb1-8c66-bbd789cb6011" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="22552d48-4efc-486d-9f30-be552cf80133" LastKnownName="Color" />
-            </type_NamedElement>
-          </property>
-        </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
@@ -168,22 +152,6 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="ce6cee8f-2858-4641-ae47-9241b12da013" />
-          </association>
-          <association Id="be7c530d-c4cb-4d57-bf58-c53f6d5a6d55" isDerived="false" sourceEndRoleName="Board" targetEndRoleName="Dice" isLeaf="false" isAbstract="false">
-            <classMoniker Id="b15a98bd-6d99-4ccd-8742-4d3ae7a01233" LastKnownName="Dice" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="c77c6990-921c-4b01-ac8c-2fb65fdf441e" name="Board" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="d828c5ef-fe12-45a6-8fc0-943eeb5c6846" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="79b51275-892a-4e54-bb19-7471bf212193" name="Dice" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="476d7e3b-c1d7-4859-9ea4-8f8a012042a7" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="e4e1d3d6-c571-4f19-bb09-d9c2d12e4093" />
           </association>
           <association Id="b7e6f0b6-44ce-4475-a20b-983244e3ac32" isDerived="false" sourceEndRoleName="Board" targetEndRoleName="Pawn" isLeaf="false" isAbstract="false">
             <classMoniker Id="5a907dd8-6475-413f-a265-ba2e2b4f2110" LastKnownName="Pawn" />
@@ -330,17 +298,10 @@
               <referencedTypeMoniker Id="22552d48-4efc-486d-9f30-be552cf80133" LastKnownName="Color" />
             </type_NamedElement>
           </property>
-        </ownedAttributesInternal>
-      </class>
-    </logicalClassDesignerModelHasTypes>
-    <logicalClassDesignerModelHasTypes>
-      <class Id="b15a98bd-6d99-4ccd-8742-4d3ae7a01233" name="Dice" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="10581bf5-704a-4357-a810-87844807ab10" />
-        <ownedAttributesInternal>
-          <property Id="7ec1c4e4-97e4-461a-aa25-c1ab775ec066" name="eyes" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="f762e778-c736-4067-a86d-f3c6060a297d" />
+          <property Id="44f44db5-d455-432d-821a-e97485a1c6e1" name="IsLocked" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="84c45f53-3136-4028-b035-54b6c65b12c1" />
             <type_NamedElement>
-              <referencedTypeMoniker Id="b40b0832-d0b2-4454-883a-712514d4a12d" LastKnownName="Integer" />
+              <referencedTypeMoniker Id="77b72165-2c4c-406d-bc2a-8e6ce20b5dc5" LastKnownName="bool" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -393,14 +354,6 @@
             <elementDefinition Id="e0d57e49-e1ab-4c26-9e31-ada23934cc0d" />
           </association>
         </targetEnds>
-        <ownedAttributesInternal>
-          <property Id="fcd8255e-5e06-47a2-a716-692319abac3c" name="color" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="79744f5c-727c-4438-8fd6-e0ae3a05ae9d" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="22552d48-4efc-486d-9f30-be552cf80133" LastKnownName="Color" />
-            </type_NamedElement>
-          </property>
-        </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
@@ -430,16 +383,6 @@
     <packageHasNamedElement>
       <referencedType Id="22552d48-4efc-486d-9f30-be552cf80133" name="Color" isAbstract="false" isLeaf="false" cachedFullName="MensErgerJeNietUML::Color">
         <elementDefinition Id="424581da-5638-4221-b6da-bd776ba6f11f" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="f05c412c-1c05-4763-b0f1-14d3372d496f" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
-        <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="b40b0832-d0b2-4454-883a-712514d4a12d" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
-        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
@@ -610,6 +553,16 @@
         </targetEnds>
       </class>
     </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="77b72165-2c4c-406d-bc2a-8e6ce20b5dc5" name="bool" isAbstract="false" isLeaf="false" cachedFullName="bool">
+        <elementDefinition Id="9df9f401-c5fe-4481-aa11-93620ec6708f" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="5807e7a3-0000-43bd-b33d-018aa6759787" name="bool" isAbstract="false" isLeaf="false" cachedFullName="bool">
+        <elementDefinition Id="9df9f401-c5fe-4481-aa11-93620ec6708f" />
+      </referencedType>
+    </packageHasNamedElement>
   </packagedElements>
   <package Id="2deb2d27-c188-4a6e-865b-318fa954bf19" name="MensErgerJeNietUML">
     <elementDefinition Id="12138fad-4e67-4d6d-9812-32f55f3593aa" />

@@ -28,8 +28,7 @@
         <ownedAttributesInternal>
           <property
             Id="f104dcaa-6445-4bba-a45f-577ef43ef823"
-            name="isOccupied"
-            visibility="Private"
+            name="IsLocked"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -39,9 +38,9 @@
             aggregation="None"
             isComposite="false">
             <type_NamedElement>
-              <primitiveTypeMoniker
-                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
-                LastKnownName="Boolean"
+              <undefinedTypeMoniker
+                Id="9df9f401-c5fe-4481-aa11-93620ec6708f"
+                LastKnownName="bool"
                 LastKnownLocation="MensErgerJeNietUML.uml" />
             </type_NamedElement>
           </property>
@@ -127,27 +126,6 @@
             </relationshipOwnedElementsInternal>
           </association>
         </targetEnds>
-        <ownedAttributesInternal>
-          <property
-            Id="37bf08e8-66e8-490e-96b4-d624fa250d36"
-            name="color"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <enumerationMoniker
-                Id="424581da-5638-4221-b6da-bd776ba6f11f"
-                LastKnownName="Color"
-                LastKnownLocation="MensErgerJeNietUML.uml" />
-            </type_NamedElement>
-          </property>
-        </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -229,27 +207,6 @@
             </relationshipOwnedElementsInternal>
           </association>
         </targetEnds>
-        <ownedAttributesInternal>
-          <property
-            Id="27cf262f-8a7c-4fb1-8c66-bbd789cb6011"
-            name="color"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <enumerationMoniker
-                Id="424581da-5638-4221-b6da-bd776ba6f11f"
-                LastKnownName="Color"
-                LastKnownLocation="MensErgerJeNietUML.uml" />
-            </type_NamedElement>
-          </property>
-        </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -718,6 +675,24 @@
                 LastKnownLocation="MensErgerJeNietUML.uml" />
             </type_NamedElement>
           </property>
+          <property
+            Id="84c45f53-3136-4028-b035-54b6c65b12c1"
+            name="IsLocked"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="9df9f401-c5fe-4481-aa11-93620ec6708f"
+                LastKnownName="bool"
+                LastKnownLocation="MensErgerJeNietUML.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
@@ -830,27 +805,6 @@
             </relationshipOwnedElementsInternal>
           </association>
         </targetEnds>
-        <ownedAttributesInternal>
-          <property
-            Id="79744f5c-727c-4438-8fd6-e0ae3a05ae9d"
-            name="color"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <enumerationMoniker
-                Id="424581da-5638-4221-b6da-bd776ba6f11f"
-                LastKnownName="Color"
-                LastKnownLocation="MensErgerJeNietUML.uml" />
-            </type_NamedElement>
-          </property>
-        </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -1218,6 +1172,11 @@
           </association>
         </targetEnds>
       </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="9df9f401-c5fe-4481-aa11-93620ec6708f"
+        name="bool" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
